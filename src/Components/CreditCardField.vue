@@ -1,40 +1,53 @@
 <template>
 
-    <div class="form-group" @click="onClick">
-        <div class="credit-card-field" :class="mergeClasses(controlClasses, variantClass, classes)">
-            <div class="credit-card-field-icon-wrapper">
-                <div class="credit-card-field-icon-card">
-                    <div class="credit-card-field-icon-front">
-                        <icon name="cc-jcb" data-brand="jcb" class="credit-card-field-icon"></icon>
-                        <icon name="cc-visa" data-brand="visa" class="credit-card-field-icon"></icon>
-                        <icon name="cc-amex" data-brand="amex" class="credit-card-field-icon"></icon>
-                        <icon name="credit-card" data-brand="unknown" class="credit-card-field-icon" width="20" height="18"></icon>
-                        <icon name="cc-discover" data-brand="discover" class="credit-card-field-icon"></icon>
-                        <icon name="cc-mastercard" data-brand="mastercard" class="credit-card-field-icon"></icon>
-                        <icon name="cc-diners-club" data-brand="dinersclub" class="credit-card-field-icon"></icon>
-                    </div>
-                    <div class="credit-card-field-icon-back">
-                        <icon name="credit-card-alt" class="credit-card-field-icon" width="23.33" height="20"></icon>
+    <form-group @click="onClick">
+
+        <slot name="control">
+            <div class="credit-card-field" :class="mergeClasses(controlClasses, variantClass, classes)">
+                <div class="credit-card-field-icon-wrapper">
+                    <div class="credit-card-field-icon-card">
+                        <div class="credit-card-field-icon-front">
+                            <icon name="cc-jcb" data-brand="jcb" class="credit-card-field-icon"></icon>
+                            <icon name="cc-visa" data-brand="visa" class="credit-card-field-icon"></icon>
+                            <icon name="cc-amex" data-brand="amex" class="credit-card-field-icon"></icon>
+                            <icon name="credit-card" data-brand="unknown" class="credit-card-field-icon" width="20" height="18"></icon>
+                            <icon name="cc-discover" data-brand="discover" class="credit-card-field-icon"></icon>
+                            <icon name="cc-mastercard" data-brand="mastercard" class="credit-card-field-icon"></icon>
+                            <icon name="cc-diners-club" data-brand="dinersclub" class="credit-card-field-icon"></icon>
+                        </div>
+                        <div class="credit-card-field-icon-back">
+                            <icon name="credit-card-alt" class="credit-card-field-icon" width="23.33" height="20"></icon>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="credit-card-field-fields">
-                <input v-focus.transform v-validate:number="validateNumber" v-model="card.number" type="text" placeholder="Card number" class="credit-card-field-field credit-card-field-number" :class="mergeClasses({'is-empty': !card.number, 'is-invalid': validated.number === false})">
+                <div class="credit-card-field-fields">
+                    <input v-focus.transform v-validate:number="validateNumber" v-model="card.number" type="text" placeholder="Card number" class="credit-card-field-field credit-card-field-number" :class="mergeClasses({'is-empty': !card.number, 'is-invalid': validated.number === false})">
 
-                <div class="credit-card-field-security-fields">
-                    <input v-focus v-validate:expiration="validateExpiration" v-model="card.expiration" type="text" placeholder="MM / YY" maxlength="7" class="credit-card-field-field credit-card-field-expiration" :class="mergeClasses({'is-empty': !card.expiration, 'is-invalid': validated.expiration === false})">
-                    <input v-focus="validateCvc" v-validate:cvc="validateCvc" v-model="card.cvc" type="text" placeholder="CVC" maxlength="4" autocomplete="off" class="credit-card-field-field credit-card-field-cvc" :class="mergeClasses({'is-empty': !card.cvc, 'is-invalid': validated.cvc === false})">
-                    <input v-focus="validatePostalCode" v-validate:postalCode="validatePostalCode" v-model="card.postalCode" type="text" placeholder="Zip" maxlength="5" class="credit-card-field-field credit-card-field-postal" :class="mergeClasses({'is-empty': !card.postalCode, 'is-invalid': validated.postalCode === false})">
+                    <div class="credit-card-field-security-fields">
+                        <input v-focus v-validate:expiration="validateExpiration" v-model="card.expiration" type="text" placeholder="MM / YY" maxlength="7" class="credit-card-field-field credit-card-field-expiration" :class="mergeClasses({'is-empty': !card.expiration, 'is-invalid': validated.expiration === false})">
+                        <input v-focus="validateCvc" v-validate:cvc="validateCvc" v-model="card.cvc" type="text" placeholder="CVC" maxlength="4" autocomplete="off" class="credit-card-field-field credit-card-field-cvc" :class="mergeClasses({'is-empty': !card.cvc, 'is-invalid': validated.cvc === false})">
+                        <input v-focus="validatePostalCode" v-validate:postalCode="validatePostalCode" v-model="card.postalCode" type="text" placeholder="Zip" maxlength="5" class="credit-card-field-field credit-card-field-postal" :class="mergeClasses({'is-empty': !card.postalCode, 'is-invalid': validated.postalCode === false})">
+                    </div>
+
+                    <div class="credit-card-field-placeholder-mask">Number</div>
+                    <div class="credit-card-field-number-mask" v-html="card.number"></div>
                 </div>
-
-                <div class="credit-card-field-placeholder-mask">Number</div>
-                <div class="credit-card-field-number-mask" v-html="card.number"></div>
             </div>
-        </div>
+        </slot>
 
-        <div class="invalid-feedback" v-if="error" v-html="error"></div>
-    </div>
+        <slot/>
+
+        <slot name="help">
+            <help-text v-if="helpText" v-html="helpText" />
+        </slot>
+
+        <slot name="feedback">
+            <form-feedback v-if="validFeedback" v-html="validFeedback" valid />
+            <form-feedback v-if="invalidFeedback" v-html="invalidFeedback" invalid />
+        </slot>
+
+    </form-group>
 
 </template>
 
@@ -51,6 +64,9 @@ import 'vue-awesome/icons/cc-diners-club';
 import 'vue-awesome/icons/credit-card-alt';
 import Icon from 'vue-awesome/components/Icon';
 import FormControl from 'vue-interface/src/Mixins/FormControl';
+import FormGroup from 'vue-interface/src/Components/FormGroup';
+import FormFeedback from 'vue-interface/src/Components/FormFeedback';
+import HelpText from 'vue-interface/src/Components/HelpText';
 import Variant from 'vue-interface/src/Mixins/Variant';
 import mergeClasses from 'vue-interface/src/Helpers/MergeClasses';
 
@@ -82,7 +98,10 @@ export default {
     name: 'credit-card-field',
 
     components: {
-        Icon
+        Icon,
+        FormGroup,
+        FormFeedback,
+        HelpText
     },
 
     mixins: [
@@ -112,8 +131,13 @@ export default {
         },
         validate: {
             bind(el, binding, vnode) {
-                function validate() {
+                function validate(isValid) {
                     vnode.context.validated[binding.arg] = el.value !== '' ? binding.value && binding.value(el.value) : null;
+                    vnode.context.$emit(isValid ? 'valid' : 'invalid', vnode.context.getEventPayload(el, isValid));
+
+                    if(vnode.context.isComplete()) {
+                        vnode.context.$emit('complete', vnode.context.getEventPayload(el, isValid));
+                    }
                 }
 
                 el.addEventListener('keydown', event => {
@@ -125,15 +149,6 @@ export default {
                     else if(!el.value && event.keyCode === 8) {
                         vnode.context.focusPrevElement(el);
                     }
-                    else {
-                        vnode.context.$emit('input', vnode.context.card);
-                        vnode.context.$emit('change', vnode.context.getEventPayload(el, isValid));
-                        vnode.context.$emit(isValid ? 'valid' : 'invalid', vnode.context.getEventPayload(el, isValid));
-
-                        if(vnode.context.isComplete()) {
-                            vnode.context.$emit('complete', vnode.context.getEventPayload(el, isValid));
-                        }
-                    }
                 });
 
                 el.addEventListener('keyup', event => {
@@ -144,13 +159,16 @@ export default {
                             vnode.context.focusNextElement(el);
                         }
                         else if(!isValid && el.value.length >= 19) {
-                            validate();
+                            validate(isValid);
                         }
+
+                        vnode.context.$emit('input', vnode.context.card);
+                        vnode.context.$emit('change', vnode.context.getEventPayload(el, isValid));
                     }
                 });
 
                 el.addEventListener('blur', event => {
-                    validate()
+                    validate(binding.value && binding.value(el.value))
                 });
             }
         }

@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="../dist/vue-credit-card-field.css">
     </head>
     <body>
-        <div id="app" class="container">
+        <div id="app" class="container col-sm-2">
             <h1>vue-credit-card-field</h1>
 
             <h3>Overview</h3>
@@ -38,6 +38,55 @@
             <credit-card-field size="md"></credit-card-field>
             <credit-card-field size="lg"></credit-card-field>
 
+            <hr>
+
+            <h3>Error Handling</h3>
+            <p>
+                You will most likely be do some processing on the backend to send the
+                information gathered to the server that will inevitable result in an
+                error of some kind. Errors can be passed in two ways: string or object.
+            </p>
+
+            <h4>String</h4>
+
+            <credit-card-field error="Pass an error back from the server..."></credit-card-field>
+
+            <h4>Object</h4>
+
+            <p>
+                Notice, if you pass an object of errors, the name attribute is required to
+                mark which key/value pair to use. An error may be a string or an array of
+                strings.
+            </p>
+
+            <credit-card-field name="credit_card" :errors="{'credit_card': ['This is error #1', 'This is error #2']}"></credit-card-field>
+
+            <hr>
+
+            <h3>Events Callbacks</h3>
+            <p>
+                Use the event callbacks to generate a card token, add additional error handling,
+                or to send the card data for processing.
+            </p>
+
+            <credit-card-field @change="lastChangeEvent = $event" @valid="lastValidEvent = $event" @invalid="lastInvalidEvent = $event" @complete="lastCompleteEvent = $event"></credit-card-field>
+
+            <div v-if="lastChangeEvent" class="alert alert-warning">
+                Card Change Event: {{ lastChangeEvent }}
+            </div>
+
+            <div v-if="lastInvalidEvent" class="alert alert-danger">
+                Card Invalid Event: {{ lastInvalidEvent }}
+            </div>
+
+            <div v-if="lastValidEvent" class="alert alert-info">
+                Card Valid Event: {{ lastValidEvent }}
+            </div>
+
+            <div v-if="lastCompleteEvent" class="alert alert-success">
+                Card Complete Event: {{ lastCompleteEvent }}
+            </div>
+
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
         <script type="text/javascript" src="../dist/vue-credit-card-field.js"></script>
@@ -49,7 +98,11 @@
                 },
                 data() {
                     return {
-                        card: {}
+                        card: {},
+                        lastChangeEvent: null,
+                        lastValidEvent: null,
+                    lastInvalidEvent: null,
+                        lastCompleteEvent: null
                     }
                 }
             });
