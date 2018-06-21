@@ -1,0 +1,24 @@
+{
+    "env": {
+        "test": {
+            "presets": [
+                ["@babel/env", {
+                    "targets": {
+                        "node": 8
+                    }
+                }]
+            ]
+        },
+        "development": {
+            "presets": [
+                ["@babel/env", {
+                    "modules": false
+                }]
+            ]
+        }
+    },
+    "plugins": [
+        "@babel/plugin-proposal-export-default-from",
+        "lodash"
+    ]
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Credit Card Field</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../dist/vue-credit-card-field.css">
+    </head>
+    <body>
+        <div id="app" class="container">
+            <h1>vue-credit-card-field</h1>
+
+            <h3>Overview</h3>
+            <p>
+                This component is meant to be a standalone Vue component that mimics the UX
+                of the Stripe.js credit card field without using an iframe AND is compatible
+                with Boostrap v4. This component is no way meant to replace Stripe.js if you
+                are already using it.
+            </p>
+
+            <h3>Basic Usage</h3>
+            <credit-card-field v-model="card"></credit-card-field>
+
+            <p>
+                The field works like most input fields and will update the model reactively.
+                The card is represent as an object with various properties associated with
+                the input.
+            </p>
+
+            <div class="alert alert-info">
+                {{ card }}
+            </div>
+
+            <hr>
+
+            <h3>Sizes</h3>
+            <credit-card-field size="sm"></credit-card-field>
+            <credit-card-field size="md"></credit-card-field>
+            <credit-card-field size="lg"></credit-card-field>
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+        <script type="text/javascript" src="../dist/vue-credit-card-field.js"></script>
+        <script type="text/javascript">
+            new Vue({
+                el: '#app',
+                components: {
+                    VueCreditCardField
+                },
+                data() {
+                    return {
+                        card: {}
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
