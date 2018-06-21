@@ -25,7 +25,8 @@
     width: calc(100% - 2.5em);
     transform: translateY(-50%);
     left: 2.5em; }
-  .form-control.credit-card-field .credit-card-field-field {
+  .form-control.credit-card-field .credit-card-field-field,
+  .form-control.credit-card-field input.credit-card-field-field {
     float: left;
     display: inline;
     border: none;
@@ -33,8 +34,10 @@
     background: none;
     box-shadow: none;
     line-height: 1em;
+    padding: .5em 0;
     transition: transform .333s ease-in-out; }
-    .form-control.credit-card-field .credit-card-field-field.is-invalid {
+    .form-control.credit-card-field .credit-card-field-field.is-invalid,
+    .form-control.credit-card-field input.credit-card-field-field.is-invalid {
       color: #dc3545; }
   .form-control.credit-card-field .credit-card-field-security-fields {
     position: absolute;

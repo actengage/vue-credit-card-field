@@ -441,7 +441,6 @@ export default {
 
 .form-control.credit-card-field {
     box-sizing: border-box;
-    // padding: ($input-padding-x * 1.125) ($input-padding-y * 1.125);
     overflow: hidden;
     position: relative;
     background: white;
@@ -483,7 +482,8 @@ export default {
         left: 2.5em;
     }
 
-    .credit-card-field-field {
+    .credit-card-field-field,
+    input.credit-card-field-field {
         float: left;
         display: inline;
         border: none;
@@ -491,6 +491,7 @@ export default {
         background: none;
         box-shadow: none;
         line-height: 1em;
+        padding: .5em 0;
         transition: transform .333s ease-in-out;
 
         &.is-invalid {
