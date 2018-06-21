@@ -8,7 +8,7 @@ This is meant to be a standalone Vue component that mimics the UI/UX of Stripe.j
 - Fully compatible and designed for Bootstrap 4
 - Extensible and written in ES6
 - Responsive for mobile, tablets, and desktop
-- Inline error handling and client side validation fields on a form.
+- Inline error handling and client side validation fields on a form
 
 ### Basic Usage
 
