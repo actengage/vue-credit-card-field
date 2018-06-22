@@ -228,6 +228,7 @@ export default {
 
         classes() {
             const classes = {
+                'text-sm': this.width < 300,
                 'is-focused': this.isFocused,
                 'is-invalid': this.isInvalid()
             };
@@ -259,7 +260,9 @@ export default {
             const parts = el.value.split(' ');
             const totalWidth = positionInfo.width;
             const computedStyle = defaultView.getComputedStyle(el)
-            const width = this.getTextWidth(parts[parts.length - 1].trim(), computedStyle.fontStyle+' '+computedStyle.fontSize+' '+computedStyle.fontFamily);
+            const width = this.getTextWidth(parts[parts.length - 1].trim(), computedStyle.fontSize+' '+computedStyle.fontStyle+' '+computedStyle.fontFamily);
+
+            console.log(positionInfo, computedStyle, width)
 
             el.style.transform = 'translateX('+((totalWidth - width) * -1)+'px)';
         },
@@ -312,6 +315,7 @@ export default {
             var context = canvas.getContext("2d");
             context.font = font;
             var metrics = context.measureText(text);
+            console.log(text, metrics);
             return metrics.width;
         },
 
@@ -384,6 +388,12 @@ export default {
             );
         },
 
+        onResize(event) {
+            this.width = this.$el.offsetWidth;
+
+            return this.onResize;
+        },
+
         onClick(event) {
             if(!event.target.classList.contains('credit-card-field-field')) {
                 this.focusedElement ? this.focusedElement.focus() : this.$el.querySelector('.credit-card-field-field').focus();
@@ -402,17 +412,24 @@ export default {
         Payment.formatCardNumber(this.$el.querySelector('.credit-card-field-number'));
         Payment.formatCardExpiry(this.$el.querySelector('.credit-card-field-expiration'));
 
+        this.$emit('input', this.card);
+
         for(let i in AVAILABLE_EVENTS) {
             if(this[AVAILABLE_EVENTS[i]]) {
                 this.$on(AVAILABLE_EVENTS[i], this[AVAILABLE_EVENTS[i]]);
             }
         }
 
-        this.$emit('input', this.card);
+        window.addEventListener('resize', this.onResize());
+    },
+
+    destroyed() {
+        window.removeEventListener('resize', this.onResize);
     },
 
     data() {
         return {
+            width: null,
             isFocused: false,
             focusedElement: null,
             brand: null,
@@ -444,6 +461,22 @@ export default {
     overflow: hidden;
     position: relative;
     background: white;
+
+    &.text-sm .credit-card-field-field,
+    &.text-sm .credit-card-field-number-mask,
+    &.text-sm .credit-card-field-placeholder-mask {
+        font-size: .85em;
+        line-height: .85em;
+    }
+
+    &.text-sm .credit-card-field-security-fields {
+        width: calc(11em * .85);
+    }
+
+    &.text-sm:not(.is-focused) .credit-card-field-security-fields,
+    &.text-sm.is-focused-number .credit-card-field-security-fields {
+        transform: translateX(calc(-4.5em * .85));
+    }
 
     &.form-control-sm {
         min-height: calc((#{$input-padding-y-sm} * 2) + (#{$font-size-sm} * #{$input-line-height-sm}) + (#{$input-border-width} * 2));
@@ -501,7 +534,8 @@ export default {
 
     .credit-card-field-security-fields {
         position: absolute;
-        right: 0;
+        left: 100%;
+        width: 11em;
         display: inline-block;
         transition: transform .333s ease-in-out;
     }
@@ -515,7 +549,6 @@ export default {
         color: $gray-500;
         top: 50%;
         line-height: 1em;
-        min-height: 20px;
         font-size: 1em;
         white-space: nowrap;
         transform: translateY(-50%);
@@ -531,15 +564,15 @@ export default {
     }
 
     .credit-card-field-expiration {
-        width: 5em;
+        width: 4.75em;
     }
 
     .credit-card-field-cvc {
-        width: 3.5em;
+        width: 2.75em;
     }
 
     .credit-card-field-postal {
-        width: 4em;
+        width: 3.5em;
     }
 
     .credit-card-field-icon-wrapper {
@@ -558,17 +591,17 @@ export default {
         top: 0;
         width: 2.5em;
         height: 100%;
-        transition: 0.4s;
+        transition: transform 0.4s ease-in-out;
         transform-style: preserve-3d;
 
         .credit-card-field-icon {
             height: 100%;
             width: 2.5em;
+            transition: .33s;
             padding: 0 .5em;
             position: absolute;
             top: 0;
             left: 0;
-            transition: all .333s ease-in-out;
         }
 
         .credit-card-field-icon-back,
@@ -600,7 +633,7 @@ export default {
 
     &:not(.is-focused) .credit-card-field-security-fields,
     &.is-focused-number .credit-card-field-security-fields {
-        transform: translateX(8em);
+        transform: translateX(-4.5em);
     }
 
     &.is-focused-expiration .credit-card-field-security-fields,
@@ -609,7 +642,7 @@ export default {
     &.last-focused-expiration .credit-card-field-security-fields,
     &.last-focused-cvc .credit-card-field-security-fields,
     &.last-focused-postal .credit-card-field-security-fields {
-        transform: translateX(0);
+        transform: translateX(-100%);
     }
 
     &.is-focused {

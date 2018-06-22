@@ -20026,6 +20026,7 @@ var CreditCardField = {
   computed: {
     classes: function classes() {
       var classes = {
+        'text-sm': this.width < 300,
         'is-focused': this.isFocused,
         'is-invalid': this.isInvalid()
       };
@@ -20052,7 +20053,8 @@ var CreditCardField = {
       var parts = el.value.split(' ');
       var totalWidth = positionInfo.width;
       var computedStyle = defaultView.getComputedStyle(el);
-      var width = this.getTextWidth(parts[parts.length - 1].trim(), computedStyle.fontStyle + ' ' + computedStyle.fontSize + ' ' + computedStyle.fontFamily);
+      var width = this.getTextWidth(parts[parts.length - 1].trim(), computedStyle.fontSize + ' ' + computedStyle.fontStyle + ' ' + computedStyle.fontFamily);
+      console.log(positionInfo, computedStyle, width);
       el.style.transform = 'translateX(' + (totalWidth - width) * -1 + 'px)';
     },
     shouldTransform: function shouldTransform() {
@@ -20093,6 +20095,7 @@ var CreditCardField = {
       var context = canvas.getContext("2d");
       context.font = font;
       var metrics = context.measureText(text);
+      console.log(text, metrics);
       return metrics.width;
     },
     getClassName: function getClassName(el) {
@@ -20145,6 +20148,10 @@ var CreditCardField = {
     isComplete: function isComplete() {
       return this.validated.number && this.validated.expiration && this.validated.cvc && this.validated.postalCode;
     },
+    onResize: function onResize(event) {
+      this.width = this.$el.offsetWidth;
+      return this.onResize;
+    },
     onClick: function onClick(event) {
       if (!event.target.classList.contains('credit-card-field-field')) {
         this.focusedElement ? this.focusedElement.focus() : this.$el.querySelector('.credit-card-field-field').focus();
@@ -20159,6 +20166,7 @@ var CreditCardField = {
     lib$1.restrictNumeric(this.$el.querySelector('.credit-card-field-postal'));
     lib$1.formatCardNumber(this.$el.querySelector('.credit-card-field-number'));
     lib$1.formatCardExpiry(this.$el.querySelector('.credit-card-field-expiration'));
+    this.$emit('input', this.card);
 
     for (var i in AVAILABLE_EVENTS) {
       if (this[AVAILABLE_EVENTS[i]]) {
@@ -20166,10 +20174,14 @@ var CreditCardField = {
       }
     }
 
-    this.$emit('input', this.card);
+    window.addEventListener('resize', this.onResize());
+  },
+  destroyed: function destroyed() {
+    window.removeEventListener('resize', this.onResize);
   },
   data: function data() {
     return {
+      width: null,
       isFocused: false,
       focusedElement: null,
       brand: null,
