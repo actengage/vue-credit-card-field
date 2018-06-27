@@ -20205,55 +20205,6 @@
 	      var context = canvas.getContext("2d");
 	      context.margin = 0;
 	      context.font = computedStyle.font;
-	      console.log(computedStyle);
-	      /*
-	      font
-	      :
-	      "normal normal 400 normal 15.2px / 15.2px -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol""
-	      fontDisplay
-	      :
-	      ""
-	      fontFamily
-	      :
-	      "-apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol""
-	      fontFeatureSettings
-	      :
-	      "normal"
-	      fontKerning
-	      :
-	      "auto"
-	      fontSize
-	      :
-	      "15.2px"
-	      fontStretch
-	      :
-	      "100%"
-	      fontStyle
-	      :
-	      "normal"
-	      fontVariant
-	      :
-	      "normal"
-	      fontVariantCaps
-	      :
-	      "normal"
-	      fontVariantEastAsian
-	      :
-	      "normal"
-	      fontVariantLigatures
-	      :
-	      "normal"
-	      fontVariantNumeric
-	      :
-	      "normal"
-	      fontVariationSettings
-	      :
-	      "normal"
-	      fontWeight
-	      :
-	      "400"
-	      */
-
 	      var metrics = context.measureText(text);
 	      return metrics.width;
 	    },
