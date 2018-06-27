@@ -18978,6 +18978,239 @@
 	 * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 */
 
+	var BaseType = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"activity-indicator",class:_vm.classes},_vm._l((_vm.nodes),function(i){return _c('div')}))},staticRenderFns: [],
+
+	    props: {
+	        nodes: {
+	            type: Number,
+	            default: 3
+	        },
+	        size: {
+	            type: String,
+	            default: ''
+	        },
+	        prefix: {
+	            type: String,
+	            default: 'activity-indicator-'
+	        }
+	    },
+
+	    computed: {
+	        classes: function() {
+	            const classes = {};
+
+	            classes[this.$options.name] = !!this.$options.name;
+	            classes[this.prefix + this.size.replace(this.prefix, '')] = !!this.size;
+
+	            return classes;
+	        }
+	    }
+
+	}
+
+	var ActivityIndicatorDots = {
+
+	    name: 'activity-indicator-dots',
+
+	    extends: BaseType
+	}
+
+	var ActivityIndicatorSpinner = {
+
+	    name: 'activity-indicator-spinner',
+
+	    extends: BaseType,
+
+	    props: assignIn({}, BaseType.props, {
+	        nodes: {
+	            type: Number,
+	            default: 12
+	        }
+	    })
+	}
+
+	function unit(height) {
+	    return isFinite(height) ? height + 'px' : height;
+	}
+
+	var ActivityIndicator = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.center)?_c('div',{staticClass:"center-wrapper",class:{'position-relative': _vm.relative, 'position-fixed': _vm.fixed},style:({minHeight: _vm.unit(this.minHeight), minWidth: _vm.unit(this.minWidth)})},[_c('div',{staticClass:"center-content"},[_c(_vm.component,{tag:"component",attrs:{"size":_vm.size,"prefix":_vm.prefix}})],1)]):_c(_vm.component,{tag:"component",style:({minHeight: _vm.unit(this.minHeight), minWidth: _vm.unit(this.minWidth)}),attrs:{"size":_vm.size,"prefix":_vm.prefix}})},staticRenderFns: [],
+
+	    name: 'activity-indicator',
+
+	    extends: BaseType,
+
+	    props: {
+
+	        center: Boolean,
+
+	        fixed: Boolean,
+
+	        relative: Boolean,
+
+	        type: {
+	            type: String,
+	            default: 'dots'
+	        },
+
+	        minHeight: [String, Number],
+
+	        minWidth: [String, Number]
+
+	    },
+
+	    components: {
+	        ActivityIndicatorDots,
+	        ActivityIndicatorSpinner
+	    },
+
+	    methods: {
+
+	        unit(value) {
+	            return unit(value);
+	        }
+
+	    },
+
+	    computed: {
+
+	        component() {
+	            return kebabCase(this.prefix + this.type.replace(this.prefix, ''));
+	        }
+	    }
+
+	}
+
+	const loaded = {};
+
+	function element(url) {
+	    const script = document.createElement('script');
+	    script.setAttribute('src', url);
+	    script.setAttribute('type', 'text/javascript');
+	    script.setAttribute('charset', 'utf-8');
+	    return script;
+	}
+
+	function append(script) {
+	    if(document.querySelector('head')) {
+	        document.querySelector('head').appendChild(script);
+	    }
+	    else {
+	        document.querySelector('body').appendChild(script);
+	    }
+
+	    return script;
+	}
+
+	function script(url) {
+	    if(loaded[url] instanceof Promise) {
+	        return loaded[url];
+	    }
+
+	    return loaded[url] = new Promise((resolve, reject) => {
+	        try {
+	            if(!loaded[url]) {
+	                append(element(url)).addEventListener('load', event => {
+	                    resolve(loaded[url] = event);
+	                });
+	            }
+	            else {
+	                resolve(loaded[url]);
+	            }
+	        }
+	        catch(e) {
+	            reject(e);
+	        }
+	    });
+	}
+
+	const VueInstaller = {
+	    use,
+	    script,
+	    plugin,
+	    plugins,
+	    filter: filter$1,
+	    filters,
+	    component,
+	    components,
+	    directive,
+	    directives,
+	    $plugins: {},
+	    $filters: {},
+	    $directives: {},
+	    $components: {},
+	};
+
+	function use(plugin) {
+	    if (typeof window !== 'undefined' && window.Vue) {
+	        window.Vue.use(plugin);
+	    }
+
+	    return plugin;
+	}
+
+	function plugin(Vue, name, def) {
+	    if(!VueInstaller.$plugins[name]) {
+	        Vue.use(VueInstaller.$plugins[name] = def);
+	    }
+	}
+
+	function plugins(Vue, plugins) {
+	    forEach(plugins, (def, name) => {
+	        plugin(Vue, name, def);
+	    });
+	}
+
+	function filter$1(Vue, name, def) {
+	    if(!VueInstaller.$filters[name]) {
+	        Vue.use(VueInstaller.$filters[name] = def);
+	    }
+	}
+
+	function filters(Vue, filters) {
+	    forEach(filters, (def, name) => {
+	        filter$1(Vue, name, def);
+	    });
+	}
+
+	function component(Vue, name, def) {
+	    if(!VueInstaller.$components[name]) {
+	        Vue.component(name, VueInstaller.$components[name] = def);
+	    }
+	}
+
+	function components(Vue, components) {
+	    forEach(components, (def, name) => {
+	        component(Vue, name, def);
+	    });
+	}
+
+	function directive(Vue, name, def) {
+	    if(!VueInstaller.$directives[name]) {
+	        if(isFunction(def)) {
+	            Vue.use(VueInstaller.$directives[name] = def);
+	        }
+	        else {
+	            Vue.directive(name, def);
+	        }
+	    }
+	}
+
+	function directives(Vue, directives) {
+	    forEach(directives, (def, name) => {
+	        directive(Vue, name, def);
+	    });
+	}
+
+	const plugin$1 = VueInstaller.use({
+
+	    install(Vue, options) {
+	        VueInstaller.components({
+	            ActivityIndicator
+	        });
+	    }
+
+	});
+
 	function prefix(subject, prefix, delimeter = '-') {
 	    const prefixer = (value, key) => {
 	        const string = key || value;
@@ -19283,128 +19516,7 @@
 	    
 	}
 
-	const loaded = {};
-
-	function element(url) {
-	    const script = document.createElement('script');
-	    script.setAttribute('src', url);
-	    script.setAttribute('type', 'text/javascript');
-	    script.setAttribute('charset', 'utf-8');
-	    return script;
-	}
-
-	function append(script) {
-	    if(document.querySelector('head')) {
-	        document.querySelector('head').appendChild(script);
-	    }
-	    else {
-	        document.querySelector('body').appendChild(script);
-	    }
-
-	    return script;
-	}
-
-	function script(url) {
-	    if(loaded[url] instanceof Promise) {
-	        return loaded[url];
-	    }
-
-	    return loaded[url] = new Promise((resolve, reject) => {
-	        try {
-	            if(!loaded[url]) {
-	                append(element(url)).addEventListener('load', event => {
-	                    resolve(loaded[url] = event);
-	                });
-	            }
-	            else {
-	                resolve(loaded[url]);
-	            }
-	        }
-	        catch(e) {
-	            reject(e);
-	        }
-	    });
-	}
-
-	const VueInstaller = {
-	    use,
-	    script,
-	    plugin,
-	    plugins,
-	    filter: filter$1,
-	    filters,
-	    component,
-	    components,
-	    directive,
-	    directives,
-	    $plugins: {},
-	    $filters: {},
-	    $directives: {},
-	    $components: {},
-	};
-
-	function use(plugin) {
-	    if (typeof window !== 'undefined' && window.Vue) {
-	        window.Vue.use(plugin);
-	    }
-
-	    return plugin;
-	}
-
-	function plugin(Vue, name, def) {
-	    if(!VueInstaller.$plugins[name]) {
-	        Vue.use(VueInstaller.$plugins[name] = def);
-	    }
-	}
-
-	function plugins(Vue, plugins) {
-	    forEach(plugins, (def, name) => {
-	        plugin(Vue, name, def);
-	    });
-	}
-
-	function filter$1(Vue, name, def) {
-	    if(!VueInstaller.$filters[name]) {
-	        Vue.use(VueInstaller.$filters[name] = def);
-	    }
-	}
-
-	function filters(Vue, filters) {
-	    forEach(filters, (def, name) => {
-	        filter$1(Vue, name, def);
-	    });
-	}
-
-	function component(Vue, name, def) {
-	    if(!VueInstaller.$components[name]) {
-	        Vue.component(name, VueInstaller.$components[name] = def);
-	    }
-	}
-
-	function components(Vue, components) {
-	    forEach(components, (def, name) => {
-	        component(Vue, name, def);
-	    });
-	}
-
-	function directive(Vue, name, def) {
-	    if(!VueInstaller.$directives[name]) {
-	        if(isFunction(def)) {
-	            Vue.use(VueInstaller.$directives[name] = def);
-	        }
-	        else {
-	            Vue.directive(name, def);
-	        }
-	    }
-	}
-
-	function directives(Vue, directives) {
-	    forEach(directives, (def, name) => {
-	        directive(Vue, name, def);
-	    });
-	}
-
-	const plugin$1 = VueInstaller.use({
+	const plugin$2 = VueInstaller.use({
 
 	    install(Vue, options) {
 	        VueInstaller.components({
@@ -19535,7 +19647,7 @@
 
 	}
 
-	const plugin$2 = VueInstaller.use({
+	const plugin$3 = VueInstaller.use({
 
 	    install(Vue, options) {
 	        VueInstaller.components({
@@ -19593,7 +19705,7 @@
 
 	}
 
-	const plugin$3 = VueInstaller.use({
+	const plugin$4 = VueInstaller.use({
 
 	    install(Vue, options) {
 	        VueInstaller.components({
@@ -19661,6 +19773,7 @@
 	    var _c = _vm._self._c || _h;
 
 	    return _c('form-group', {
+	      staticClass: "credit-card-field-wrapper",
 	      on: {
 	        "click": _vm.onClick
 	      }
@@ -19896,7 +20009,21 @@
 	      domProps: {
 	        "innerHTML": _vm._s(_vm.card.number)
 	      }
-	    })])])]), _vm._v(" "), _vm._t("default"), _vm._v(" "), _vm._t("help", [_vm.helpText ? _c('help-text', {
+	    })])])]), _vm._v(" "), _vm._t("activity-indicator", [_c('div', {
+	      directives: [{
+	        name: "show",
+	        rawName: "v-show",
+	        value: _vm.activity,
+	        expression: "activity"
+	      }],
+	      staticClass: "credit-card-field-activity"
+	    }, [_c('activity-indicator', {
+	      attrs: {
+	        "size": "sm",
+	        "type": "dots",
+	        "center": ""
+	      }
+	    })], 1)]), _vm._v(" "), _vm._t("default"), _vm._v(" "), _vm._t("help", [_vm.helpText ? _c('help-text', {
 	      domProps: {
 	        "innerHTML": _vm._s(_vm.helpText)
 	      }
@@ -19919,12 +20046,19 @@
 	  staticRenderFns: [],
 	  name: 'credit-card-field',
 	  components: {
+	    ActivityIndicator: ActivityIndicator,
 	    Icon: Icon,
 	    FormGroup: FormGroup,
 	    FormFeedback: FormFeedback,
 	    HelpText: HelpText
 	  },
 	  mixins: [Variant, FormControl],
+	  props: {
+	    activity: {
+	      type: Boolean,
+	      default: false
+	    }
+	  },
 	  directives: {
 	    focus: {
 	      bind: function bind(el, binding, vnode) {
@@ -19984,34 +20118,6 @@
 	      }
 	    }
 	  },
-	  props: {
-	    /*
-	    focus: {
-	        type: [Boolean, Function],
-	        default: false
-	    },
-	    blur: {
-	        type: [Boolean, Function],
-	        default: false
-	    },
-	    invalid: {
-	        type: [Boolean, Function],
-	        default: false
-	    },
-	    complete: {
-	        type: [Boolean, Function],
-	        default: false
-	    },
-	    change: {
-	        type: [Boolean, Function],
-	        default: false
-	    },
-	    error: {
-	        type: [Boolean, String],
-	        default: false
-	    }
-	    */
-	  },
 	  watch: {
 	    'card.number': function cardNumber(newVal, oldVal) {
 	      this.validated.number = null;
@@ -20025,14 +20131,13 @@
 	    },
 	    'card.postalCode': function cardPostalCode(newVal, oldVal) {
 	      this.validated.postalCode = null;
-	    },
-	    error: function error(newVal, oldVal) {
 	    }
 	  },
 	  computed: {
 	    classes: function classes() {
 	      var classes = {
-	        'text-sm': this.width < 300,
+	        'has-activity': this.activity,
+	        'credit-card-field-sm': this.width < 300,
 	        'is-focused': this.isFocused,
 	        'is-invalid': this.isInvalid()
 	      };
@@ -20101,7 +20206,6 @@
 	      var context = canvas.getContext("2d");
 	      context.font = font;
 	      var metrics = context.measureText(text);
-	      console.log(text, metrics);
 	      return metrics.width;
 	    },
 	    getClassName: function getClassName(el) {

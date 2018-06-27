@@ -33,7 +33,7 @@
 
             <hr>
 
-            <h3>Small Container Width</h3>
+            <h3>Responsive Container</h3>
 
             <div class="row">
                 <div class="col-sm-3">
@@ -57,6 +57,15 @@
             <credit-card-field size="sm"></credit-card-field>
             <credit-card-field size="md"></credit-card-field>
             <credit-card-field size="lg"></credit-card-field>
+
+            <hr>
+
+            <h3>Activity Indicator</h3>
+
+            <credit-card-field :activity="showActivity"></credit-card-field>
+
+            <button v-if="!showActivity" class="btn btn-primary" @click="showActivity = true">Show Activity</button>
+            <button v-if="showActivity" class="btn btn-danger" @click="showActivity = false">Hide Activity</button>
 
             <hr>
 
@@ -119,9 +128,10 @@
                 data() {
                     return {
                         card: {},
+                        showActivity: false,
                         lastChangeEvent: null,
                         lastValidEvent: null,
-                    lastInvalidEvent: null,
+                        lastInvalidEvent: null,
                         lastCompleteEvent: null
                     }
                 }
