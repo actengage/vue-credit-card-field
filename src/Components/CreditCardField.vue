@@ -245,9 +245,6 @@ export default {
             const totalWidth = positionInfo.width;
             const computedStyle = defaultView.getComputedStyle(el)
             const width = this.getTextWidth(parts[parts.length - 1].trim(), computedStyle.fontSize+' '+computedStyle.fontStyle+' '+computedStyle.fontFamily);
-
-            console.log(positionInfo, computedStyle, width)
-
             el.style.transform = 'translateX('+((totalWidth - width) * -1)+'px)';
         },
 

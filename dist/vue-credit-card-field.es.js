@@ -20159,7 +20159,6 @@ var CreditCardField = {
       var totalWidth = positionInfo.width;
       var computedStyle = defaultView.getComputedStyle(el);
       var width = this.getTextWidth(parts[parts.length - 1].trim(), computedStyle.fontSize + ' ' + computedStyle.fontStyle + ' ' + computedStyle.fontFamily);
-      console.log(positionInfo, computedStyle, width);
       el.style.transform = 'translateX(' + (totalWidth - width) * -1 + 'px)';
     },
     shouldTransform: function shouldTransform() {
