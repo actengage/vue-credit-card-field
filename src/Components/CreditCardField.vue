@@ -447,7 +447,7 @@ export default {
         top: 0;
         width: 3em;
         height: 100%;
-        transition: opacity .333s ease-in-out;
+        transition: opacity .15s ease-in-out;
     }
 
     .form-control.credit-card-field {
