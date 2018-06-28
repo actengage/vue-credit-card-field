@@ -62,6 +62,9 @@
         display: none; }
       .credit-card-field-wrapper .form-control.credit-card-field.credit-card-field-sm .credit-card-field-fields {
         left: .5em; }
+    .credit-card-field-wrapper .form-control.credit-card-field.credit-card-field-lg:not(.is-focused) .credit-card-field-security-fields,
+    .credit-card-field-wrapper .form-control.credit-card-field.credit-card-field-lg.is-focused-number .credit-card-field-security-fields {
+      transform: translateX(-7.5em); }
     .credit-card-field-wrapper .form-control.credit-card-field .credit-card-field-fields {
       position: absolute;
       top: 50%;

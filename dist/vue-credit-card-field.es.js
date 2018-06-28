@@ -19860,6 +19860,7 @@ var CreditCardField = {
         'is-invalid': _vm.validated.number === false
       }),
       attrs: {
+        "max": "19",
         "type": "text",
         "placeholder": "Card number"
       },
@@ -19980,6 +19981,7 @@ var CreditCardField = {
         'is-invalid': _vm.validated.postalCode === false
       }),
       attrs: {
+        "max": "5",
         "type": "text",
         "placeholder": "Zip",
         "maxlength": "5"
@@ -20066,7 +20068,7 @@ var CreditCardField = {
           el.classList.remove('is-focused');
           vnode.context.isFocused = false;
 
-          if (binding.modifiers.transform) {
+          if (binding.modifiers.transform && vnode.context.shouldTransform(el)) {
             vnode.context.addTransform(el);
           }
         });
@@ -20074,11 +20076,15 @@ var CreditCardField = {
     },
     validate: {
       bind: function bind(el, binding, vnode) {
+        function maxLength(isValid) {
+          return el.getAttribute('max') && el.value.length >= parseInt(el.getAttribute('max'));
+        }
+
         function validate(isValid) {
-          vnode.context.validated[binding.arg] = el.value !== '' ? binding.value && binding.value(el.value) : null;
+          vnode.context.validated[binding.arg] = el.value === '' ? false : binding.value && binding.value(el.value);
           vnode.context.$emit(isValid ? 'valid' : 'invalid', vnode.context.getEventPayload(el, isValid));
 
-          if (vnode.context.isComplete()) {
+          if (vnode.context.isComplete() && vnode.context.isValid()) {
             vnode.context.$emit('complete', vnode.context.getEventPayload(el, isValid));
           }
         }
@@ -20086,7 +20092,7 @@ var CreditCardField = {
         el.addEventListener('keydown', function (event) {
           var isValid = binding.value && binding.value(el.value);
 
-          if ((isValid || !isValid && el.value.length >= 19) && vnode.context.isPrintableKeyCode(event)) {
+          if ((isValid || maxLength()) && vnode.context.isPrintableKeyCode(event)) {
             event.preventDefault();
           } else if (!el.value && event.keyCode === 8) {
             vnode.context.focusPrevElement(el);
@@ -20096,10 +20102,12 @@ var CreditCardField = {
           if (vnode.context.isPrintableKeyCode(event)) {
             var isValid = binding.value && binding.value(el.value);
 
+            if (maxLength()) {
+              validate(isValid);
+            }
+
             if (isValid) {
               vnode.context.focusNextElement(el);
-            } else if (!isValid && el.value.length >= 19) {
-              validate(isValid);
             }
 
             vnode.context.$emit('input', vnode.context.card);
@@ -20130,8 +20138,9 @@ var CreditCardField = {
   computed: {
     classes: function classes() {
       var classes = {
-        'has-activity': this.activity,
         'credit-card-field-sm': this.width < 300,
+        'credit-card-field-lg': this.width > 400,
+        'has-activity': this.activity,
         'is-focused': this.isFocused,
         'is-invalid': this.isInvalid()
       };
@@ -20153,16 +20162,16 @@ var CreditCardField = {
   methods: {
     mergeClasses: MergeClasses,
     addTransform: function addTransform(el) {
-      var defaultView = (el.ownerDocument || document).defaultView;
       var positionInfo = this.$el.querySelector('.credit-card-field-number-mask').getBoundingClientRect();
       var parts = el.value.split(' ');
       var totalWidth = positionInfo.width;
-      var computedStyle = defaultView.getComputedStyle(el);
-      var width = this.getTextWidth(parts[parts.length - 1].trim(), computedStyle);
+      var width = this.getTextWidth(parts[parts.length - 1].trim(), el);
       el.style.transform = 'translateX(' + (totalWidth - width) * -1 + 'px)';
     },
-    shouldTransform: function shouldTransform() {
-      return this.getCardField().classList.contains('is-invalid-expiration') || this.getCardField().classList.contains('is-invalid-cvc') || this.getCardField().classList.contains('is-invalid-postal');
+    shouldTransform: function shouldTransform(el) {
+      var securityWidth = this.$el.querySelector('.credit-card-field-security-fields').offsetWidth;
+      var totalWidth = this.$el.querySelector('.credit-card-field-number').offsetWidth - securityWidth;
+      return totalWidth <= this.getTextWidth(this.card.number, el) * 1.25;
     },
     getDefaultCard: function getDefaultCard() {
       return {
@@ -20185,7 +20194,7 @@ var CreditCardField = {
       return {
         card: card,
         brand: this.brand,
-        valid: this.isInvalid(),
+        invalid: this.isInvalid(),
         complete: this.isComplete(),
         input: {
           el: el,
@@ -20193,8 +20202,10 @@ var CreditCardField = {
         }
       };
     },
-    getTextWidth: function getTextWidth(text, computedStyle) {
-      // re-use canvas object for better performance
+    getTextWidth: function getTextWidth(text, el) {
+      var defaultView = (el.ownerDocument || document).defaultView;
+      var computedStyle = defaultView.getComputedStyle(el); // re-use canvas object for better performance
+
       var canvas = document.createElement("canvas");
       var context = canvas.getContext("2d");
       context.margin = 0;
@@ -20242,15 +20253,26 @@ var CreditCardField = {
       keycode > 218 && keycode < 223 // [\]' (in order)
       ;
     },
+    isValid: function isValid() {
+      for (var i in this.validated) {
+        if (this.validated[i] !== true) {
+          return false;
+        }
+      }
+
+      return true;
+    },
     isInvalid: function isInvalid() {
       for (var i in this.validated) {
         if (this.validated[i] === false) {
           return true;
         }
       }
+
+      return false;
     },
     isComplete: function isComplete() {
-      return this.validated.number && this.validated.expiration && this.validated.cvc && this.validated.postalCode;
+      return this.validated.number && this.validated.expiration && this.validated.cvc && this.validated.postalCode ? true : false;
     },
     onResize: function onResize(event) {
       this.width = this.$el.offsetWidth;

@@ -22,12 +22,12 @@
                 </div>
 
                 <div class="credit-card-field-fields">
-                    <input v-focus.transform v-validate:number="validateNumber" v-model="card.number" type="text" placeholder="Card number" class="credit-card-field-field credit-card-field-number" :class="mergeClasses({'is-empty': !card.number, 'is-invalid': validated.number === false})">
+                    <input v-focus.transform v-validate:number="validateNumber" v-model="card.number" max="19" type="text" placeholder="Card number" class="credit-card-field-field credit-card-field-number" :class="mergeClasses({'is-empty': !card.number, 'is-invalid': validated.number === false})">
 
                     <div class="credit-card-field-security-fields">
                         <input v-focus v-validate:expiration="validateExpiration" v-model="card.expiration" type="text" placeholder="MM / YY" maxlength="7" class="credit-card-field-field credit-card-field-expiration" :class="mergeClasses({'is-empty': !card.expiration, 'is-invalid': validated.expiration === false})">
                         <input v-focus="validateCvc" v-validate:cvc="validateCvc" v-model="card.cvc" type="text" placeholder="CVC" maxlength="4" autocomplete="off" class="credit-card-field-field credit-card-field-cvc" :class="mergeClasses({'is-empty': !card.cvc, 'is-invalid': validated.cvc === false})">
-                        <input v-focus="validatePostalCode" v-validate:postalCode="validatePostalCode" v-model="card.postalCode" type="text" placeholder="Zip" maxlength="5" class="credit-card-field-field credit-card-field-postal" :class="mergeClasses({'is-empty': !card.postalCode, 'is-invalid': validated.postalCode === false})">
+                        <input v-focus="validatePostalCode" v-validate:postalCode="validatePostalCode" v-model="card.postalCode" max="5" type="text" placeholder="Zip" maxlength="5" class="credit-card-field-field credit-card-field-postal" :class="mergeClasses({'is-empty': !card.postalCode, 'is-invalid': validated.postalCode === false})">
                     </div>
 
                     <div class="credit-card-field-placeholder-mask">Number</div>
@@ -140,7 +140,7 @@ export default {
                     el.classList.remove('is-focused');
                     vnode.context.isFocused = false;
 
-                    if(binding.modifiers.transform) {
+                    if(binding.modifiers.transform && vnode.context.shouldTransform(el)) {
                         vnode.context.addTransform(el);
                     }
                 });
@@ -148,11 +148,15 @@ export default {
         },
         validate: {
             bind(el, binding, vnode) {
+                function maxLength(isValid) {
+                    return el.getAttribute('max') && el.value.length >= parseInt(el.getAttribute('max'));
+                }
+
                 function validate(isValid) {
-                    vnode.context.validated[binding.arg] = el.value !== '' ? binding.value && binding.value(el.value) : null;
+                    vnode.context.validated[binding.arg] = el.value === '' ? false : binding.value && binding.value(el.value);
                     vnode.context.$emit(isValid ? 'valid' : 'invalid', vnode.context.getEventPayload(el, isValid));
 
-                    if(vnode.context.isComplete()) {
+                    if(vnode.context.isComplete() && vnode.context.isValid()) {
                         vnode.context.$emit('complete', vnode.context.getEventPayload(el, isValid));
                     }
                 }
@@ -160,7 +164,7 @@ export default {
                 el.addEventListener('keydown', event => {
                     const isValid = binding.value && binding.value(el.value);
 
-                    if((isValid || !isValid && el.value.length >= 19) && vnode.context.isPrintableKeyCode(event)) {
+                    if((isValid || maxLength()) && vnode.context.isPrintableKeyCode(event)) {
                         event.preventDefault();
                     }
                     else if(!el.value && event.keyCode === 8) {
@@ -172,11 +176,12 @@ export default {
                     if(vnode.context.isPrintableKeyCode(event)) {
                         const isValid = binding.value && binding.value(el.value);
 
+                        if(maxLength()) {
+                            validate(isValid);
+                        }
+
                         if(isValid) {
                             vnode.context.focusNextElement(el);
-                        }
-                        else if(!isValid && el.value.length >= 19) {
-                            validate(isValid);
                         }
 
                         vnode.context.$emit('input', vnode.context.card);
@@ -211,8 +216,9 @@ export default {
 
         classes() {
             const classes = {
-                'has-activity': this.activity,
                 'credit-card-field-sm': this.width < 300,
+                'credit-card-field-lg': this.width > 400,
+                'has-activity': this.activity,
                 'is-focused': this.isFocused,
                 'is-invalid': this.isInvalid()
             };
@@ -239,21 +245,18 @@ export default {
         mergeClasses: mergeClasses,
 
         addTransform(el) {
-            const defaultView = (el.ownerDocument || document).defaultView;
             const positionInfo = this.$el.querySelector('.credit-card-field-number-mask').getBoundingClientRect();
             const parts = el.value.split(' ');
             const totalWidth = positionInfo.width;
-            const computedStyle = defaultView.getComputedStyle(el)
-            const width = this.getTextWidth(parts[parts.length - 1].trim(), computedStyle);
+            const width = this.getTextWidth(parts[parts.length - 1].trim(), el);
             el.style.transform = 'translateX('+((totalWidth - width) * -1)+'px)';
         },
 
-        shouldTransform() {
-            return (
-                this.getCardField().classList.contains('is-invalid-expiration') ||
-                this.getCardField().classList.contains('is-invalid-cvc') ||
-                this.getCardField().classList.contains('is-invalid-postal')
-            );
+        shouldTransform(el) {
+            const securityWidth = this.$el.querySelector('.credit-card-field-security-fields').offsetWidth;
+            const totalWidth = this.$el.querySelector('.credit-card-field-number').offsetWidth - securityWidth;
+
+            return totalWidth <= this.getTextWidth(this.card.number, el) * 1.25;
         },
 
         getDefaultCard() {
@@ -281,7 +284,7 @@ export default {
             return {
                 card: card,
                 brand: this.brand,
-                valid: this.isInvalid(),
+                invalid: this.isInvalid(),
                 complete: this.isComplete(),
                 input: {
                     el: el,
@@ -290,7 +293,9 @@ export default {
             };
         },
 
-        getTextWidth(text, computedStyle) {
+        getTextWidth(text, el) {
+            const defaultView = (el.ownerDocument || document).defaultView;
+            const computedStyle = defaultView.getComputedStyle(el);
             // re-use canvas object for better performance
             var canvas = document.createElement("canvas");
             var context = canvas.getContext("2d");
@@ -352,12 +357,24 @@ export default {
             );
         },
 
+        isValid() {
+            for(let i in this.validated) {
+                if(this.validated[i] !== true) {
+                    return false;
+                }
+            }
+
+            return true;
+        },
+
         isInvalid() {
             for(let i in this.validated) {
                 if(this.validated[i] === false) {
                     return true;
                 }
             }
+
+            return false;
         },
 
         isComplete() {
@@ -366,7 +383,7 @@ export default {
                 this.validated.expiration &&
                 this.validated.cvc &&
                 this.validated.postalCode
-            );
+            ) ? true : false;
         },
 
         onResize(event) {
@@ -531,6 +548,13 @@ export default {
 
             .credit-card-field-fields {
                 left: .5em;
+            }
+        }
+
+        &.credit-card-field-lg {
+            &:not(.is-focused) .credit-card-field-security-fields,
+            &.is-focused-number .credit-card-field-security-fields {
+                transform: translateX(-7.5em);
             }
         }
 
