@@ -62,8 +62,7 @@
         display: none; }
       .credit-card-field-wrapper .form-control.credit-card-field.credit-card-field-sm .credit-card-field-fields {
         left: .5em; }
-    .credit-card-field-wrapper .form-control.credit-card-field.credit-card-field-lg:not(.is-focused) .credit-card-field-security-fields,
-    .credit-card-field-wrapper .form-control.credit-card-field.credit-card-field-lg.is-focused-number .credit-card-field-security-fields {
+    .credit-card-field-wrapper .form-control.credit-card-field.credit-card-field-lg.is-focused-number:not(.show-security-fields) .credit-card-field-security-fields {
       transform: translateX(-7.5em); }
     .credit-card-field-wrapper .form-control.credit-card-field .credit-card-field-fields {
       position: absolute;
@@ -157,6 +156,7 @@
     .credit-card-field-wrapper .form-control.credit-card-field:not(.is-focused) .credit-card-field-security-fields,
     .credit-card-field-wrapper .form-control.credit-card-field.is-focused-number .credit-card-field-security-fields {
       transform: translateX(-4.5em); }
+    .credit-card-field-wrapper .form-control.credit-card-field.show-security-fields .credit-card-field-security-fields,
     .credit-card-field-wrapper .form-control.credit-card-field.is-focused-expiration .credit-card-field-security-fields,
     .credit-card-field-wrapper .form-control.credit-card-field.is-focused-cvc .credit-card-field-security-fields,
     .credit-card-field-wrapper .form-control.credit-card-field.is-focused-postal .credit-card-field-security-fields,

@@ -20062,8 +20062,12 @@
 	  },
 	  watch: {
 	    'card.number': function cardNumber(newVal, oldVal) {
-	      this.validated.number = null;
 	      this.brand = this.card.brand = lib$1.fns.cardType(newVal) || 'unknown';
+	      this.validated.number = null;
+
+	      if (this.$el.querySelector('.credit-card-field-lg')) {
+	        this.showSecurityFields = this.card.number.length >= 14;
+	      }
 	    },
 	    'card.expiration': function cardExpiration(newVal, oldVal) {
 	      this.validated.expiration = null;
@@ -20148,6 +20152,7 @@
 	  computed: {
 	    classes: function classes() {
 	      var classes = {
+	        'show-security-fields': this.showSecurityFields,
 	        'credit-card-field-sm': this.width < 300,
 	        'credit-card-field-lg': this.width > 400,
 	        'has-activity': this.activity,
@@ -20179,9 +20184,9 @@
 	      el.style.transform = 'translateX(' + (totalWidth - width) * -1 + 'px)';
 	    },
 	    shouldTransform: function shouldTransform(el) {
-	      var securityWidth = this.$el.querySelector('.credit-card-field-security-fields').offsetWidth;
-	      var totalWidth = this.$el.querySelector('.credit-card-field-number').offsetWidth - securityWidth;
-	      return totalWidth <= this.getTextWidth(this.card.number, el) * 1.25;
+	      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1.25;
+	      var totalWidth = el.offsetWidth - this.$el.querySelector('.credit-card-field-security-fields').offsetWidth;
+	      return totalWidth <= this.getTextWidth(el.value, el) * offset;
 	    },
 	    getDefaultCard: function getDefaultCard() {
 	      return {
@@ -20317,6 +20322,7 @@
 	      isFocused: false,
 	      focusedElement: null,
 	      previousValue: null,
+	      showSecurityFields: false,
 	      brand: null,
 	      validated: {
 	        number: null,
