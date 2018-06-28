@@ -77,14 +77,6 @@ import HelpText from 'vue-interface/src/Components/HelpText';
 import Variant from 'vue-interface/src/Mixins/Variant';
 import mergeClasses from 'vue-interface/src/Helpers/MergeClasses';
 
-const AVAILABLE_EVENTS = [
-    'change',
-    'invalid',
-    'complete',
-    'focus',
-    'blur'
-];
-
 const SUPPORTED_BRANDS = [
     'unknown',
     'visa',
@@ -126,6 +118,22 @@ export default {
 
     },
 
+    watch: {
+        'card.number': function(newVal, oldVal) {
+            this.validated.number = null;
+            this.brand = this.card.brand = Payment.fns.cardType(newVal) || 'unknown';
+        },
+        'card.expiration': function(newVal, oldVal) {
+            this.validated.expiration = null;
+        },
+        'card.cvc': function(newVal, oldVal) {
+            this.validated.cvc = null;
+        },
+        'card.postalCode': function(newVal, oldVal) {
+            this.validated.postalCode = null;
+        }
+    },
+
     directives: {
         focus: {
             bind(el, binding, vnode) {
@@ -148,17 +156,19 @@ export default {
         },
         validate: {
             bind(el, binding, vnode) {
-                function maxLength(isValid) {
-                    return el.getAttribute('max') && el.value.length >= parseInt(el.getAttribute('max'));
-                }
-
                 function validate(isValid) {
                     vnode.context.validated[binding.arg] = el.value === '' ? false : binding.value && binding.value(el.value);
                     vnode.context.$emit(isValid ? 'valid' : 'invalid', vnode.context.getEventPayload(el, isValid));
 
-                    if(vnode.context.isComplete() && vnode.context.isValid()) {
+                    if( vnode.context.isComplete() &&
+                        vnode.context.isValid() &&
+                        vnode.context.hasChanged()) {
                         vnode.context.$emit('complete', vnode.context.getEventPayload(el, isValid));
                     }
+                }
+
+                function maxLength(isValid) {
+                    return el.getAttribute('max') && el.value.length >= parseInt(el.getAttribute('max'));
                 }
 
                 el.addEventListener('keydown', event => {
@@ -170,6 +180,8 @@ export default {
                     else if(!el.value && event.keyCode === 8) {
                         vnode.context.focusPrevElement(el);
                     }
+
+                    vnode.context.previousValue = JSON.stringify(vnode.context.card);
                 });
 
                 el.addEventListener('keyup', event => {
@@ -185,7 +197,10 @@ export default {
                         }
 
                         vnode.context.$emit('input', vnode.context.card);
-                        vnode.context.$emit('change', vnode.context.getEventPayload(el, isValid));
+
+                        if(vnode.context.hasChanged()) {
+                            vnode.context.$emit('change', vnode.context.getEventPayload(el, isValid));
+                        }
                     }
                 });
 
@@ -193,22 +208,6 @@ export default {
                     el.value !== '' && validate(binding.value && binding.value(el.value))
                 });
             }
-        }
-    },
-
-    watch: {
-        'card.number': function(newVal, oldVal) {
-            this.validated.number = null;
-            this.brand = this.card.brand = Payment.fns.cardType(newVal) || 'unknown';
-        },
-        'card.expiration': function(newVal, oldVal) {
-            this.validated.expiration = null;
-        },
-        'card.cvc': function(newVal, oldVal) {
-            this.validated.cvc = null;
-        },
-        'card.postalCode': function(newVal, oldVal) {
-            this.validated.postalCode = null;
         }
     },
 
@@ -328,6 +327,10 @@ export default {
             }
         },
 
+        hasChanged() {
+            return this.previousValue !== JSON.stringify(this.card);
+        },
+
         validateCvc(value) {
             return Payment.fns.validateCardCVC(value);
         },
@@ -411,12 +414,6 @@ export default {
 
         this.$emit('input', this.card);
 
-        for(let i in AVAILABLE_EVENTS) {
-            if(this[AVAILABLE_EVENTS[i]]) {
-                this.$on(AVAILABLE_EVENTS[i], this[AVAILABLE_EVENTS[i]]);
-            }
-        }
-
         window.addEventListener('resize', this.onResize());
     },
 
@@ -429,6 +426,7 @@ export default {
             width: null,
             isFocused: false,
             focusedElement: null,
+            previousValue: null,
             brand: null,
             validated: {
                 number: null,

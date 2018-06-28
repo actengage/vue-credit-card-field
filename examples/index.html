@@ -37,7 +37,7 @@
 
             <div class="row">
                 <div class="col-sm-3">
-                    <credit-card-field v-model="card" @change="onChange" @complete="onComplete"></credit-card-field>
+                    <credit-card-field v-model="card"></credit-card-field>
                 </div>
             </div>
             <div class="row">
@@ -124,14 +124,6 @@
                 el: '#app',
                 components: {
                     VueCreditCardField
-                },
-                methods: {
-                    onChange(event) {
-                        // console.log('change', event);
-                    },
-                    onComplete(event) {
-                        console.log('complete', event);
-                    }
                 },
                 data() {
                     return {

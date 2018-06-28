@@ -19763,7 +19763,6 @@
 	    return classes;
 	}
 
-	var AVAILABLE_EVENTS = ['change', 'invalid', 'complete', 'focus', 'blur'];
 	var CreditCardField = {
 	  render: function render() {
 	    var _vm = this;
@@ -20061,6 +20060,21 @@
 	      default: false
 	    }
 	  },
+	  watch: {
+	    'card.number': function cardNumber(newVal, oldVal) {
+	      this.validated.number = null;
+	      this.brand = this.card.brand = lib$1.fns.cardType(newVal) || 'unknown';
+	    },
+	    'card.expiration': function cardExpiration(newVal, oldVal) {
+	      this.validated.expiration = null;
+	    },
+	    'card.cvc': function cardCvc(newVal, oldVal) {
+	      this.validated.cvc = null;
+	    },
+	    'card.postalCode': function cardPostalCode(newVal, oldVal) {
+	      this.validated.postalCode = null;
+	    }
+	  },
 	  directives: {
 	    focus: {
 	      bind: function bind(el, binding, vnode) {
@@ -20082,17 +20096,17 @@
 	    },
 	    validate: {
 	      bind: function bind(el, binding, vnode) {
-	        function maxLength(isValid) {
-	          return el.getAttribute('max') && el.value.length >= parseInt(el.getAttribute('max'));
-	        }
-
 	        function validate(isValid) {
 	          vnode.context.validated[binding.arg] = el.value === '' ? false : binding.value && binding.value(el.value);
 	          vnode.context.$emit(isValid ? 'valid' : 'invalid', vnode.context.getEventPayload(el, isValid));
 
-	          if (vnode.context.isComplete() && vnode.context.isValid()) {
+	          if (vnode.context.isComplete() && vnode.context.isValid() && vnode.context.hasChanged()) {
 	            vnode.context.$emit('complete', vnode.context.getEventPayload(el, isValid));
 	          }
+	        }
+
+	        function maxLength(isValid) {
+	          return el.getAttribute('max') && el.value.length >= parseInt(el.getAttribute('max'));
 	        }
 
 	        el.addEventListener('keydown', function (event) {
@@ -20103,6 +20117,8 @@
 	          } else if (!el.value && event.keyCode === 8) {
 	            vnode.context.focusPrevElement(el);
 	          }
+
+	          vnode.context.previousValue = JSON.stringify(vnode.context.card);
 	        });
 	        el.addEventListener('keyup', function (event) {
 	          if (vnode.context.isPrintableKeyCode(event)) {
@@ -20117,28 +20133,16 @@
 	            }
 
 	            vnode.context.$emit('input', vnode.context.card);
-	            vnode.context.$emit('change', vnode.context.getEventPayload(el, isValid));
+
+	            if (vnode.context.hasChanged()) {
+	              vnode.context.$emit('change', vnode.context.getEventPayload(el, isValid));
+	            }
 	          }
 	        });
 	        el.addEventListener('blur', function (event) {
 	          el.value !== '' && validate(binding.value && binding.value(el.value));
 	        });
 	      }
-	    }
-	  },
-	  watch: {
-	    'card.number': function cardNumber(newVal, oldVal) {
-	      this.validated.number = null;
-	      this.brand = this.card.brand = lib$1.fns.cardType(newVal) || 'unknown';
-	    },
-	    'card.expiration': function cardExpiration(newVal, oldVal) {
-	      this.validated.expiration = null;
-	    },
-	    'card.cvc': function cardCvc(newVal, oldVal) {
-	      this.validated.cvc = null;
-	    },
-	    'card.postalCode': function cardPostalCode(newVal, oldVal) {
-	      this.validated.postalCode = null;
 	    }
 	  },
 	  computed: {
@@ -20237,6 +20241,9 @@
 	        this.$el.querySelector('.credit-card-field-number').focus();
 	      }
 	    },
+	    hasChanged: function hasChanged() {
+	      return this.previousValue !== JSON.stringify(this.card);
+	    },
 	    validateCvc: function validateCvc(value) {
 	      return lib$1.fns.validateCardCVC(value);
 	    },
@@ -20299,13 +20306,6 @@
 	    lib$1.formatCardNumber(this.$el.querySelector('.credit-card-field-number'));
 	    lib$1.formatCardExpiry(this.$el.querySelector('.credit-card-field-expiration'));
 	    this.$emit('input', this.card);
-
-	    for (var i in AVAILABLE_EVENTS) {
-	      if (this[AVAILABLE_EVENTS[i]]) {
-	        this.$on(AVAILABLE_EVENTS[i], this[AVAILABLE_EVENTS[i]]);
-	      }
-	    }
-
 	    window.addEventListener('resize', this.onResize());
 	  },
 	  destroyed: function destroyed() {
@@ -20316,6 +20316,7 @@
 	      width: null,
 	      isFocused: false,
 	      focusedElement: null,
+	      previousValue: null,
 	      brand: null,
 	      validated: {
 	        number: null,
