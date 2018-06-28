@@ -20121,7 +20121,7 @@
 	          }
 	        });
 	        el.addEventListener('blur', function (event) {
-	          validate(binding.value && binding.value(el.value));
+	          el.value !== '' && validate(binding.value && binding.value(el.value));
 	        });
 	      }
 	    }

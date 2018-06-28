@@ -190,7 +190,7 @@ export default {
                 });
 
                 el.addEventListener('blur', event => {
-                    validate(binding.value && binding.value(el.value))
+                    el.value !== '' && validate(binding.value && binding.value(el.value))
                 });
             }
         }
@@ -388,7 +388,6 @@ export default {
 
         onResize(event) {
             this.width = this.$el.offsetWidth;
-
             return this.onResize;
         },
 
