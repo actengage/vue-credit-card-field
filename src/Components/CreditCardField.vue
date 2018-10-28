@@ -69,13 +69,13 @@ import 'vue-awesome/icons/cc-mastercard';
 import 'vue-awesome/icons/cc-diners-club';
 import 'vue-awesome/icons/credit-card-alt';
 import Icon from 'vue-awesome/components/Icon';
+import MergeClasses from 'vue-interface/src/Mixins/MergeClasses';
 import ActivityIndicator from 'vue-interface/src/Components/ActivityIndicator';
 import FormControl from 'vue-interface/src/Mixins/FormControl';
 import FormGroup from 'vue-interface/src/Components/FormGroup';
 import FormFeedback from 'vue-interface/src/Components/FormFeedback';
 import HelpText from 'vue-interface/src/Components/HelpText';
 import Variant from 'vue-interface/src/Mixins/Variant';
-import mergeClasses from 'vue-interface/src/Helpers/MergeClasses';
 
 const SUPPORTED_BRANDS = [
     'unknown',
@@ -96,15 +96,8 @@ export default {
 
     name: 'credit-card-field',
 
-    components: {
-        ActivityIndicator,
-        Icon,
-        FormGroup,
-        FormFeedback,
-        HelpText
-    },
-
     mixins: [
+        MergeClasses,
         Variant,
         FormControl
     ],
@@ -245,8 +238,6 @@ export default {
     },
 
     methods: {
-
-        mergeClasses: mergeClasses,
 
         addTransform(el) {
             const positionInfo = this.$el.querySelector('.credit-card-field-number-mask').getBoundingClientRect();

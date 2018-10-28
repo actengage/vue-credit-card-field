@@ -1,3 +1,5 @@
+import MergeClasses from 'vue-interface/src/Mixins/MergeClasses';
+
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 function createCommonjsModule(fn, module) {
@@ -19739,24 +19741,6 @@ var Variant = {
 
 }
 
-function MergeClasses() {
-    const classes = {};
-
-    forEach([].slice.call(arguments), arg => {
-        if(isObject(arg)) {
-            assignIn(classes, arg);
-        }
-        else if(isArray(arg)) {
-            merge(classes, arg);
-        }
-        else if(arg) {
-            classes[arg] = true;
-        }
-    });
-
-    return classes;
-}
-
 var CreditCardField = {
   render: function render() {
     var _vm = this;
@@ -20040,14 +20024,7 @@ var CreditCardField = {
   },
   staticRenderFns: [],
   name: 'credit-card-field',
-  components: {
-    ActivityIndicator: ActivityIndicator,
-    Icon: Icon,
-    FormGroup: FormGroup,
-    FormFeedback: FormFeedback,
-    HelpText: HelpText
-  },
-  mixins: [Variant, FormControl],
+  mixins: [MergeClasses, Variant, FormControl],
   props: {
     activity: {
       type: Boolean,
@@ -20169,7 +20146,6 @@ var CreditCardField = {
     }
   },
   methods: {
-    mergeClasses: MergeClasses,
     addTransform: function addTransform(el) {
       var positionInfo = this.$el.querySelector('.credit-card-field-number-mask').getBoundingClientRect();
       var parts = el.value.split(' ');
