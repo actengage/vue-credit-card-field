@@ -1,10 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('vue-interface/src/Mixins/MergeClasses')) :
-	typeof define === 'function' && define.amd ? define(['exports', 'vue-interface/src/Mixins/MergeClasses'], factory) :
-	(factory((global.VueCreditCardField = {}),global.MergeClasses));
-}(this, (function (exports,MergeClasses) { 'use strict';
-
-	MergeClasses = MergeClasses && MergeClasses.hasOwnProperty('default') ? MergeClasses['default'] : MergeClasses;
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+	typeof define === 'function' && define.amd ? define(['exports'], factory) :
+	(factory((global.VueCreditCardField = {})));
+}(this, (function (exports) { 'use strict';
 
 	var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -888,7 +886,7 @@
 	let icons = {};
 
 	var Icon = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('svg',{class:_vm.klass,style:(_vm.style),attrs:{"version":"1.1","role":_vm.label ? 'img' : 'presentation',"aria-label":_vm.label,"x":_vm.x,"y":_vm.y,"width":_vm.width,"height":_vm.height,"viewBox":_vm.box}},[_vm._t("default",[(_vm.icon && _vm.icon.paths)?_vm._l((_vm.icon.paths),function(path,i){return _c('path',_vm._b({key:`path-${i}`},'path',path,false))}):_vm._e(),_vm._v(" "),(_vm.icon && _vm.icon.polygons)?_vm._l((_vm.icon.polygons),function(polygon,i){return _c('polygon',_vm._b({key:`polygon-${i}`},'polygon',polygon,false))}):_vm._e(),_vm._v(" "),(_vm.icon && _vm.icon.raw)?[_c('g',{domProps:{"innerHTML":_vm._s(_vm.raw)}})]:_vm._e()])],2)},staticRenderFns: [],
-	  name: 'icon',
+	  name: 'fa-icon',
 	  props: {
 	    name: {
 	      type: String,
@@ -938,7 +936,8 @@
 	        'fa-flip-horizontal': this.flip === 'horizontal',
 	        'fa-flip-vertical': this.flip === 'vertical',
 	        'fa-inverse': this.inverse,
-	        'fa-pulse': this.pulse
+	        'fa-pulse': this.pulse,
+	        [this.$options.name]: true
 	      }
 	    },
 	    icon () {
@@ -5405,7 +5404,7 @@
 	}
 
 	/** Used to detect strings that need a more robust regexp to match words. */
-	var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
+	var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
 
 	/**
 	 * Checks if `string` contains a word composed of Unicode symbols.
@@ -8398,9 +8397,11 @@
 	 * @returns {*} Returns the property value.
 	 */
 	function safeGet(object, key) {
-	  return key == '__proto__'
-	    ? undefined
-	    : object[key];
+	  if (key == '__proto__') {
+	    return;
+	  }
+
+	  return object[key];
 	}
 
 	/**
@@ -8491,7 +8492,7 @@
 	      if (isArguments(objValue)) {
 	        newValue = toPlainObject(objValue);
 	      }
-	      else if (!isObject(objValue) || (srcIndex && isFunction(objValue))) {
+	      else if (!isObject(objValue) || isFunction(objValue)) {
 	        newValue = initCloneObject(srcValue);
 	      }
 	    }
@@ -18376,7 +18377,7 @@
 	 */
 
 	/** Used as the semantic version number. */
-	var VERSION = '4.17.10';
+	var VERSION = '4.17.11';
 
 	/** Used to compose bitmasks for function metadata. */
 	var WRAP_BIND_KEY_FLAG$6 = 2;
@@ -18980,6 +18981,32 @@
 	 * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 */
 
+	var MergeClasses = {
+
+	    methods: {
+
+	        mergeClasses() {
+	            const classes = {};
+
+	            forEach([].slice.call(arguments), arg => {
+	                if(isObject(arg)) {
+	                    assignIn(classes, arg);
+	                }
+	                else if(isArray(arg)) {
+	                    merge(classes, arg);
+	                }
+	                else if(arg) {
+	                    classes[arg] = true;
+	                }
+	            });
+
+	            return classes;
+	        }
+
+	    }
+
+	}
+
 	var BaseType = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"activity-indicator",class:_vm.classes},_vm._l((_vm.nodes),function(i){return _c('div')}))},staticRenderFns: [],
 
 	    props: {
@@ -19035,7 +19062,7 @@
 	    return isFinite(height) ? height + 'px' : height;
 	}
 
-	var ActivityIndicator = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.center)?_c('div',{staticClass:"center-wrapper",class:{'position-relative': _vm.relative, 'position-fixed': _vm.fixed},style:({minHeight: _vm.unit(this.minHeight), minWidth: _vm.unit(this.minWidth)})},[_c('div',{staticClass:"center-content"},[_c(_vm.component,{tag:"component",attrs:{"size":_vm.size,"prefix":_vm.prefix}})],1)]):_c(_vm.component,{tag:"component",style:({minHeight: _vm.unit(this.minHeight), minWidth: _vm.unit(this.minWidth)}),attrs:{"size":_vm.size,"prefix":_vm.prefix}})},staticRenderFns: [],
+	var ActivityIndicator = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.center)?_c('div',{staticClass:"center-wrapper",class:{'position-relative': _vm.relative, 'position-fixed': _vm.fixed},style:(_vm.style)},[_c('div',{staticClass:"center-content d-flex flex-column align-items-center"},[_c(_vm.component,{tag:"component",attrs:{"size":_vm.size,"prefix":_vm.prefix}}),_vm._v(" "),(_vm.label)?_c('div',{staticClass:"activity-indicator-label",domProps:{"innerHTML":_vm._s(_vm.label)}}):_vm._e()],1)]):_c('div',{staticClass:"d-flex flex-column justify-content-center align-items-center",style:(_vm.style)},[_c(_vm.component,{tag:"component",attrs:{"size":_vm.size,"prefix":_vm.prefix}}),_vm._v(" "),(_vm.label)?_c('div',{staticClass:"activity-indicator-label",domProps:{"innerHTML":_vm._s(_vm.label)}}):_vm._e()],1)},staticRenderFns: [],
 
 	    name: 'activity-indicator',
 
@@ -19047,6 +19074,8 @@
 
 	        fixed: Boolean,
 
+	        label: String,
+
 	        relative: Boolean,
 
 	        type: {
@@ -19054,7 +19083,15 @@
 	            default: 'dots'
 	        },
 
+	        height: [String, Number],
+
+	        maxHeight: [String, Number],
+
 	        minHeight: [String, Number],
+
+	        width: [String, Number],
+
+	        maxWidth: [String, Number],
 
 	        minWidth: [String, Number]
 
@@ -19065,15 +19102,18 @@
 	        ActivityIndicatorSpinner
 	    },
 
-	    methods: {
-
-	        unit(value) {
-	            return unit(value);
-	        }
-
-	    },
-
 	    computed: {
+
+	        style() {
+	            return {
+	                width: unit(this.width),
+	                maxWidth: unit(this.maxWidth),
+	                minWidth: unit(this.minWidth),
+	                height: unit(this.height),
+	                maxHeight: unit(this.maxHeight),
+	                minHeight: unit(this.minHeight)
+	            }
+	        },
 
 	        component() {
 	            return kebabCase(this.prefix + this.type.replace(this.prefix, ''));
@@ -19082,7 +19122,7 @@
 
 	}
 
-	const loaded = {};
+	const LOADED_SCRIPTS = {};
 
 	function element(url) {
 	    const script = document.createElement('script');
@@ -19104,20 +19144,20 @@
 	}
 
 	function script(url) {
-	    if(loaded[url] instanceof Promise) {
-	        return loaded[url];
+	    if(LOADED_SCRIPTS[url] instanceof Promise) {
+	        return LOADED_SCRIPTS[url];
+	    }
+	    else if(LOADED_SCRIPTS[url] || document.querySelector(`script[src="${url}"]`)) {
+	        return new Promise((resolve, reject) => {
+	            resolve(LOADED_SCRIPTS[url]);
+	        });
 	    }
 
-	    return loaded[url] = new Promise((resolve, reject) => {
+	    return LOADED_SCRIPTS[url] = new Promise((resolve, reject) => {
 	        try {
-	            if(!loaded[url]) {
-	                append(element(url)).addEventListener('load', event => {
-	                    resolve(loaded[url] = event);
-	                });
-	            }
-	            else {
-	                resolve(loaded[url]);
-	            }
+	            append(element(url)).addEventListener('load', event => {
+	                resolve(LOADED_SCRIPTS[url] = event);
+	            });
 	        }
 	        catch(e) {
 	            reject(e);
@@ -19343,7 +19383,7 @@
 	        bindEvents: {
 	            type: Array,
 	            default() {
-	                return ['focus', 'blur', 'change', 'click', 'keyup', 'keydown', 'progress'];
+	                return ['focus', 'blur', 'change', 'click', 'keyup', 'keydown', 'progress', 'paste'];
 	            }
 	        },
 
@@ -19433,7 +19473,7 @@
 
 	                forEach(events, name => {
 	                    el.addEventListener(name, event => {
-	                        vnode.context.$emit(name, event, this);
+	                        vnode.context.$emit(name, event);
 	                    });
 	                });
 	            }
@@ -19441,6 +19481,18 @@
 	    },
 
 	    methods: {
+
+	        blur() {
+	            if(this.getInputField()) {
+	                this.getInputField().blur();
+	            }
+	        },
+
+	        focus() {
+	            if(this.getInputField()) {
+	                this.getInputField().focus();
+	            }
+	        },
 
 	        getInputField() {
 	            return this.$el.querySelector('.form-control, input, select, textarea');
@@ -19454,10 +19506,6 @@
 	            }
 
 	            return !errors || isArray(errors) || isObject(errors) ? errors : [errors];
-	        },
-
-	        updated(value, event) {
-	            this.$emit(event || 'input', value);
 	        }
 
 	    },
@@ -19747,575 +19795,354 @@
 
 	}
 
-	var CreditCardField = {
-	  render: function render() {
-	    var _vm = this;
+	var CreditCardField = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form-group',{staticClass:"credit-card-field-wrapper",on:{"click":_vm.onClick}},[_vm._t("control",[_c('div',{staticClass:"credit-card-field",class:_vm.mergeClasses(_vm.controlClasses, _vm.variantClass, _vm.classes)},[_c('div',{staticClass:"credit-card-field-icon-wrapper"},[_c('div',{staticClass:"credit-card-field-icon-card"},[_c('div',{staticClass:"credit-card-field-icon-front"},[_c('icon',{staticClass:"credit-card-field-icon",attrs:{"name":"cc-jcb","data-brand":"jcb"}}),_vm._v(" "),_c('icon',{staticClass:"credit-card-field-icon",attrs:{"name":"cc-visa","data-brand":"visa"}}),_vm._v(" "),_c('icon',{staticClass:"credit-card-field-icon",attrs:{"name":"cc-amex","data-brand":"amex"}}),_vm._v(" "),_c('icon',{staticClass:"credit-card-field-icon",attrs:{"name":"credit-card","data-brand":"unknown","width":"20","height":"18"}}),_vm._v(" "),_c('icon',{staticClass:"credit-card-field-icon",attrs:{"name":"cc-discover","data-brand":"discover"}}),_vm._v(" "),_c('icon',{staticClass:"credit-card-field-icon",attrs:{"name":"cc-mastercard","data-brand":"mastercard"}}),_vm._v(" "),_c('icon',{staticClass:"credit-card-field-icon",attrs:{"name":"cc-diners-club","data-brand":"dinersclub"}})],1),_vm._v(" "),_c('div',{staticClass:"credit-card-field-icon-back"},[_c('icon',{staticClass:"credit-card-field-icon",attrs:{"name":"credit-card-alt","width":"23.33","height":"20"}})],1)])]),_vm._v(" "),_c('div',{staticClass:"credit-card-field-fields"},[_c('input',{directives:[{name:"focus",rawName:"v-focus.transform",modifiers:{"transform":true}},{name:"validate",rawName:"v-validate:number",value:(_vm.validateNumber),expression:"validateNumber",arg:"number"},{name:"model",rawName:"v-model",value:(_vm.card.number),expression:"card.number"}],staticClass:"credit-card-field-field credit-card-field-number",class:_vm.mergeClasses({'is-empty': !_vm.card.number, 'is-invalid': _vm.validated.number === false}),attrs:{"max":"19","type":"text","placeholder":"Card number"},domProps:{"value":(_vm.card.number)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.card, "number", $event.target.value);}}}),_vm._v(" "),_c('div',{staticClass:"credit-card-field-security-fields"},[_c('input',{directives:[{name:"focus",rawName:"v-focus"},{name:"validate",rawName:"v-validate:expiration",value:(_vm.validateExpiration),expression:"validateExpiration",arg:"expiration"},{name:"model",rawName:"v-model",value:(_vm.card.expiration),expression:"card.expiration"}],staticClass:"credit-card-field-field credit-card-field-expiration",class:_vm.mergeClasses({'is-empty': !_vm.card.expiration, 'is-invalid': _vm.validated.expiration === false}),attrs:{"type":"text","placeholder":"MM / YY","maxlength":"7"},domProps:{"value":(_vm.card.expiration)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.card, "expiration", $event.target.value);}}}),_vm._v(" "),_c('input',{directives:[{name:"focus",rawName:"v-focus",value:(_vm.validateCvc),expression:"validateCvc"},{name:"validate",rawName:"v-validate:cvc",value:(_vm.validateCvc),expression:"validateCvc",arg:"cvc"},{name:"model",rawName:"v-model",value:(_vm.card.cvc),expression:"card.cvc"}],staticClass:"credit-card-field-field credit-card-field-cvc",class:_vm.mergeClasses({'is-empty': !_vm.card.cvc, 'is-invalid': _vm.validated.cvc === false}),attrs:{"type":"text","placeholder":"CVC","maxlength":"4","autocomplete":"off"},domProps:{"value":(_vm.card.cvc)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.card, "cvc", $event.target.value);}}}),_vm._v(" "),_c('input',{directives:[{name:"focus",rawName:"v-focus",value:(_vm.validatePostalCode),expression:"validatePostalCode"},{name:"validate",rawName:"v-validate:postalCode",value:(_vm.validatePostalCode),expression:"validatePostalCode",arg:"postalCode"},{name:"model",rawName:"v-model",value:(_vm.card.postalCode),expression:"card.postalCode"}],staticClass:"credit-card-field-field credit-card-field-postal",class:_vm.mergeClasses({'is-empty': !_vm.card.postalCode, 'is-invalid': _vm.validated.postalCode === false}),attrs:{"max":"5","type":"text","placeholder":"Zip","maxlength":"5"},domProps:{"value":(_vm.card.postalCode)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.card, "postalCode", $event.target.value);}}})]),_vm._v(" "),_c('div',{staticClass:"credit-card-field-placeholder-mask"},[_vm._v("Number")]),_vm._v(" "),_c('div',{staticClass:"credit-card-field-number-mask",domProps:{"innerHTML":_vm._s(_vm.card.number)}})])])]),_vm._v(" "),_vm._t("activity-indicator",[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.activity),expression:"activity"}],staticClass:"credit-card-field-activity"},[_c('activity-indicator',{attrs:{"size":"sm","type":"dots","center":""}})],1)]),_vm._v(" "),_vm._t("default"),_vm._v(" "),_vm._t("help",[(_vm.helpText)?_c('help-text',{domProps:{"innerHTML":_vm._s(_vm.helpText)}}):_vm._e()]),_vm._v(" "),_vm._t("feedback",[(_vm.validFeedback)?_c('form-feedback',{attrs:{"valid":""},domProps:{"innerHTML":_vm._s(_vm.validFeedback)}}):_vm._e(),_vm._v(" "),(_vm.invalidFeedback)?_c('form-feedback',{attrs:{"invalid":""},domProps:{"innerHTML":_vm._s(_vm.invalidFeedback)}}):_vm._e()])],2)},staticRenderFns: [],
 
-	    var _h = _vm.$createElement;
+	    name: 'credit-card-field',
 
-	    var _c = _vm._self._c || _h;
+	    mixins: [
+	        MergeClasses,
+	        Variant,
+	        FormControl
+	    ],
 
-	    return _c('form-group', {
-	      staticClass: "credit-card-field-wrapper",
-	      on: {
-	        "click": _vm.onClick
-	      }
-	    }, [_vm._t("control", [_c('div', {
-	      staticClass: "credit-card-field",
-	      class: _vm.mergeClasses(_vm.controlClasses, _vm.variantClass, _vm.classes)
-	    }, [_c('div', {
-	      staticClass: "credit-card-field-icon-wrapper"
-	    }, [_c('div', {
-	      staticClass: "credit-card-field-icon-card"
-	    }, [_c('div', {
-	      staticClass: "credit-card-field-icon-front"
-	    }, [_c('icon', {
-	      staticClass: "credit-card-field-icon",
-	      attrs: {
-	        "name": "cc-jcb",
-	        "data-brand": "jcb"
-	      }
-	    }), _vm._v(" "), _c('icon', {
-	      staticClass: "credit-card-field-icon",
-	      attrs: {
-	        "name": "cc-visa",
-	        "data-brand": "visa"
-	      }
-	    }), _vm._v(" "), _c('icon', {
-	      staticClass: "credit-card-field-icon",
-	      attrs: {
-	        "name": "cc-amex",
-	        "data-brand": "amex"
-	      }
-	    }), _vm._v(" "), _c('icon', {
-	      staticClass: "credit-card-field-icon",
-	      attrs: {
-	        "name": "credit-card",
-	        "data-brand": "unknown",
-	        "width": "20",
-	        "height": "18"
-	      }
-	    }), _vm._v(" "), _c('icon', {
-	      staticClass: "credit-card-field-icon",
-	      attrs: {
-	        "name": "cc-discover",
-	        "data-brand": "discover"
-	      }
-	    }), _vm._v(" "), _c('icon', {
-	      staticClass: "credit-card-field-icon",
-	      attrs: {
-	        "name": "cc-mastercard",
-	        "data-brand": "mastercard"
-	      }
-	    }), _vm._v(" "), _c('icon', {
-	      staticClass: "credit-card-field-icon",
-	      attrs: {
-	        "name": "cc-diners-club",
-	        "data-brand": "dinersclub"
-	      }
-	    })], 1), _vm._v(" "), _c('div', {
-	      staticClass: "credit-card-field-icon-back"
-	    }, [_c('icon', {
-	      staticClass: "credit-card-field-icon",
-	      attrs: {
-	        "name": "credit-card-alt",
-	        "width": "23.33",
-	        "height": "20"
-	      }
-	    })], 1)])]), _vm._v(" "), _c('div', {
-	      staticClass: "credit-card-field-fields"
-	    }, [_c('input', {
-	      directives: [{
-	        name: "focus",
-	        rawName: "v-focus.transform",
-	        modifiers: {
-	          "transform": true
+	    props: {
+
+	        activity: {
+	            type: Boolean,
+	            default: false
 	        }
-	      }, {
-	        name: "validate",
-	        rawName: "v-validate:number",
-	        value: _vm.validateNumber,
-	        expression: "validateNumber",
-	        arg: "number"
-	      }, {
-	        name: "model",
-	        rawName: "v-model",
-	        value: _vm.card.number,
-	        expression: "card.number"
-	      }],
-	      staticClass: "credit-card-field-field credit-card-field-number",
-	      class: _vm.mergeClasses({
-	        'is-empty': !_vm.card.number,
-	        'is-invalid': _vm.validated.number === false
-	      }),
-	      attrs: {
-	        "max": "19",
-	        "type": "text",
-	        "placeholder": "Card number"
-	      },
-	      domProps: {
-	        "value": _vm.card.number
-	      },
-	      on: {
-	        "input": function input($event) {
-	          if ($event.target.composing) {
-	            return;
-	          }
 
-	          _vm.$set(_vm.card, "number", $event.target.value);
-	        }
-	      }
-	    }), _vm._v(" "), _c('div', {
-	      staticClass: "credit-card-field-security-fields"
-	    }, [_c('input', {
-	      directives: [{
-	        name: "focus",
-	        rawName: "v-focus"
-	      }, {
-	        name: "validate",
-	        rawName: "v-validate:expiration",
-	        value: _vm.validateExpiration,
-	        expression: "validateExpiration",
-	        arg: "expiration"
-	      }, {
-	        name: "model",
-	        rawName: "v-model",
-	        value: _vm.card.expiration,
-	        expression: "card.expiration"
-	      }],
-	      staticClass: "credit-card-field-field credit-card-field-expiration",
-	      class: _vm.mergeClasses({
-	        'is-empty': !_vm.card.expiration,
-	        'is-invalid': _vm.validated.expiration === false
-	      }),
-	      attrs: {
-	        "type": "text",
-	        "placeholder": "MM / YY",
-	        "maxlength": "7"
-	      },
-	      domProps: {
-	        "value": _vm.card.expiration
-	      },
-	      on: {
-	        "input": function input($event) {
-	          if ($event.target.composing) {
-	            return;
-	          }
-
-	          _vm.$set(_vm.card, "expiration", $event.target.value);
-	        }
-	      }
-	    }), _vm._v(" "), _c('input', {
-	      directives: [{
-	        name: "focus",
-	        rawName: "v-focus",
-	        value: _vm.validateCvc,
-	        expression: "validateCvc"
-	      }, {
-	        name: "validate",
-	        rawName: "v-validate:cvc",
-	        value: _vm.validateCvc,
-	        expression: "validateCvc",
-	        arg: "cvc"
-	      }, {
-	        name: "model",
-	        rawName: "v-model",
-	        value: _vm.card.cvc,
-	        expression: "card.cvc"
-	      }],
-	      staticClass: "credit-card-field-field credit-card-field-cvc",
-	      class: _vm.mergeClasses({
-	        'is-empty': !_vm.card.cvc,
-	        'is-invalid': _vm.validated.cvc === false
-	      }),
-	      attrs: {
-	        "type": "text",
-	        "placeholder": "CVC",
-	        "maxlength": "4",
-	        "autocomplete": "off"
-	      },
-	      domProps: {
-	        "value": _vm.card.cvc
-	      },
-	      on: {
-	        "input": function input($event) {
-	          if ($event.target.composing) {
-	            return;
-	          }
-
-	          _vm.$set(_vm.card, "cvc", $event.target.value);
-	        }
-	      }
-	    }), _vm._v(" "), _c('input', {
-	      directives: [{
-	        name: "focus",
-	        rawName: "v-focus",
-	        value: _vm.validatePostalCode,
-	        expression: "validatePostalCode"
-	      }, {
-	        name: "validate",
-	        rawName: "v-validate:postalCode",
-	        value: _vm.validatePostalCode,
-	        expression: "validatePostalCode",
-	        arg: "postalCode"
-	      }, {
-	        name: "model",
-	        rawName: "v-model",
-	        value: _vm.card.postalCode,
-	        expression: "card.postalCode"
-	      }],
-	      staticClass: "credit-card-field-field credit-card-field-postal",
-	      class: _vm.mergeClasses({
-	        'is-empty': !_vm.card.postalCode,
-	        'is-invalid': _vm.validated.postalCode === false
-	      }),
-	      attrs: {
-	        "max": "5",
-	        "type": "text",
-	        "placeholder": "Zip",
-	        "maxlength": "5"
-	      },
-	      domProps: {
-	        "value": _vm.card.postalCode
-	      },
-	      on: {
-	        "input": function input($event) {
-	          if ($event.target.composing) {
-	            return;
-	          }
-
-	          _vm.$set(_vm.card, "postalCode", $event.target.value);
-	        }
-	      }
-	    })]), _vm._v(" "), _c('div', {
-	      staticClass: "credit-card-field-placeholder-mask"
-	    }, [_vm._v("Number")]), _vm._v(" "), _c('div', {
-	      staticClass: "credit-card-field-number-mask",
-	      domProps: {
-	        "innerHTML": _vm._s(_vm.card.number)
-	      }
-	    })])])]), _vm._v(" "), _vm._t("activity-indicator", [_c('div', {
-	      directives: [{
-	        name: "show",
-	        rawName: "v-show",
-	        value: _vm.activity,
-	        expression: "activity"
-	      }],
-	      staticClass: "credit-card-field-activity"
-	    }, [_c('activity-indicator', {
-	      attrs: {
-	        "size": "sm",
-	        "type": "dots",
-	        "center": ""
-	      }
-	    })], 1)]), _vm._v(" "), _vm._t("default"), _vm._v(" "), _vm._t("help", [_vm.helpText ? _c('help-text', {
-	      domProps: {
-	        "innerHTML": _vm._s(_vm.helpText)
-	      }
-	    }) : _vm._e()]), _vm._v(" "), _vm._t("feedback", [_vm.validFeedback ? _c('form-feedback', {
-	      attrs: {
-	        "valid": ""
-	      },
-	      domProps: {
-	        "innerHTML": _vm._s(_vm.validFeedback)
-	      }
-	    }) : _vm._e(), _vm._v(" "), _vm.invalidFeedback ? _c('form-feedback', {
-	      attrs: {
-	        "invalid": ""
-	      },
-	      domProps: {
-	        "innerHTML": _vm._s(_vm.invalidFeedback)
-	      }
-	    }) : _vm._e()])], 2);
-	  },
-	  staticRenderFns: [],
-	  name: 'credit-card-field',
-	  mixins: [MergeClasses, Variant, FormControl],
-	  props: {
-	    activity: {
-	      type: Boolean,
-	      default: false
-	    }
-	  },
-	  watch: {
-	    'card.number': function cardNumber(newVal, oldVal) {
-	      this.brand = this.card.brand = lib$1.fns.cardType(newVal) || 'unknown';
-	      this.validated.number = null;
-
-	      if (this.$el.querySelector('.credit-card-field-lg')) {
-	        this.showSecurityFields = this.card.number.length >= 14;
-	      }
 	    },
-	    'card.expiration': function cardExpiration(newVal, oldVal) {
-	      this.validated.expiration = null;
-	    },
-	    'card.cvc': function cardCvc(newVal, oldVal) {
-	      this.validated.cvc = null;
-	    },
-	    'card.postalCode': function cardPostalCode(newVal, oldVal) {
-	      this.validated.postalCode = null;
-	    }
-	  },
-	  directives: {
-	    focus: {
-	      bind: function bind(el, binding, vnode) {
-	        el.addEventListener('focus', function (event) {
-	          el.style.transform = '';
-	          el.classList.add('is-focused');
-	          vnode.context.isFocused = true;
-	          vnode.context.focusedElement = event.target;
-	        });
-	        el.addEventListener('blur', function (event) {
-	          el.classList.remove('is-focused');
-	          vnode.context.isFocused = false;
 
-	          if (binding.modifiers.transform && vnode.context.shouldTransform(el)) {
-	            vnode.context.addTransform(el);
-	          }
-	        });
-	      }
-	    },
-	    validate: {
-	      bind: function bind(el, binding, vnode) {
-	        function validate(isValid) {
-	          vnode.context.validated[binding.arg] = el.value === '' ? false : binding.value && binding.value(el.value);
-	          vnode.context.$emit(isValid ? 'valid' : 'invalid', vnode.context.getEventPayload(el, isValid));
+	    watch: {
+	        'card.number': function(newVal, oldVal) {
+	            this.brand = this.card.brand = lib$1.fns.cardType(newVal) || 'unknown';
+	            this.validated.number = null;
 
-	          if (vnode.context.isComplete() && vnode.context.isValid() && vnode.context.hasChanged()) {
-	            vnode.context.$emit('complete', vnode.context.getEventPayload(el, isValid));
-	          }
+	            if(this.$el.querySelector('.credit-card-field-lg')) {
+	                this.showSecurityFields = this.card.number.length >= 14;
+	            }
+	        },
+	        'card.expiration': function(newVal, oldVal) {
+	            this.validated.expiration = null;
+	        },
+	        'card.cvc': function(newVal, oldVal) {
+	            this.validated.cvc = null;
+	        },
+	        'card.postalCode': function(newVal, oldVal) {
+	            this.validated.postalCode = null;
 	        }
+	    },
 
-	        function maxLength(isValid) {
-	          return el.getAttribute('max') && el.value.length >= parseInt(el.getAttribute('max'));
+	    directives: {
+	        focus: {
+	            bind(el, binding, vnode) {
+	                el.addEventListener('focus', event => {
+	                    el.style.transform = '';
+	                    el.classList.add('is-focused');
+	                    vnode.context.isFocused = true;
+	                    vnode.context.focusedElement = event.target;
+	                });
+
+	                el.addEventListener('blur', event => {
+	                    el.classList.remove('is-focused');
+	                    vnode.context.isFocused = false;
+
+	                    if(binding.modifiers.transform && vnode.context.shouldTransform(el)) {
+	                        vnode.context.addTransform(el);
+	                    }
+	                });
+	            }
+	        },
+	        validate: {
+	            bind(el, binding, vnode) {
+	                function validate(isValid) {
+	                    vnode.context.validated[binding.arg] = el.value === '' ? false : binding.value && binding.value(el.value);
+	                    vnode.context.$emit(isValid ? 'valid' : 'invalid', vnode.context.getEventPayload(el, isValid));
+
+	                    if( vnode.context.isComplete() &&
+	                        vnode.context.isValid() &&
+	                        vnode.context.hasChanged()) {
+	                        vnode.context.$emit('complete', vnode.context.getEventPayload(el, isValid));
+	                    }
+	                }
+
+	                function maxLength(isValid) {
+	                    return el.getAttribute('max') && el.value.length >= parseInt(el.getAttribute('max'));
+	                }
+
+	                el.addEventListener('keydown', event => {
+	                    const isValid = binding.value && binding.value(el.value);
+
+	                    if((isValid || maxLength()) && vnode.context.isPrintableKeyCode(event)) {
+	                        event.preventDefault();
+	                    }
+	                    else if(!el.value && event.keyCode === 8) {
+	                        vnode.context.focusPrevElement(el);
+	                    }
+
+	                    vnode.context.previousValue = JSON.stringify(vnode.context.card);
+	                });
+
+	                el.addEventListener('keyup', event => {
+	                    if(vnode.context.isPrintableKeyCode(event)) {
+	                        const isValid = binding.value && binding.value(el.value);
+
+	                        if(maxLength()) {
+	                            validate(isValid);
+	                        }
+
+	                        if(isValid) {
+	                            vnode.context.focusNextElement(el);
+	                        }
+
+	                        vnode.context.$emit('input', vnode.context.card);
+
+	                        if(vnode.context.hasChanged()) {
+	                            vnode.context.$emit('change', vnode.context.getEventPayload(el, isValid));
+	                        }
+	                    }
+	                });
+
+	                el.addEventListener('blur', event => {
+	                    el.value !== '' && validate(binding.value && binding.value(el.value));
+	                });
+	            }
 	        }
+	    },
 
-	        el.addEventListener('keydown', function (event) {
-	          var isValid = binding.value && binding.value(el.value);
+	    computed: {
 
-	          if ((isValid || maxLength()) && vnode.context.isPrintableKeyCode(event)) {
-	            event.preventDefault();
-	          } else if (!el.value && event.keyCode === 8) {
-	            vnode.context.focusPrevElement(el);
-	          }
+	        classes() {
+	            const classes = {
+	                'show-security-fields': this.showSecurityFields,
+	                'credit-card-field-sm': this.width < 300,
+	                'credit-card-field-lg': this.width > 400,
+	                'has-activity': this.activity,
+	                'is-focused': this.isFocused,
+	                'is-invalid': this.isInvalid()
+	            };
 
-	          vnode.context.previousValue = JSON.stringify(vnode.context.card);
-	        });
-	        el.addEventListener('keyup', function (event) {
-	          if (vnode.context.isPrintableKeyCode(event)) {
-	            var isValid = binding.value && binding.value(el.value);
+	            classes[`brand-${this.brand || 'unknown'}`] = true;
 
-	            if (maxLength()) {
-	              validate(isValid);
+	            if(this.isFocused) {
+	                classes[`is-focused-${this.getClassName(this.focusedElement)}`] = true;
+	            }
+	            else if(this.focusedElement) {
+	                classes[`last-focused-${this.getClassName(this.focusedElement)}`] = true;
 	            }
 
-	            if (isValid) {
-	              vnode.context.focusNextElement(el);
+	            for(let i in this.validated) {
+	                classes[`is-invalid-${i}`] = this.validated[i] === false;
 	            }
 
-	            vnode.context.$emit('input', vnode.context.card);
+	            return classes;
+	        }
+	    },
 
-	            if (vnode.context.hasChanged()) {
-	              vnode.context.$emit('change', vnode.context.getEventPayload(el, isValid));
+	    methods: {
+
+	        addTransform(el) {
+	            const positionInfo = this.$el.querySelector('.credit-card-field-number-mask').getBoundingClientRect();
+	            const parts = el.value.split(' ');
+	            const totalWidth = positionInfo.width;
+	            const width = this.getTextWidth(parts[parts.length - 1].trim(), el);
+	            el.style.transform = 'translateX('+((totalWidth - width) * -1)+'px)';
+	        },
+
+	        shouldTransform(el, offset = 1.25) {
+	            const totalWidth = el.offsetWidth - this.$el.querySelector('.credit-card-field-security-fields').offsetWidth;
+	            return totalWidth <= this.getTextWidth(el.value, el) * offset;
+	        },
+
+	        getDefaultCard() {
+	            return {
+	                number: this.$attrs.number || '',
+	                expiration: this.$attrs.expiration || '',
+	                cvc: this.$attrs.cvc || '',
+	                postalCode: this.$attrs.postalCode || ''
+	            };
+	        },
+
+	        getCardField() {
+	            return this.$el.querySelector('.credit-card-field');
+	        },
+
+	        getEventPayload(el, isValid) {
+	            const card = JSON.parse(JSON.stringify(this.card));
+	            const expiration = card.expiration.split('/');
+
+	            card.numberFormatted = card.number;
+	            card.number = card.number.replace(/\s/g, '');
+	            card.expMonth = expiration[0] ? expiration[0].trim() : null;
+	            card.expYear = expiration[1] ? expiration[1].trim() : null;
+
+	            return {
+	                card: card,
+	                brand: this.brand,
+	                invalid: this.isInvalid(),
+	                complete: this.isComplete(),
+	                input: {
+	                    el: el,
+	                    valid: isValid
+	                }
+	            };
+	        },
+
+	        getTextWidth(text, el) {
+	            const defaultView = (el.ownerDocument || document).defaultView;
+	            const computedStyle = defaultView.getComputedStyle(el);
+	            // re-use canvas object for better performance
+	            var canvas = document.createElement("canvas");
+	            var context = canvas.getContext("2d");
+	            context.margin = 0;
+	            context.font = computedStyle.font;
+	            var metrics = context.measureText(text);
+	            return metrics.width;
+	        },
+
+	        getClassName(el) {
+	            const classes = el.classList.item(1).split('-');
+	            return classes[classes.length - 1];
+	        },
+
+	        focusNextElement(el) {
+	            if(el.nextElementSibling && el.nextElementSibling.children[0]) {
+	                el.nextElementSibling.children[0].focus();
 	            }
-	          }
-	        });
-	        el.addEventListener('blur', function (event) {
-	          el.value !== '' && validate(binding.value && binding.value(el.value));
-	        });
-	      }
-	    }
-	  },
-	  computed: {
-	    classes: function classes() {
-	      var classes = {
-	        'show-security-fields': this.showSecurityFields,
-	        'credit-card-field-sm': this.width < 300,
-	        'credit-card-field-lg': this.width > 400,
-	        'has-activity': this.activity,
-	        'is-focused': this.isFocused,
-	        'is-invalid': this.isInvalid()
-	      };
-	      classes["brand-".concat(this.brand || 'unknown')] = true;
+	            else if(el.nextElementSibling) {
+	                el.nextElementSibling.focus();
+	            }
+	        },
 
-	      if (this.isFocused) {
-	        classes["is-focused-".concat(this.getClassName(this.focusedElement))] = true;
-	      } else if (this.focusedElement) {
-	        classes["last-focused-".concat(this.getClassName(this.focusedElement))] = true;
-	      }
+	        focusPrevElement(el) {
+	            if(!el.value && el.previousElementSibling) {
+	                el.previousElementSibling.focus();
+	            }
+	            else if(!el.value) {
+	                this.$el.querySelector('.credit-card-field-number').focus();
+	            }
+	        },
 
-	      for (var i in this.validated) {
-	        classes["is-invalid-".concat(i)] = this.validated[i] === false;
-	      }
+	        hasChanged() {
+	            return this.previousValue !== JSON.stringify(this.card);
+	        },
 
-	      return classes;
-	    }
-	  },
-	  methods: {
-	    addTransform: function addTransform(el) {
-	      var positionInfo = this.$el.querySelector('.credit-card-field-number-mask').getBoundingClientRect();
-	      var parts = el.value.split(' ');
-	      var totalWidth = positionInfo.width;
-	      var width = this.getTextWidth(parts[parts.length - 1].trim(), el);
-	      el.style.transform = 'translateX(' + (totalWidth - width) * -1 + 'px)';
-	    },
-	    shouldTransform: function shouldTransform(el) {
-	      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1.25;
-	      var totalWidth = el.offsetWidth - this.$el.querySelector('.credit-card-field-security-fields').offsetWidth;
-	      return totalWidth <= this.getTextWidth(el.value, el) * offset;
-	    },
-	    getDefaultCard: function getDefaultCard() {
-	      return {
-	        number: this.$attrs.number || '',
-	        expiration: this.$attrs.expiration || '',
-	        cvc: this.$attrs.cvc || '',
-	        postalCode: this.$attrs.postalCode || ''
-	      };
-	    },
-	    getCardField: function getCardField() {
-	      return this.$el.querySelector('.credit-card-field');
-	    },
-	    getEventPayload: function getEventPayload(el, isValid) {
-	      var card = JSON.parse(JSON.stringify(this.card));
-	      var expiration = card.expiration.split('/');
-	      card.numberFormatted = card.number;
-	      card.number = card.number.replace(/\s/g, '');
-	      card.expMonth = expiration[0] ? expiration[0].trim() : null;
-	      card.expYear = expiration[1] ? expiration[1].trim() : null;
-	      return {
-	        card: card,
-	        brand: this.brand,
-	        invalid: this.isInvalid(),
-	        complete: this.isComplete(),
-	        input: {
-	          el: el,
-	          valid: isValid
+	        validateCvc(value) {
+	            return lib$1.fns.validateCardCVC(value);
+	        },
+
+	        validateNumber(value) {
+	            return lib$1.fns.validateCardNumber(value);
+	        },
+
+	        validateExpiration(value) {
+	            return lib$1.fns.validateCardExpiry(value);
+	        },
+
+	        validatePostalCode(value) {
+	            return value.match(/^\d{5}(?:[-\s]\d{4})?$/) !== null;
+	        },
+
+	        isPrintableKeyCode(event) {
+	            const keycode = event.keyCode;
+
+	            return (
+	                (keycode > 47 && keycode < 58)   || // number keys
+	                keycode == 32 || keycode == 13   || // spacebar & return key(s) (if you want to allow carriage returns)
+	                (keycode > 64 && keycode < 91)   || // letter keys
+	                (keycode > 95 && keycode < 112)  || // numpad keys
+	                (keycode > 185 && keycode < 193) || // ;=,-./` (in order)
+	                (keycode > 218 && keycode < 223)   // [\]' (in order)
+	            );
+	        },
+
+	        isValid() {
+	            for(let i in this.validated) {
+	                if(this.validated[i] !== true) {
+	                    return false;
+	                }
+	            }
+
+	            return true;
+	        },
+
+	        isInvalid() {
+	            for(let i in this.validated) {
+	                if(this.validated[i] === false) {
+	                    return true;
+	                }
+	            }
+
+	            return false;
+	        },
+
+	        isComplete() {
+	            return (
+	                this.validated.number &&
+	                this.validated.expiration &&
+	                this.validated.cvc &&
+	                this.validated.postalCode
+	            ) ? true : false;
+	        },
+
+	        onResize(event) {
+	            this.width = this.$el.offsetWidth;
+	            return this.onResize;
+	        },
+
+	        onClick(event) {
+	            if(!event.target.classList.contains('credit-card-field-field')) {
+	                this.focusedElement ? this.focusedElement.focus() : this.$el.querySelector('.credit-card-field-field').focus();
+	            }
 	        }
-	      };
-	    },
-	    getTextWidth: function getTextWidth(text, el) {
-	      var defaultView = (el.ownerDocument || document).defaultView;
-	      var computedStyle = defaultView.getComputedStyle(el); // re-use canvas object for better performance
 
-	      var canvas = document.createElement("canvas");
-	      var context = canvas.getContext("2d");
-	      context.margin = 0;
-	      context.font = computedStyle.font;
-	      var metrics = context.measureText(text);
-	      return metrics.width;
 	    },
-	    getClassName: function getClassName(el) {
-	      var classes = el.classList.item(1).split('-');
-	      return classes[classes.length - 1];
-	    },
-	    focusNextElement: function focusNextElement(el) {
-	      if (el.nextElementSibling && el.nextElementSibling.children[0]) {
-	        el.nextElementSibling.children[0].focus();
-	      } else if (el.nextElementSibling) {
-	        el.nextElementSibling.focus();
-	      }
-	    },
-	    focusPrevElement: function focusPrevElement(el) {
-	      if (!el.value && el.previousElementSibling) {
-	        el.previousElementSibling.focus();
-	      } else if (!el.value) {
-	        this.$el.querySelector('.credit-card-field-number').focus();
-	      }
-	    },
-	    hasChanged: function hasChanged() {
-	      return this.previousValue !== JSON.stringify(this.card);
-	    },
-	    validateCvc: function validateCvc(value) {
-	      return lib$1.fns.validateCardCVC(value);
-	    },
-	    validateNumber: function validateNumber(value) {
-	      return lib$1.fns.validateCardNumber(value);
-	    },
-	    validateExpiration: function validateExpiration(value) {
-	      return lib$1.fns.validateCardExpiry(value);
-	    },
-	    validatePostalCode: function validatePostalCode(value) {
-	      return value.match(/^\d{5}(?:[-\s]\d{4})?$/) !== null;
-	    },
-	    isPrintableKeyCode: function isPrintableKeyCode(event) {
-	      var keycode = event.keyCode;
-	      return keycode > 47 && keycode < 58 || // number keys
-	      keycode == 32 || keycode == 13 || // spacebar & return key(s) (if you want to allow carriage returns)
-	      keycode > 64 && keycode < 91 || // letter keys
-	      keycode > 95 && keycode < 112 || // numpad keys
-	      keycode > 185 && keycode < 193 || // ;=,-./` (in order)
-	      keycode > 218 && keycode < 223 // [\]' (in order)
-	      ;
-	    },
-	    isValid: function isValid() {
-	      for (var i in this.validated) {
-	        if (this.validated[i] !== true) {
-	          return false;
-	        }
-	      }
 
-	      return true;
+	    created() {
+	        this.card = this.getDefaultCard();
 	    },
-	    isInvalid: function isInvalid() {
-	      for (var i in this.validated) {
-	        if (this.validated[i] === false) {
-	          return true;
-	        }
-	      }
 
-	      return false;
+	    mounted() {
+	        lib$1.formatCardCVC(this.$el.querySelector('.credit-card-field-cvc'));
+	        lib$1.restrictNumeric(this.$el.querySelector('.credit-card-field-postal'));
+	        lib$1.formatCardNumber(this.$el.querySelector('.credit-card-field-number'));
+	        lib$1.formatCardExpiry(this.$el.querySelector('.credit-card-field-expiration'));
+
+	        this.$emit('input', this.card);
+
+	        window.addEventListener('resize', this.onResize());
 	    },
-	    isComplete: function isComplete() {
-	      return this.validated.number && this.validated.expiration && this.validated.cvc && this.validated.postalCode ? true : false;
+
+	    destroyed() {
+	        window.removeEventListener('resize', this.onResize);
 	    },
-	    onResize: function onResize(event) {
-	      this.width = this.$el.offsetWidth;
-	      return this.onResize;
-	    },
-	    onClick: function onClick(event) {
-	      if (!event.target.classList.contains('credit-card-field-field')) {
-	        this.focusedElement ? this.focusedElement.focus() : this.$el.querySelector('.credit-card-field-field').focus();
-	      }
+
+	    data() {
+	        return {
+	            width: null,
+	            isFocused: false,
+	            focusedElement: null,
+	            previousValue: null,
+	            showSecurityFields: false,
+	            brand: null,
+	            validated: {
+	                number: null,
+	                expiration: null,
+	                cvc: null,
+	                postalCode: null
+	            },
+	            card: {
+	                brand: null,
+	                number: null,
+	                expiration: null,
+	                cvc: null,
+	                postalCode: null
+	            }
+	        };
 	    }
-	  },
-	  created: function created() {
-	    this.card = this.getDefaultCard();
-	  },
-	  mounted: function mounted() {
-	    lib$1.formatCardCVC(this.$el.querySelector('.credit-card-field-cvc'));
-	    lib$1.restrictNumeric(this.$el.querySelector('.credit-card-field-postal'));
-	    lib$1.formatCardNumber(this.$el.querySelector('.credit-card-field-number'));
-	    lib$1.formatCardExpiry(this.$el.querySelector('.credit-card-field-expiration'));
-	    this.$emit('input', this.card);
-	    window.addEventListener('resize', this.onResize());
-	  },
-	  destroyed: function destroyed() {
-	    window.removeEventListener('resize', this.onResize);
-	  },
-	  data: function data() {
-	    return {
-	      width: null,
-	      isFocused: false,
-	      focusedElement: null,
-	      previousValue: null,
-	      showSecurityFields: false,
-	      brand: null,
-	      validated: {
-	        number: null,
-	        expiration: null,
-	        cvc: null,
-	        postalCode: null
-	      },
-	      card: {
-	        brand: null,
-	        number: null,
-	        expiration: null,
-	        cvc: null,
-	        postalCode: null
-	      }
-	    };
-	  }
-	};
+
+	}
 
 	function install(vue, options) {
 	  Vue.component('credit-card-field', CreditCardField);
