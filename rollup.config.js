@@ -62,14 +62,12 @@ const LIVERELOAD_OPTIONS = {
 
 // Define the list of output globals
 const OUTPUT_GLOBALS = {
-    'vue': 'Vue',
-    'lodash': 'lodash'
+    'vue': 'Vue'
 };
 
 // Define an array of external packages to not include in the bundle
 const EXTERNAL = [
-    'vue',
-    'lodash'
+    'vue'
 ];
 
 // Define the plugins used for the rollup process

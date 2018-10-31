@@ -1,4 +1,4 @@
-import CreditCardField from './Components/CreditCardField';
+import CreditCardField from './CreditCardField';
 
 export {
     CreditCardField
