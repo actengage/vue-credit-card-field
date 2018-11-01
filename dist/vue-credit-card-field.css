@@ -203,64 +203,6 @@
       .credit-card-field-wrapper .form-control.credit-card-field.is-valid .credit-card-field-icon, .credit-card-field-wrapper .form-control.credit-card-field:valid .credit-card-field-icon {
         color: #28a745; }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.fa-icon {
-  display: inline-block;
-  fill: currentColor;
-}
-
-.fa-flip-horizontal {
-  transform: scale(-1, 1);
-}
-
-.fa-flip-vertical {
-  transform: scale(1, -1);
-}
-
-.fa-spin {
-  animation: fa-spin 1s 0s infinite linear;
-}
-
-.fa-inverse {
-  color: #fff;
-}
-
-.fa-pulse {
-  animation: fa-spin 1s infinite steps(8);
-}
-
-@keyframes fa-spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .center-wrapper {
   position: absolute;
   top: 0;

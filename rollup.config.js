@@ -10,6 +10,7 @@ import serve from 'rollup-plugin-serve';
 import replace from 'rollup-plugin-replace';
 import progress from 'rollup-plugin-progress';
 import commonjs from 'rollup-plugin-commonjs';
+import { eslint } from 'rollup-plugin-eslint';
 import resolve from 'rollup-plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import globals from 'rollup-plugin-node-globals';
@@ -79,6 +80,7 @@ const plugins = [
         'process.env.LIVERELOAD_OPTIONS': JSON.stringify(LIVERELOAD_OPTIONS)
     }),
     json(),
+    eslint(),
     rootImport({
         // Will first look in `client/src/*` and then `common/src/*`.
         root: SRC,

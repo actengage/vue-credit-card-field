@@ -7,16 +7,16 @@
                 <div class="credit-card-field-icon-wrapper">
                     <div class="credit-card-field-icon-card">
                         <div class="credit-card-field-icon-front">
-                            <icon name="cc-jcb" data-brand="jcb" class="credit-card-field-icon"></icon>
-                            <icon name="cc-visa" data-brand="visa" class="credit-card-field-icon"></icon>
-                            <icon name="cc-amex" data-brand="amex" class="credit-card-field-icon"></icon>
-                            <icon name="credit-card" data-brand="unknown" class="credit-card-field-icon" width="20" height="18"></icon>
-                            <icon name="cc-discover" data-brand="discover" class="credit-card-field-icon"></icon>
-                            <icon name="cc-mastercard" data-brand="mastercard" class="credit-card-field-icon"></icon>
-                            <icon name="cc-diners-club" data-brand="dinersclub" class="credit-card-field-icon"></icon>
+                            <icon :icon="['fab', 'cc-jcb']" data-brand="jcb" class="credit-card-field-icon"/>
+                            <icon :icon="['fab', 'cc-visa']" data-brand="visa" class="credit-card-field-icon"/>
+                            <icon :icon="['fab', 'cc-amex']" data-brand="amex" class="credit-card-field-icon"/>
+                            <icon :icon="['fab', 'cc-discover']" data-brand="discover" class="credit-card-field-icon"/>
+                            <icon :icon="['fab', 'cc-mastercard']" data-brand="mastercard" class="credit-card-field-icon"/>
+                            <icon :icon="['fab', 'cc-diners-club']" data-brand="dinersclub" class="credit-card-field-icon"/>
+                            <icon :icon="['far', 'credit-card']" data-brand="unknown" class="credit-card-field-icon" width="20" height="18"/>
                         </div>
                         <div class="credit-card-field-icon-back">
-                            <icon name="credit-card-alt" class="credit-card-field-icon" width="23.33" height="20"></icon>
+                            <icon :icon="['fas', 'credit-card']" class="credit-card-field-icon" width="23.33" height="20"/>
                         </div>
                     </div>
                 </div>
@@ -59,38 +59,31 @@
 
 <script>
 import Payment from 'payment';
-import 'vue-awesome/icons/cc-jcb';
-import 'vue-awesome/icons/warning';
-import 'vue-awesome/icons/cc-visa';
-import 'vue-awesome/icons/cc-amex';
-import 'vue-awesome/icons/credit-card';
-import 'vue-awesome/icons/cc-discover';
-import 'vue-awesome/icons/cc-mastercard';
-import 'vue-awesome/icons/cc-diners-club';
-import 'vue-awesome/icons/credit-card-alt';
-import Icon from 'vue-awesome/components/Icon';
-import MergeClasses from 'vue-interface/src/Mixins/MergeClasses';
-import ActivityIndicator from 'vue-interface/src/Components/ActivityIndicator';
+import Variant from 'vue-interface/src/Mixins/Variant';
+import HelpText from 'vue-interface/src/Components/HelpText';
 import FormControl from 'vue-interface/src/Mixins/FormControl';
 import FormGroup from 'vue-interface/src/Components/FormGroup';
+import MergeClasses from 'vue-interface/src/Mixins/MergeClasses';
 import FormFeedback from 'vue-interface/src/Components/FormFeedback';
-import HelpText from 'vue-interface/src/Components/HelpText';
-import Variant from 'vue-interface/src/Mixins/Variant';
+import ActivityIndicator from 'vue-interface/src/Components/ActivityIndicator';
 
-const SUPPORTED_BRANDS = [
-    'unknown',
-    'visa',
-    'mastercard',
-    'discover',
-    'amex',
-    'jcb',
-    'dinersclub',
-    'maestro',
-    'laser',
-    'unionpay',
-    'elo',
-    'hipercard'
-];
+// Load Fontawesome Icons
+import { library as fa } from '@fortawesome/fontawesome-svg-core';
+import { faCcJcb } from '@fortawesome/free-brands-svg-icons/faCcJcb';
+import { faCcVisa } from '@fortawesome/free-brands-svg-icons/faCcVisa';
+import { faCcAmex } from '@fortawesome/free-brands-svg-icons/faCCAmex';
+import { faCcDiscover } from '@fortawesome/free-brands-svg-icons/faCcDiscover';
+import { faCcMastercard } from '@fortawesome/free-brands-svg-icons/faCcMastercard';
+import { faCcDinersClub } from '@fortawesome/free-brands-svg-icons/faCcDinersClub';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons/faExclamationTriangle';
+import { faCreditCard } from '@fortawesome/free-regular-svg-icons/faCreditCard';
+import { faCreditCard as faCreditCardSolid } from '@fortawesome/free-solid-svg-icons/faCreditCard';
+import { FontAwesomeIcon as Icon } from '@fortawesome/vue-fontawesome';
+
+fa.add(
+    faCcJcb, faCcVisa, faCcAmex, faCcDiscover, faCcMastercard, faCcDinersClub,
+    faExclamationTriangle, faCreditCard, faCreditCardSolid
+);
 
 export default {
 
@@ -101,6 +94,14 @@ export default {
         Variant,
         FormControl
     ],
+
+    components: {
+        ActivityIndicator,
+        FormGroup,
+        FormFeedback,
+        HelpText,
+        Icon
+    },
 
     props: {
 
@@ -116,7 +117,7 @@ export default {
             this.brand = this.card.brand = Payment.fns.cardType(newVal) || 'unknown';
             this.validated.number = null;
 
-            if(this.$el.querySelector('.credit-card-field-lg')) {
+            if (this.$el.querySelector('.credit-card-field-lg')) {
                 this.showSecurityFields = this.card.number.length >= 14;
             }
         },
@@ -145,7 +146,7 @@ export default {
                     el.classList.remove('is-focused');
                     vnode.context.isFocused = false;
 
-                    if(binding.modifiers.transform && vnode.context.shouldTransform(el)) {
+                    if (binding.modifiers.transform && vnode.context.shouldTransform(el)) {
                         vnode.context.addTransform(el);
                     }
                 });
@@ -157,7 +158,7 @@ export default {
                     vnode.context.validated[binding.arg] = el.value === '' ? false : binding.value && binding.value(el.value);
                     vnode.context.$emit(isValid ? 'valid' : 'invalid', vnode.context.getEventPayload(el, isValid));
 
-                    if( vnode.context.isComplete() &&
+                    if (vnode.context.isComplete() &&
                         vnode.context.isValid() &&
                         vnode.context.hasChanged()) {
                         vnode.context.$emit('complete', vnode.context.getEventPayload(el, isValid));
@@ -171,10 +172,10 @@ export default {
                 el.addEventListener('keydown', event => {
                     const isValid = binding.value && binding.value(el.value);
 
-                    if((isValid || maxLength()) && vnode.context.isPrintableKeyCode(event)) {
+                    if ((isValid || maxLength()) && vnode.context.isPrintableKeyCode(event)) {
                         event.preventDefault();
                     }
-                    else if(!el.value && event.keyCode === 8) {
+                    else if (!el.value && event.keyCode === 8) {
                         vnode.context.focusPrevElement(el);
                     }
 
@@ -182,27 +183,27 @@ export default {
                 });
 
                 el.addEventListener('keyup', event => {
-                    if(vnode.context.isPrintableKeyCode(event)) {
+                    if (vnode.context.isPrintableKeyCode(event)) {
                         const isValid = binding.value && binding.value(el.value);
 
-                        if(maxLength()) {
+                        if (maxLength()) {
                             validate(isValid);
                         }
 
-                        if(isValid) {
+                        if (isValid) {
                             vnode.context.focusNextElement(el);
                         }
 
                         vnode.context.$emit('input', vnode.context.card);
 
-                        if(vnode.context.hasChanged()) {
+                        if (vnode.context.hasChanged()) {
                             vnode.context.$emit('change', vnode.context.getEventPayload(el, isValid));
                         }
                     }
                 });
 
                 el.addEventListener('blur', event => {
-                    el.value !== '' && validate(binding.value && binding.value(el.value))
+                    el.value !== '' && validate(binding.value && binding.value(el.value));
                 });
             }
         }
@@ -222,14 +223,14 @@ export default {
 
             classes[`brand-${this.brand || 'unknown'}`] = true;
 
-            if(this.isFocused) {
+            if (this.isFocused) {
                 classes[`is-focused-${this.getClassName(this.focusedElement)}`] = true;
             }
-            else if(this.focusedElement) {
+            else if (this.focusedElement) {
                 classes[`last-focused-${this.getClassName(this.focusedElement)}`] = true;
             }
 
-            for(let i in this.validated) {
+            for (let i in this.validated) {
                 classes[`is-invalid-${i}`] = this.validated[i] === false;
             }
 
@@ -244,7 +245,7 @@ export default {
             const parts = el.value.split(' ');
             const totalWidth = positionInfo.width;
             const width = this.getTextWidth(parts[parts.length - 1].trim(), el);
-            el.style.transform = 'translateX('+((totalWidth - width) * -1)+'px)';
+            el.style.transform = 'translateX(' + ((totalWidth - width) * -1) + 'px)';
         },
 
         shouldTransform(el, offset = 1.25) {
@@ -290,8 +291,8 @@ export default {
             const defaultView = (el.ownerDocument || document).defaultView;
             const computedStyle = defaultView.getComputedStyle(el);
             // re-use canvas object for better performance
-            var canvas = document.createElement("canvas");
-            var context = canvas.getContext("2d");
+            var canvas = document.createElement('canvas');
+            var context = canvas.getContext('2d');
             context.margin = 0;
             context.font = computedStyle.font;
             var metrics = context.measureText(text);
@@ -304,19 +305,19 @@ export default {
         },
 
         focusNextElement(el) {
-            if(el.nextElementSibling && el.nextElementSibling.children[0]) {
+            if (el.nextElementSibling && el.nextElementSibling.children[0]) {
                 el.nextElementSibling.children[0].focus();
             }
-            else if(el.nextElementSibling) {
+            else if (el.nextElementSibling) {
                 el.nextElementSibling.focus();
             }
         },
 
         focusPrevElement(el) {
-            if(!el.value && el.previousElementSibling) {
+            if (!el.value && el.previousElementSibling) {
                 el.previousElementSibling.focus();
             }
-            else if(!el.value) {
+            else if (!el.value) {
                 this.$el.querySelector('.credit-card-field-number').focus();
             }
         },
@@ -345,18 +346,18 @@ export default {
             const keycode = event.keyCode;
 
             return (
-                (keycode > 47 && keycode < 58)   || // number keys
-                keycode == 32 || keycode == 13   || // spacebar & return key(s) (if you want to allow carriage returns)
-                (keycode > 64 && keycode < 91)   || // letter keys
-                (keycode > 95 && keycode < 112)  || // numpad keys
+                (keycode > 47 && keycode < 58) || // number keys
+                keycode === 32 || keycode === 13 || // spacebar & return key(s) (if you want to allow carriage returns)
+                (keycode > 64 && keycode < 91) || // letter keys
+                (keycode > 95 && keycode < 112) || // numpad keys
                 (keycode > 185 && keycode < 193) || // ;=,-./` (in order)
-                (keycode > 218 && keycode < 223)   // [\]' (in order)
+                (keycode > 218 && keycode < 223) // [\]' (in order)
             );
         },
 
         isValid() {
-            for(let i in this.validated) {
-                if(this.validated[i] !== true) {
+            for (let i in this.validated) {
+                if (this.validated[i] !== true) {
                     return false;
                 }
             }
@@ -365,8 +366,8 @@ export default {
         },
 
         isInvalid() {
-            for(let i in this.validated) {
-                if(this.validated[i] === false) {
+            for (let i in this.validated) {
+                if (this.validated[i] === false) {
                     return true;
                 }
             }
@@ -375,12 +376,12 @@ export default {
         },
 
         isComplete() {
-            return (
+            return !!((
                 this.validated.number &&
                 this.validated.expiration &&
                 this.validated.cvc &&
                 this.validated.postalCode
-            ) ? true : false;
+            ));
         },
 
         onResize(event) {
@@ -389,7 +390,7 @@ export default {
         },
 
         onClick(event) {
-            if(!event.target.classList.contains('credit-card-field-field')) {
+            if (!event.target.classList.contains('credit-card-field-field')) {
                 this.focusedElement ? this.focusedElement.focus() : this.$el.querySelector('.credit-card-field-field').focus();
             }
         }
@@ -439,7 +440,7 @@ export default {
         };
     }
 
-}
+};
 </script>
 
 <style lang="scss">
