@@ -5,7 +5,7 @@ export {
 };
 
 function install(vue, options) {
-    window.Vue && window.Vue.component('credit-card-field', CreditCardField);
+    vue.component('credit-card-field', CreditCardField);
 }
 
 if (window && window.Vue) {

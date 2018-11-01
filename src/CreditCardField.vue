@@ -58,6 +58,7 @@
 </template>
 
 <script>
+import './icons';
 import Payment from 'payment';
 import Variant from 'vue-interface/src/Mixins/Variant';
 import HelpText from 'vue-interface/src/Components/HelpText';
@@ -65,25 +66,8 @@ import FormControl from 'vue-interface/src/Mixins/FormControl';
 import FormGroup from 'vue-interface/src/Components/FormGroup';
 import MergeClasses from 'vue-interface/src/Mixins/MergeClasses';
 import FormFeedback from 'vue-interface/src/Components/FormFeedback';
-import ActivityIndicator from 'vue-interface/src/Components/ActivityIndicator';
-
-// Load Fontawesome Icons
-import { library as fa } from '@fortawesome/fontawesome-svg-core';
-import { faCcJcb } from '@fortawesome/free-brands-svg-icons/faCcJcb';
-import { faCcVisa } from '@fortawesome/free-brands-svg-icons/faCcVisa';
-import { faCcAmex } from '@fortawesome/free-brands-svg-icons/faCCAmex';
-import { faCcDiscover } from '@fortawesome/free-brands-svg-icons/faCcDiscover';
-import { faCcMastercard } from '@fortawesome/free-brands-svg-icons/faCcMastercard';
-import { faCcDinersClub } from '@fortawesome/free-brands-svg-icons/faCcDinersClub';
-import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons/faExclamationTriangle';
-import { faCreditCard } from '@fortawesome/free-regular-svg-icons/faCreditCard';
-import { faCreditCard as faCreditCardSolid } from '@fortawesome/free-solid-svg-icons/faCreditCard';
 import { FontAwesomeIcon as Icon } from '@fortawesome/vue-fontawesome';
-
-fa.add(
-    faCcJcb, faCcVisa, faCcAmex, faCcDiscover, faCcMastercard, faCcDinersClub,
-    faExclamationTriangle, faCreditCard, faCreditCardSolid
-);
+import ActivityIndicator from 'vue-interface/src/Components/ActivityIndicator';
 
 export default {
 
