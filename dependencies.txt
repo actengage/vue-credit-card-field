@@ -1,0 +1,130 @@
+Name: vue-runtime-helpers
+Version: 0.2.0
+License: MIT
+Private: false
+Description: Runtime helpers for Vue SFC.
+Repository: git+https://github.com/znck/vue-runtime-helpers.git
+Homepage: https://github.com/znck/vue-runtime-helpers#readme
+Author: Rahul Kadyan
+
+---
+
+Name: payment
+Version: 2.3.0
+License: MIT
+Private: false
+Description: A general purpose library for building credit card forms, validating inputs and formatting numbers. Base on jquery.payment by @stripe, but without the jQuery.
+Repository: git+https://github.com/jessepollak/payment.git
+Homepage: https://github.com/jessepollak/payment#readme
+Author: Jesse Pollak
+
+---
+
+Name: @fortawesome/free-brands-svg-icons
+Version: 5.5.0
+License: (CC-BY-4.0 AND MIT)
+Private: false
+Description: The iconic font, CSS, and SVG framework
+Repository: git+https://github.com/FortAwesome/Font-Awesome.git
+Homepage: https://fontawesome.com
+Author: Dave Gandy <dave@fontawesome.com> (http://twitter.com/davegandy)
+Contributors:
+  Brian Talbot (http://twitter.com/talbs)
+  Travis Chase (http://twitter.com/supercodepoet)
+  Rob Madole (http://twitter.com/robmadole)
+  Geremia Taglialatela (http://twitter.com/gtagliala)
+  Mike Wilkerson (http://twitter.com/mw77)
+
+---
+
+Name: @fortawesome/free-solid-svg-icons
+Version: 5.5.0
+License: (CC-BY-4.0 AND MIT)
+Private: false
+Description: The iconic font, CSS, and SVG framework
+Repository: git+https://github.com/FortAwesome/Font-Awesome.git
+Homepage: https://fontawesome.com
+Author: Dave Gandy <dave@fontawesome.com> (http://twitter.com/davegandy)
+Contributors:
+  Brian Talbot (http://twitter.com/talbs)
+  Travis Chase (http://twitter.com/supercodepoet)
+  Rob Madole (http://twitter.com/robmadole)
+  Geremia Taglialatela (http://twitter.com/gtagliala)
+  Mike Wilkerson (http://twitter.com/mw77)
+
+---
+
+Name: @fortawesome/free-regular-svg-icons
+Version: 5.5.0
+License: (CC-BY-4.0 AND MIT)
+Private: false
+Description: The iconic font, CSS, and SVG framework
+Repository: git+https://github.com/FortAwesome/Font-Awesome.git
+Homepage: https://fontawesome.com
+Author: Dave Gandy <dave@fontawesome.com> (http://twitter.com/davegandy)
+Contributors:
+  Brian Talbot (http://twitter.com/talbs)
+  Travis Chase (http://twitter.com/supercodepoet)
+  Rob Madole (http://twitter.com/robmadole)
+  Geremia Taglialatela (http://twitter.com/gtagliala)
+  Mike Wilkerson (http://twitter.com/mw77)
+
+---
+
+Name: @fortawesome/vue-fontawesome
+Version: 0.1.2
+License: MIT
+Private: false
+Description: Official Vue component for Font Awesome 5
+Repository: git+https://github.com/FortAwesome/vue-fontawesome.git
+Homepage: https://github.com/FortAwesome/vue-fontawesome
+Contributors:
+  Travis Chase <travis@fontawesome.com>
+  Rob Madole <rob@fontawesome.com>
+
+---
+
+Name: @fortawesome/fontawesome-svg-core
+Version: 1.2.8
+License: MIT
+Private: false
+Description: The iconic font, CSS, and SVG framework
+Repository: git+https://github.com/FortAwesome/Font-Awesome.git
+Homepage: https://fontawesome.com
+Author: Dave Gandy <dave@fontawesome.com> (http://twitter.com/davegandy)
+Contributors:
+  Brian Talbot (http://twitter.com/talbs)
+  Travis Chase (http://twitter.com/supercodepoet)
+  Rob Madole (http://twitter.com/robmadole)
+  Geremia Taglialatela (http://twitter.com/gtagliala)
+  Mike Wilkerson (http://twitter.com/mw77)
+
+---
+
+Name: vue-interface
+Version: 0.2.52
+License: undefined
+Private: false
+Description: Official README coming soon...
+
+---
+
+Name: rollup-plugin-node-globals
+Version: 1.4.0
+License: MIT
+Private: false
+Description: insert the same globals browserify does
+Repository: git+ssh://git@github.com/calvinmetcalf/rollup-plugin-node-globals.git
+Homepage: https://github.com/calvinmetcalf/rollup-plugin-node-globals#readme
+Author: Calvin Metcalf <calvin.metcalf@gmail.com>
+
+---
+
+Name: qj
+Version: 2.0.0
+License: MIT
+Private: false
+Description: A minimal jQuery replacement used in Card and Payment.
+Repository: git+https://github.com/jessepollak/qj.git
+Homepage: https://github.com/jessepollak/qj#readme
+Author: Jesse Pollak

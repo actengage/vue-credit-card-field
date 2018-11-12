@@ -1,3 +1,10 @@
+/**
+ * vue-credit-card-field
+ *
+ * 0.2.2
+ * 2018-11-12
+ */
+
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
 	typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -7,7 +14,7 @@
 	var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 	function unwrapExports (x) {
-		return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+		return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x.default : x;
 	}
 
 	function createCommonjsModule(fn, module) {
@@ -393,7 +400,7 @@
 	var faCreditCard_9$1 = faCreditCard$2.svgPathData;
 
 	/*!
-	 * Font Awesome Free 5.4.2 by @fontawesome - https://fontawesome.com
+	 * Font Awesome Free 5.5.0 by @fontawesome - https://fontawesome.com
 	 * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
 	 */
 	var noop = function noop() {};
@@ -1133,7 +1140,7 @@
 
 	var styles = namespace.styles;
 
-	var baseStyles = "svg:not(:root).svg-inline--fa {\n  overflow: visible; }\n\n.svg-inline--fa {\n  display: inline-block;\n  font-size: inherit;\n  height: 1em;\n  overflow: visible;\n  vertical-align: -.125em; }\n  .svg-inline--fa.fa-lg {\n    vertical-align: -.225em; }\n  .svg-inline--fa.fa-w-1 {\n    width: 0.0625em; }\n  .svg-inline--fa.fa-w-2 {\n    width: 0.125em; }\n  .svg-inline--fa.fa-w-3 {\n    width: 0.1875em; }\n  .svg-inline--fa.fa-w-4 {\n    width: 0.25em; }\n  .svg-inline--fa.fa-w-5 {\n    width: 0.3125em; }\n  .svg-inline--fa.fa-w-6 {\n    width: 0.375em; }\n  .svg-inline--fa.fa-w-7 {\n    width: 0.4375em; }\n  .svg-inline--fa.fa-w-8 {\n    width: 0.5em; }\n  .svg-inline--fa.fa-w-9 {\n    width: 0.5625em; }\n  .svg-inline--fa.fa-w-10 {\n    width: 0.625em; }\n  .svg-inline--fa.fa-w-11 {\n    width: 0.6875em; }\n  .svg-inline--fa.fa-w-12 {\n    width: 0.75em; }\n  .svg-inline--fa.fa-w-13 {\n    width: 0.8125em; }\n  .svg-inline--fa.fa-w-14 {\n    width: 0.875em; }\n  .svg-inline--fa.fa-w-15 {\n    width: 0.9375em; }\n  .svg-inline--fa.fa-w-16 {\n    width: 1em; }\n  .svg-inline--fa.fa-w-17 {\n    width: 1.0625em; }\n  .svg-inline--fa.fa-w-18 {\n    width: 1.125em; }\n  .svg-inline--fa.fa-w-19 {\n    width: 1.1875em; }\n  .svg-inline--fa.fa-w-20 {\n    width: 1.25em; }\n  .svg-inline--fa.fa-pull-left {\n    margin-right: .3em;\n    width: auto; }\n  .svg-inline--fa.fa-pull-right {\n    margin-left: .3em;\n    width: auto; }\n  .svg-inline--fa.fa-border {\n    height: 1.5em; }\n  .svg-inline--fa.fa-li {\n    width: 2em; }\n  .svg-inline--fa.fa-fw {\n    width: 1.25em; }\n\n.fa-layers svg.svg-inline--fa {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0; }\n\n.fa-layers {\n  display: inline-block;\n  height: 1em;\n  position: relative;\n  text-align: center;\n  vertical-align: -.125em;\n  width: 1em; }\n  .fa-layers svg.svg-inline--fa {\n    -webkit-transform-origin: center center;\n            transform-origin: center center; }\n\n.fa-layers-text, .fa-layers-counter {\n  display: inline-block;\n  position: absolute;\n  text-align: center; }\n\n.fa-layers-text {\n  left: 50%;\n  top: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  -webkit-transform-origin: center center;\n          transform-origin: center center; }\n\n.fa-layers-counter {\n  background-color: #ff253a;\n  border-radius: 1em;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  color: #fff;\n  height: 1.5em;\n  line-height: 1;\n  max-width: 5em;\n  min-width: 1.5em;\n  overflow: hidden;\n  padding: .25em;\n  right: 0;\n  text-overflow: ellipsis;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top right;\n          transform-origin: top right; }\n\n.fa-layers-bottom-right {\n  bottom: 0;\n  right: 0;\n  top: auto;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: bottom right;\n          transform-origin: bottom right; }\n\n.fa-layers-bottom-left {\n  bottom: 0;\n  left: 0;\n  right: auto;\n  top: auto;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: bottom left;\n          transform-origin: bottom left; }\n\n.fa-layers-top-right {\n  right: 0;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top right;\n          transform-origin: top right; }\n\n.fa-layers-top-left {\n  left: 0;\n  right: auto;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top left;\n          transform-origin: top left; }\n\n.fa-lg {\n  font-size: 1.33333em;\n  line-height: 0.75em;\n  vertical-align: -.0667em; }\n\n.fa-xs {\n  font-size: .75em; }\n\n.fa-sm {\n  font-size: .875em; }\n\n.fa-1x {\n  font-size: 1em; }\n\n.fa-2x {\n  font-size: 2em; }\n\n.fa-3x {\n  font-size: 3em; }\n\n.fa-4x {\n  font-size: 4em; }\n\n.fa-5x {\n  font-size: 5em; }\n\n.fa-6x {\n  font-size: 6em; }\n\n.fa-7x {\n  font-size: 7em; }\n\n.fa-8x {\n  font-size: 8em; }\n\n.fa-9x {\n  font-size: 9em; }\n\n.fa-10x {\n  font-size: 10em; }\n\n.fa-fw {\n  text-align: center;\n  width: 1.25em; }\n\n.fa-ul {\n  list-style-type: none;\n  margin-left: 2.5em;\n  padding-left: 0; }\n  .fa-ul > li {\n    position: relative; }\n\n.fa-li {\n  left: -2em;\n  position: absolute;\n  text-align: center;\n  width: 2em;\n  line-height: inherit; }\n\n.fa-border {\n  border: solid 0.08em #eee;\n  border-radius: .1em;\n  padding: .2em .25em .15em; }\n\n.fa-pull-left {\n  float: left; }\n\n.fa-pull-right {\n  float: right; }\n\n.fa.fa-pull-left,\n.fas.fa-pull-left,\n.far.fa-pull-left,\n.fal.fa-pull-left,\n.fab.fa-pull-left {\n  margin-right: .3em; }\n\n.fa.fa-pull-right,\n.fas.fa-pull-right,\n.far.fa-pull-right,\n.fal.fa-pull-right,\n.fab.fa-pull-right {\n  margin-left: .3em; }\n\n.fa-spin {\n  -webkit-animation: fa-spin 2s infinite linear;\n          animation: fa-spin 2s infinite linear; }\n\n.fa-pulse {\n  -webkit-animation: fa-spin 1s infinite steps(8);\n          animation: fa-spin 1s infinite steps(8); }\n\n@-webkit-keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n@keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n.fa-rotate-90 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=1)\";\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg); }\n\n.fa-rotate-180 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)\";\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg); }\n\n.fa-rotate-270 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=3)\";\n  -webkit-transform: rotate(270deg);\n          transform: rotate(270deg); }\n\n.fa-flip-horizontal {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)\";\n  -webkit-transform: scale(-1, 1);\n          transform: scale(-1, 1); }\n\n.fa-flip-vertical {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\n  -webkit-transform: scale(1, -1);\n          transform: scale(1, -1); }\n\n.fa-flip-horizontal.fa-flip-vertical {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\n  -webkit-transform: scale(-1, -1);\n          transform: scale(-1, -1); }\n\n:root .fa-rotate-90,\n:root .fa-rotate-180,\n:root .fa-rotate-270,\n:root .fa-flip-horizontal,\n:root .fa-flip-vertical {\n  -webkit-filter: none;\n          filter: none; }\n\n.fa-stack {\n  display: inline-block;\n  height: 2em;\n  position: relative;\n  width: 2em; }\n\n.fa-stack-1x,\n.fa-stack-2x {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0; }\n\n.svg-inline--fa.fa-stack-1x {\n  height: 1em;\n  width: 1em; }\n\n.svg-inline--fa.fa-stack-2x {\n  height: 2em;\n  width: 2em; }\n\n.fa-inverse {\n  color: #fff; }\n\n.sr-only {\n  border: 0;\n  clip: rect(0, 0, 0, 0);\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  padding: 0;\n  position: absolute;\n  width: 1px; }\n\n.sr-only-focusable:active, .sr-only-focusable:focus {\n  clip: auto;\n  height: auto;\n  margin: 0;\n  overflow: visible;\n  position: static;\n  width: auto; }\n";
+	var baseStyles = "svg:not(:root).svg-inline--fa {\n  overflow: visible; }\n\n.svg-inline--fa {\n  display: inline-block;\n  font-size: inherit;\n  height: 1em;\n  overflow: visible;\n  vertical-align: -.125em; }\n  .svg-inline--fa.fa-lg {\n    vertical-align: -.225em; }\n  .svg-inline--fa.fa-w-1 {\n    width: 0.0625em; }\n  .svg-inline--fa.fa-w-2 {\n    width: 0.125em; }\n  .svg-inline--fa.fa-w-3 {\n    width: 0.1875em; }\n  .svg-inline--fa.fa-w-4 {\n    width: 0.25em; }\n  .svg-inline--fa.fa-w-5 {\n    width: 0.3125em; }\n  .svg-inline--fa.fa-w-6 {\n    width: 0.375em; }\n  .svg-inline--fa.fa-w-7 {\n    width: 0.4375em; }\n  .svg-inline--fa.fa-w-8 {\n    width: 0.5em; }\n  .svg-inline--fa.fa-w-9 {\n    width: 0.5625em; }\n  .svg-inline--fa.fa-w-10 {\n    width: 0.625em; }\n  .svg-inline--fa.fa-w-11 {\n    width: 0.6875em; }\n  .svg-inline--fa.fa-w-12 {\n    width: 0.75em; }\n  .svg-inline--fa.fa-w-13 {\n    width: 0.8125em; }\n  .svg-inline--fa.fa-w-14 {\n    width: 0.875em; }\n  .svg-inline--fa.fa-w-15 {\n    width: 0.9375em; }\n  .svg-inline--fa.fa-w-16 {\n    width: 1em; }\n  .svg-inline--fa.fa-w-17 {\n    width: 1.0625em; }\n  .svg-inline--fa.fa-w-18 {\n    width: 1.125em; }\n  .svg-inline--fa.fa-w-19 {\n    width: 1.1875em; }\n  .svg-inline--fa.fa-w-20 {\n    width: 1.25em; }\n  .svg-inline--fa.fa-pull-left {\n    margin-right: .3em;\n    width: auto; }\n  .svg-inline--fa.fa-pull-right {\n    margin-left: .3em;\n    width: auto; }\n  .svg-inline--fa.fa-border {\n    height: 1.5em; }\n  .svg-inline--fa.fa-li {\n    width: 2em; }\n  .svg-inline--fa.fa-fw {\n    width: 1.25em; }\n\n.fa-layers svg.svg-inline--fa {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0; }\n\n.fa-layers {\n  display: inline-block;\n  height: 1em;\n  position: relative;\n  text-align: center;\n  vertical-align: -.125em;\n  width: 1em; }\n  .fa-layers svg.svg-inline--fa {\n    -webkit-transform-origin: center center;\n            transform-origin: center center; }\n\n.fa-layers-text, .fa-layers-counter {\n  display: inline-block;\n  position: absolute;\n  text-align: center; }\n\n.fa-layers-text {\n  left: 50%;\n  top: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  -webkit-transform-origin: center center;\n          transform-origin: center center; }\n\n.fa-layers-counter {\n  background-color: #ff253a;\n  border-radius: 1em;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  color: #fff;\n  height: 1.5em;\n  line-height: 1;\n  max-width: 5em;\n  min-width: 1.5em;\n  overflow: hidden;\n  padding: .25em;\n  right: 0;\n  text-overflow: ellipsis;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top right;\n          transform-origin: top right; }\n\n.fa-layers-bottom-right {\n  bottom: 0;\n  right: 0;\n  top: auto;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: bottom right;\n          transform-origin: bottom right; }\n\n.fa-layers-bottom-left {\n  bottom: 0;\n  left: 0;\n  right: auto;\n  top: auto;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: bottom left;\n          transform-origin: bottom left; }\n\n.fa-layers-top-right {\n  right: 0;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top right;\n          transform-origin: top right; }\n\n.fa-layers-top-left {\n  left: 0;\n  right: auto;\n  top: 0;\n  -webkit-transform: scale(0.25);\n          transform: scale(0.25);\n  -webkit-transform-origin: top left;\n          transform-origin: top left; }\n\n.fa-lg {\n  font-size: 1.33333em;\n  line-height: 0.75em;\n  vertical-align: -.0667em; }\n\n.fa-xs {\n  font-size: .75em; }\n\n.fa-sm {\n  font-size: .875em; }\n\n.fa-1x {\n  font-size: 1em; }\n\n.fa-2x {\n  font-size: 2em; }\n\n.fa-3x {\n  font-size: 3em; }\n\n.fa-4x {\n  font-size: 4em; }\n\n.fa-5x {\n  font-size: 5em; }\n\n.fa-6x {\n  font-size: 6em; }\n\n.fa-7x {\n  font-size: 7em; }\n\n.fa-8x {\n  font-size: 8em; }\n\n.fa-9x {\n  font-size: 9em; }\n\n.fa-10x {\n  font-size: 10em; }\n\n.fa-fw {\n  text-align: center;\n  width: 1.25em; }\n\n.fa-ul {\n  list-style-type: none;\n  margin-left: 2.5em;\n  padding-left: 0; }\n  .fa-ul > li {\n    position: relative; }\n\n.fa-li {\n  left: -2em;\n  position: absolute;\n  text-align: center;\n  width: 2em;\n  line-height: inherit; }\n\n.fa-border {\n  border: solid 0.08em #eee;\n  border-radius: .1em;\n  padding: .2em .25em .15em; }\n\n.fa-pull-left {\n  float: left; }\n\n.fa-pull-right {\n  float: right; }\n\n.fa.fa-pull-left,\n.fas.fa-pull-left,\n.far.fa-pull-left,\n.fal.fa-pull-left,\n.fab.fa-pull-left {\n  margin-right: .3em; }\n\n.fa.fa-pull-right,\n.fas.fa-pull-right,\n.far.fa-pull-right,\n.fal.fa-pull-right,\n.fab.fa-pull-right {\n  margin-left: .3em; }\n\n.fa-spin {\n  -webkit-animation: fa-spin 2s infinite linear;\n          animation: fa-spin 2s infinite linear; }\n\n.fa-pulse {\n  -webkit-animation: fa-spin 1s infinite steps(8);\n          animation: fa-spin 1s infinite steps(8); }\n\n@-webkit-keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n@keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg); } }\n\n.fa-rotate-90 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=1)\";\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg); }\n\n.fa-rotate-180 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)\";\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg); }\n\n.fa-rotate-270 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=3)\";\n  -webkit-transform: rotate(270deg);\n          transform: rotate(270deg); }\n\n.fa-flip-horizontal {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)\";\n  -webkit-transform: scale(-1, 1);\n          transform: scale(-1, 1); }\n\n.fa-flip-vertical {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\n  -webkit-transform: scale(1, -1);\n          transform: scale(1, -1); }\n\n.fa-flip-horizontal.fa-flip-vertical {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\n  -webkit-transform: scale(-1, -1);\n          transform: scale(-1, -1); }\n\n:root .fa-rotate-90,\n:root .fa-rotate-180,\n:root .fa-rotate-270,\n:root .fa-flip-horizontal,\n:root .fa-flip-vertical {\n  -webkit-filter: none;\n          filter: none; }\n\n.fa-stack {\n  display: inline-block;\n  height: 2em;\n  position: relative;\n  width: 2.5em; }\n\n.fa-stack-1x,\n.fa-stack-2x {\n  bottom: 0;\n  left: 0;\n  margin: auto;\n  position: absolute;\n  right: 0;\n  top: 0; }\n\n.svg-inline--fa.fa-stack-1x {\n  height: 1em;\n  width: 1.25em; }\n\n.svg-inline--fa.fa-stack-2x {\n  height: 2em;\n  width: 2.5em; }\n\n.fa-inverse {\n  color: #fff; }\n\n.sr-only {\n  border: 0;\n  clip: rect(0, 0, 0, 0);\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  padding: 0;\n  position: absolute;\n  width: 1px; }\n\n.sr-only-focusable:active, .sr-only-focusable:focus {\n  clip: auto;\n  height: auto;\n  margin: 0;\n  overflow: visible;\n  position: static;\n  width: auto; }\n";
 
 	var css = function () {
 	  var dfp = DEFAULT_FAMILY_PREFIX;
@@ -2249,14 +2256,6 @@
 	}).call(commonjsGlobal);
 	});
 
-	function camelCase(string) {
-	    string = string.toLowerCase().replace(/(?:(^.)|([-_\s]+.))/g, function(match) {
-	        return match.charAt(match.length - 1).toUpperCase();
-	    });
-
-	    return string.charAt(0).toLowerCase() + string.substring(1);
-	}
-
 	function extend(...args) {
 	    return Object.assign(...args);
 	}
@@ -2280,7 +2279,9 @@
 	}
 
 	function isNumeric(value) {
-	    return isNumber(value) || (!!value && !!value.toString().match(/^-?[\d.,]+$/));
+	    return isNumber(value) || (
+	        !!value && !isArray(value) && !!value.toString().match(/^-?[\d.,]+$/)
+	    );
 	}
 
 	function key(value) {
@@ -2288,62 +2289,9 @@
 	}
 
 	function each(subject, fn) {
-	    for (const i in subject) {
+	    for(const i in subject) {
 	        fn(subject[i], key(i));
 	    }
-	}
-
-	function matches(properties) {
-	    return subject => {
-	        for (const i in properties) {
-	            if (isObject(properties[i])) {
-	                return subject[i] ? matches(properties[i])(subject[i]) : false;
-	            }
-	            else if (!subject || subject[i] !== properties[i]) {
-	                return false;
-	            }
-	        }
-
-	        return true;
-	    };
-	}
-
-	function isString(value) {
-	    return typeof value === 'string';
-	}
-
-	function get(object, path) {
-	    return (isString(path) ? path.split('.') : (!isArray(path) ? [path] : path)).reduce((a, b) => a[b], object);
-	}
-
-	function property(path) {
-	    return object => {
-	        return get(object, path);
-	    };
-	}
-
-	function isFunction(value) {
-	    return value instanceof Function;
-	}
-
-	function matchesProperty(path, value) {
-	    return subject => {
-	        return get(subject, path) === value;
-	    };
-	}
-
-	function predicate(value) {
-	    if (isObject(value)) {
-	        value = matches(value);
-	    }
-	    else if (isArray(value)) {
-	        value = matchesProperty(value[0], value[1]);
-	    }
-	    else if (!isFunction(value)) {
-	        value = property(value);
-	    }
-
-	    return value;
 	}
 
 	function isBoolean(value) {
@@ -2352,6 +2300,17 @@
 
 	function isUndefined(value) {
 	    return typeof value === 'undefined';
+	}
+
+	function isEmpty(value) {
+	    if(isArray(value)) {
+	        return value.length === 0;
+	    }
+	    else if(isObject(value)) {
+	        return Object.keys(value).length === 0;
+	    }
+
+	    return value === '' || isNull(value) || isUndefined(value);
 	}
 
 	function kebabCase(str) {
@@ -2371,26 +2330,6 @@
 	    return mapped;
 	}
 
-	function negate(fn) {
-	    return (...args) => isFunction(fn) ? !fn(...args) : !fn;
-	}
-
-	function pickBy(object, match) {
-	    const subject = {};
-
-	    each(object, (value, key) => {
-	        if (predicate(match)(value)) {
-	            subject[key] = value;
-	        }
-	    });
-
-	    return subject;
-	}
-
-	function omitBy(object, fn) {
-	    return pickBy(object, negate(fn));
-	}
-
 	function prefix(subject, prefix, delimeter = '-') {
 	    const prefixer = (value, key$$1) => {
 	        const string = (key$$1 || value)
@@ -2399,11 +2338,11 @@
 	        return [prefix, string].filter(value => !!value).join(delimeter);
 	    };
 
-	    if (isBoolean(subject)) {
+	    if(isBoolean(subject)) {
 	        return subject;
 	    }
 
-	    if (isObject(subject)) {
+	    if(isObject(subject)) {
 	        return mapKeys(subject, prefixer);
 	    }
 
@@ -2440,87 +2379,20 @@
 
 	};
 
-	const COLORS = [
-	    'primary',
-	    'secondary',
-	    'success',
-	    'danger',
-	    'warning',
-	    'info',
-	    'light',
-	    'dark',
-	    'white',
-	    'muted'
-	];
-
-	const props = {};
-
-	each(['border', 'text', 'bg', 'bg-gradient'], namespace => {
-	    each(COLORS, color => {
-	        props[camelCase(prefix(color, namespace))] = Boolean;
-	    });
-	});
-
-	function classes(instance, namespace) {
-	    return COLORS.map(color => {
-	        return instance[camelCase(color = prefix(color, namespace))] ? color : null;
-	    })
-	        .filter(value => !!value);
-	}
-
 	var Colorable = {
 
-	    props: props,
-
-	    methods: {
-
-	        textColor() {
-	            return classes(this, 'text');
-	        },
-
-	        bgColor() {
-	            return classes(this, 'bg');
-	        },
-
-	        borderColor() {
-	            return classes(this, 'border');
-	        },
-
-	        bgGradientColor() {
-	            return classes(this, 'bg-gradient');
-	        }
-
-	    },
-
 	    computed: {
-
-	        textColorClasses() {
-	            return this.textColor().join(' ').trim() || null;
-	        },
-
-	        borderColorClasses() {
-	            return this.borderColor().join(' ').trim() || null;
-	        },
-
-	        bgColorClasses() {
-	            return this.bgColor().join(' ').trim() || null;
-	        },
-
-	        bgGradientColorClasses() {
-	            return this.bgGradientColor().join(' ').trim() || null;
-	        },
 
 	        colorableClasses() {
 	            const classes = {};
 
-	            classes[this.textColorClasses] = !!this.textColorClasses;
-	            classes[this.borderColorClasses] = !!this.borderColorClasses;
-	            classes[this.bgColorClasses] = !!this.bgColorClasses;
-	            classes[this.bgGradientColorClasses] = !!this.bgGradientColorClasses;
+	            for(let i in this.$attrs) {
+	                if(i.match(/^bg|text|border|bg-gradient-/)) {
+	                    classes[i] = true;
+	                }
+	            }
 
-	            return omitBy(classes, (key$$1, value) => {
-	                return !key$$1 || !value;
-	            });
+	            return classes;
 	        }
 
 	    }
@@ -2558,7 +2430,9 @@
 
 	};
 
-	var HelpText = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('small',{staticClass:"form-text",class:_vm.classes},[_vm._t("default")],2)},staticRenderFns: [],
+	//
+
+	var script = {
 
 	    name: 'help-text',
 
@@ -2575,156 +2449,201 @@
 
 	};
 
-	const LOADED_SCRIPTS = {};
-
-	function element(url) {
-	    const script = document.createElement('script');
-	    script.setAttribute('src', url);
-	    script.setAttribute('type', 'text/javascript');
-	    script.setAttribute('charset', 'utf-8');
-	    return script;
-	}
-
-	function append(script) {
-	    if (document.querySelector('head')) {
-	        document.querySelector('head').appendChild(script);
+	function normalizeComponent(compiledTemplate, injectStyle, defaultExport, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, isShadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+	    if (typeof isShadowMode === 'function') {
+	        createInjectorSSR = createInjector;
+	        createInjector = isShadowMode;
+	        isShadowMode = false;
 	    }
-	    else {
-	        document.querySelector('body').appendChild(script);
-	    }
-
-	    return script;
-	}
-
-	function script(url) {
-	    if (LOADED_SCRIPTS[url] instanceof Promise) {
-	        return LOADED_SCRIPTS[url];
-	    }
-	    else if (LOADED_SCRIPTS[url] || document.querySelector(`script[src="${url}"]`)) {
-	        return new Promise((resolve, reject) => {
-	            resolve(LOADED_SCRIPTS[url]);
-	        });
-	    }
-
-	    LOADED_SCRIPTS[url] = new Promise((resolve, reject) => {
-	        try {
-	            append(element(url)).addEventListener('load', event => {
-	                resolve(LOADED_SCRIPTS[url] = event);
-	            });
+	    // Vue.extend constructor export interop
+	    const options = typeof defaultExport === 'function' ? defaultExport.options : defaultExport;
+	    // render functions
+	    if (compiledTemplate && compiledTemplate.render) {
+	        options.render = compiledTemplate.render;
+	        options.staticRenderFns = compiledTemplate.staticRenderFns;
+	        options._compiled = true;
+	        // functional template
+	        if (isFunctionalTemplate) {
+	            options.functional = true;
 	        }
-	        catch (e) {
-	            reject(e);
-	        }
-	    });
-
-	    return LOADED_SCRIPTS[url];
-	}
-
-	const VueInstaller = {
-	    use,
-	    script,
-	    plugin,
-	    plugins,
-	    filter,
-	    filters,
-	    component,
-	    components,
-	    directive,
-	    directives,
-	    $plugins: {},
-	    $filters: {},
-	    $directives: {},
-	    $components: {}
-	};
-
-	function use(plugin) {
-	    if (typeof window !== 'undefined' && window.Vue) {
-	        window.Vue.use(plugin);
 	    }
-
-	    return plugin;
-	}
-
-	function plugin(Vue, name, def) {
-	    if (!VueInstaller.$plugins[name]) {
-	        Vue.use(VueInstaller.$plugins[name] = def);
+	    // scopedId
+	    if (scopeId) {
+	        options._scopeId = scopeId;
 	    }
-	}
-
-	function plugins(Vue, plugins) {
-	    each(plugins, (def, name) => {
-	        plugin(Vue, name, def);
-	    });
-	}
-
-	function filter(Vue, name, def) {
-	    if (!VueInstaller.$filters[name]) {
-	        Vue.use(VueInstaller.$filters[name] = def);
+	    let hook;
+	    if (moduleIdentifier) {
+	        // server build
+	        hook = function (context) {
+	            // 2.3 injection
+	            context =
+	                context || // cached call
+	                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+	                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+	            // 2.2 with runInNewContext: true
+	            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+	                context = __VUE_SSR_CONTEXT__;
+	            }
+	            // inject component styles
+	            if (injectStyle) {
+	                injectStyle.call(this, createInjectorSSR(context));
+	            }
+	            // register component module identifier for async chunk inference
+	            if (context && context._registeredComponents) {
+	                context._registeredComponents.add(moduleIdentifier);
+	            }
+	        };
+	        // used by ssr in case component is cached and beforeCreate
+	        // never gets called
+	        options._ssrRegister = hook;
 	    }
-	}
-
-	function filters(Vue, filters) {
-	    each(filters, (def, name) => {
-	        filter(Vue, name, def);
-	    });
-	}
-
-	function component(Vue, name, def) {
-	    if (!VueInstaller.$components[name]) {
-	        Vue.component(name, VueInstaller.$components[name] = def);
+	    else if (injectStyle) {
+	        hook = isShadowMode
+	            ? function () {
+	                injectStyle.call(this, createInjectorShadow(this.$root.$options.shadowRoot));
+	            }
+	            : function (context) {
+	                injectStyle.call(this, createInjector(context));
+	            };
 	    }
-	}
-
-	function components(Vue, components) {
-	    each(components, (def, name) => {
-	        component(Vue, name, def);
-	    });
-	}
-
-	function directive(Vue, name, def) {
-	    if (!VueInstaller.$directives[name]) {
-	        if (isFunction(def)) {
-	            Vue.use(VueInstaller.$directives[name] = def);
+	    if (hook) {
+	        if (options.functional) {
+	            // register for functional component in vue file
+	            const originalRender = options.render;
+	            options.render = function renderWithStyleInjection(h, context) {
+	                hook.call(context);
+	                return originalRender(h, context);
+	            };
 	        }
 	        else {
-	            Vue.directive(name, def);
+	            // inject component registration as beforeCreate hook
+	            const existing = options.beforeCreate;
+	            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
 	        }
 	    }
+	    return defaultExport;
 	}
 
-	function directives(Vue, directives) {
-	    each(directives, (def, name) => {
-	        directive(Vue, name, def);
-	    });
-	}
+	/* script */
+	            const __vue_script__ = script;
+	            
+	/* template */
+	var __vue_render__ = function() {
+	  var _vm = this;
+	  var _h = _vm.$createElement;
+	  var _c = _vm._self._c || _h;
+	  return _c(
+	    "small",
+	    { staticClass: "form-text", class: _vm.classes },
+	    [_vm._t("default")],
+	    2
+	  )
+	};
+	var __vue_staticRenderFns__ = [];
+	__vue_render__._withStripped = true;
 
-	VueInstaller.use({
+	  /* style */
+	  const __vue_inject_styles__ = undefined;
+	  /* scoped */
+	  const __vue_scope_id__ = undefined;
+	  /* module identifier */
+	  const __vue_module_identifier__ = undefined;
+	  /* functional template */
+	  const __vue_is_functional_template__ = false;
+	  /* style inject */
+	  
+	  /* style inject SSR */
+	  
 
-	    install(Vue, options) {
-	        VueInstaller.components({
-	            HelpText
-	        });
+	  
+	  var HelpText = normalizeComponent(
+	    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+	    __vue_inject_styles__,
+	    __vue_script__,
+	    __vue_scope_id__,
+	    __vue_is_functional_template__,
+	    __vue_module_identifier__,
+	    undefined,
+	    undefined
+	  );
+
+	var MergeClasses = {
+
+	    methods: {
+
+	        mergeClasses() {
+	            let classes = {};
+
+	            each([].slice.call(arguments), arg => {
+	                if(isObject(arg)) {
+	                    extend(classes, arg);
+	                }
+	                else if(isArray(arg)) {
+	                    classes = classes.concat(arg);
+	                }
+	                else if(arg) {
+	                    classes[arg] = true;
+	                }
+	            });
+
+	            return classes;
+	        }
+
 	    }
 
-	});
+	};
+
+	const emptyClass = 'is-empty';
+	const focusClass = 'has-focus';
+	const changedClass = 'has-changed';
+	const customPrefix = 'custom';
+
+	function addClass(el, vnode, css) {
+	    // el.classList.add(css);
+	    vnode.context.$el.classList.add(css);
+	}
+
+	function removeClass(el, vnode, css) {
+	    // el.classList.remove(css);
+	    vnode.context.$el.classList.remove(css);
+	}
+
+	function addEmptyClass(el, vnode) {
+	    if(isEmpty(el.value) || (el.tagName === 'SELECT' && el.selectedIndex === -1)) {
+	        addClass(el, vnode, emptyClass);
+	    }
+	}
 
 	var FormControl = {
+
+	    inheritAttrs: false,
+
+	    mixins: [
+	        Colorable,
+	        MergeClasses
+	    ],
 
 	    props: {
 
 	        /**
-	         * The autocomplete attribute value.
+	         * Show type activity indicator.
 	         *
-	         * @property String
+	         * @property Boolean
 	         */
-	        autocomplete: String,
+	        activity: {
+	            type: Boolean,
+	            default: false
+	        },
 
 	        /**
-	         * The field id attribute value.
+	         * Is the form control a custom styled component.
 	         *
-	         * @property String
+	         * @property Boolean
 	         */
-	        id: [Number, String],
+	        custom: {
+	            type: Boolean,
+	            default: false
+	        },
 
 	        /**
 	         * The value of label element. If no value, no label will appear.
@@ -2732,13 +2651,6 @@
 	         * @property String
 	         */
 	        label: [Number, String],
-
-	        /**
-	         * The field name attribute value.
-	         *
-	         * @property String
-	         */
-	        name: String,
 
 	        /**
 	         * The field id attribute value.
@@ -2750,20 +2662,6 @@
 	        },
 
 	        /**
-	         * The placeholder attribute value.
-	         *
-	         * @property String
-	         */
-	        placeholder: String,
-
-	        /**
-	         * Is the field required.
-	         *
-	         * @property String
-	         */
-	        required: Boolean,
-
-	        /**
 	         * Add form-group wrapper to input
 	         *
 	         * @property String
@@ -2772,13 +2670,6 @@
 	            type: Boolean,
 	            value: true
 	        },
-
-	        /**
-	         * The regex pattern for validation.
-	         *
-	         * @property String
-	         */
-	        pattern: String,
 
 	        /**
 	         * An inline field validation error.
@@ -2839,6 +2730,20 @@
 	        hideLabel: Boolean,
 
 	        /**
+	         * The invalid property
+	         *
+	         * @property String
+	         */
+	        invalid: Boolean,
+
+	        /**
+	         * The valid property
+	         *
+	         * @property String
+	         */
+	        valid: Boolean,
+
+	        /**
 	         * Additional margin/padding classes for fine control of spacing
 	         *
 	         * @property String
@@ -2864,27 +2769,6 @@
 	        inline: Boolean,
 
 	        /**
-	         * If the form control is readonly, display only as text?
-	         *
-	         * @property String
-	         */
-	        plaintext: Boolean,
-
-	        /**
-	         * Is the form control readonly?
-	         *
-	         * @property String
-	         */
-	        readonly: Boolean,
-
-	        /**
-	         * Is the form control disabled?
-	         *
-	         * @property String
-	         */
-	        disabled: Boolean,
-
-	        /**
 	         * Some instructions to appear under the field label
 	         *
 	         * @property String
@@ -2903,13 +2787,42 @@
 	    directives: {
 	        bindEvents: {
 	            bind(el, binding, vnode) {
-	                const events = binding.value || vnode.context.bindEvents;
+	                // Add/remove the has-focus class from the form control
+	                el.addEventListener('focus', event => {
+	                    addClass(el, vnode, focusClass);
+	                });
 
-	                each(events, name => {
+	                el.addEventListener('blur', event => {
+	                    if(el.classList.contains(emptyClass)) {
+	                        removeClass(el, vnode, changedClass);
+	                    }
+
+	                    removeClass(el, vnode, focusClass);
+	                });
+
+	                el.addEventListener('input', e => {
+	                    addClass(el, vnode, changedClass);
+
+	                    if(!isEmpty(el.value) || (el.tagName === 'SELECT' && el.selectedIndex > -1)) {
+	                        removeClass(el, vnode, emptyClass);
+	                    }
+	                    else {
+	                        addClass(el, vnode, emptyClass);
+	                    }
+	                });
+
+	                // Bubble the native events up to the vue component.
+	                each(vnode.context.bindEvents, name => {
 	                    el.addEventListener(name, event => {
 	                        vnode.context.$emit(name, event);
 	                    });
 	                });
+	            },
+	            inserted(el, binding, vnode) {
+	                addEmptyClass(el, vnode);
+	            },
+	            update(el, binding, vnode) {
+	                addEmptyClass(el, vnode);
 	            }
 	        }
 	    },
@@ -2917,26 +2830,28 @@
 	    methods: {
 
 	        blur() {
-	            if (this.getInputField()) {
+	            if(this.getInputField()) {
 	                this.getInputField().blur();
 	            }
 	        },
 
 	        focus() {
-	            if (this.getInputField()) {
+	            if(this.getInputField()) {
 	                this.getInputField().focus();
 	            }
 	        },
 
 	        getInputField() {
-	            return this.$el.querySelector('.form-control, input, select, textarea');
+	            return this.$el.querySelector(
+	                '.form-control, input, select, textarea'
+	            );
 	        },
 
 	        getFieldErrors() {
 	            let errors = this.error || this.errors;
 
-	            if (isObject(this.errors)) {
-	                errors = this.errors[this.name || this.id];
+	            if(isObject(this.errors)) {
+	                errors = this.errors[this.$attrs.name || this.$attrs.id];
 	            }
 
 	            return !errors || isArray(errors) || isObject(errors) ? errors : [errors];
@@ -2946,97 +2861,131 @@
 
 	    computed: {
 
-	        callbacks() {
-	            return this.bindEvents.map(event => {
-	                return {
-	                    name: event,
-	                    callback: this[camelCase(['on', event].join(' '))]
-	                };
-	            }).filter(event => !isUndefined(event.callback));
-	        },
+	        controlAttributes() {
+	            return Object.keys(this.$attrs)
+	                .concat([['class', this.controlClasses]])
+	                .reduce((carry, key$$1) => {
+	                    if(isArray(key$$1)) {
+	                        carry[key$$1[0]] = key$$1[1];
+	                    }
+	                    else {
+	                        carry[key$$1] = this[key$$1] || this.$attrs[key$$1];
+	                    }
 
-	        invalidFeedback() {
-	            if (this.error) {
-	                return this.error;
-	            }
-
-	            const errors = this.getFieldErrors();
-
-	            return isArray(errors) ? errors.join('<br>') : errors;
-	        },
-
-	        validFeedback() {
-	            return isArray(this.feedback) ? this.feedback.join('<br>') : this.feedback;
+	                    return carry;
+	                }, {});
 	        },
 
 	        controlClass() {
-	            return this.defaultControlClass + (this.plaintext ? '-plaintext' : '');
+	            return this.custom ? this.customControlClass : (
+	                this.defaultControlClass + (this.plaintext ? '-plaintext' : '')
+	            );
 	        },
 
 	        controlSizeClass() {
 	            return prefix(this.size, this.controlClass);
 	        },
 
+	        customControlClass() {
+	            return 'custom-control';
+	        },
+
+	        formGroupClasses() {
+	            const name = prefix(this.$options.name, this.custom ? customPrefix : '');
+
+	            return this.mergeClasses(name, prefix(this.size, name), {
+	                'has-activity': this.activity,
+	                'is-valid': !!(this.valid || this.validFeedback),
+	                'is-invalid': !!(this.invalid || this.invalidFeedback)
+	            });
+	        },
+
 	        controlClasses() {
-	            return [
+	            return this.mergeClasses(
 	                this.controlClass,
+	                this.colorableClasses,
 	                this.controlSizeClass,
 	                (this.spacing || ''),
-	                (this.invalidFeedback ? 'is-invalid' : '')
-	            ].join(' ');
+	                ((this.valid || this.validFeedback) ? 'is-valid' : ''),
+	                ((this.invalid || this.invalidFeedback) ? 'is-invalid' : '')
+	            );
 	        },
 
 	        hasDefaultSlot() {
 	            return !!this.$slots.default;
+	        },
+
+	        invalidFeedback() {
+	            const errors = this.getFieldErrors();
+
+	            return this.error || (
+	                isArray(errors) ? errors.join('<br>') : errors
+	            );
+	        },
+
+	        validFeedback() {
+	            return isArray(this.feedback) ? this.feedback.join('<br>') : this.feedback;
 	        }
 
 	    }
 
 	};
 
-	var FormGroup = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form-group"},[_vm._t("default")],2)},staticRenderFns: [],
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+	var script$1 = {
 
 	    name: 'form-group'
 
 	};
 
-	VueInstaller.use({
-
-	    install(Vue, options) {
-	        VueInstaller.components({
-	            FormGroup
-	        });
-	    }
-
-	});
-
-	var MergeClasses = {
-
-	    methods: {
-
-	        mergeClasses() {
-	            let classes = {};
-
-	            each([].slice.call(arguments), arg => {
-	                if (isObject(arg)) {
-	                    extend(classes, arg);
-	                }
-	                else if (isArray(arg)) {
-	                    classes = classes.concat(arg);
-	                }
-	                else if (arg) {
-	                    classes[arg] = true;
-	                }
-	            });
-
-	            return classes;
-	        }
-
-	    }
-
+	/* script */
+	            const __vue_script__$1 = script$1;
+	/* template */
+	var __vue_render__$1 = function() {
+	  var _vm = this;
+	  var _h = _vm.$createElement;
+	  var _c = _vm._self._c || _h;
+	  return _c("div", { staticClass: "form-group" }, [_vm._t("default")], 2)
 	};
+	var __vue_staticRenderFns__$1 = [];
+	__vue_render__$1._withStripped = true;
 
-	var FormFeedback = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:{'invalid-feedback': _vm.invalid, 'valid-feedback': _vm.valid && !_vm.invalid}},[_vm._t("default",[_vm._v(_vm._s(_vm.label))])],2)},staticRenderFns: [],
+	  /* style */
+	  const __vue_inject_styles__$1 = undefined;
+	  /* scoped */
+	  const __vue_scope_id__$1 = undefined;
+	  /* module identifier */
+	  const __vue_module_identifier__$1 = undefined;
+	  /* functional template */
+	  const __vue_is_functional_template__$1 = false;
+	  /* style inject */
+	  
+	  /* style inject SSR */
+	  
+
+	  
+	  var FormGroup = normalizeComponent(
+	    { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
+	    __vue_inject_styles__$1,
+	    __vue_script__$1,
+	    __vue_scope_id__$1,
+	    __vue_is_functional_template__$1,
+	    __vue_module_identifier__$1,
+	    undefined,
+	    undefined
+	  );
+
+	//
+
+	var script$2 = {
 
 	    name: 'form-feedback',
 
@@ -3071,15 +3020,53 @@
 
 	};
 
-	VueInstaller.use({
+	/* script */
+	            const __vue_script__$2 = script$2;
+	            
+	/* template */
+	var __vue_render__$2 = function() {
+	  var _vm = this;
+	  var _h = _vm.$createElement;
+	  var _c = _vm._self._c || _h;
+	  return _c(
+	    "div",
+	    {
+	      class: {
+	        "invalid-feedback": _vm.invalid,
+	        "valid-feedback": _vm.valid && !_vm.invalid
+	      }
+	    },
+	    [_vm._t("default", [_vm._v(_vm._s(_vm.label))])],
+	    2
+	  )
+	};
+	var __vue_staticRenderFns__$2 = [];
+	__vue_render__$2._withStripped = true;
 
-	    install(Vue, options) {
-	        VueInstaller.components({
-	            FormFeedback
-	        });
-	    }
+	  /* style */
+	  const __vue_inject_styles__$2 = undefined;
+	  /* scoped */
+	  const __vue_scope_id__$2 = undefined;
+	  /* module identifier */
+	  const __vue_module_identifier__$2 = undefined;
+	  /* functional template */
+	  const __vue_is_functional_template__$2 = false;
+	  /* style inject */
+	  
+	  /* style inject SSR */
+	  
 
-	});
+	  
+	  var FormFeedback = normalizeComponent(
+	    { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
+	    __vue_inject_styles__$2,
+	    __vue_script__$2,
+	    __vue_scope_id__$2,
+	    __vue_is_functional_template__$2,
+	    __vue_module_identifier__$2,
+	    undefined,
+	    undefined
+	  );
 
 	var global$1 = (typeof global !== "undefined" ? global :
 	            typeof self !== "undefined" ? self :
@@ -3214,9 +3201,7 @@
 	    }
 	  };
 
-	  if (typeof undefined === 'function' && undefined.amd) {
-	    undefined(humps);
-	  } else if ('object' !== 'undefined' && module.exports) {
+	  if (module.exports) {
 	    module.exports = humps;
 	  } else {
 	    global.humps = humps;
@@ -3514,7 +3499,14 @@
 	    return isFinite(height) ? height + 'px' : height;
 	}
 
-	var BaseType = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"activity-indicator",class:_vm.classes},_vm._l((_vm.nodes),function(i){return _c('div')}))},staticRenderFns: [],
+	//
+	//
+	//
+	//
+	//
+	//
+
+	var script$3 = {
 
 	    props: {
 	        nodes: {
@@ -3544,14 +3536,87 @@
 
 	};
 
-	var ActivityIndicatorDots = {
+	/* script */
+	            const __vue_script__$3 = script$3;
+	            
+	/* template */
+	var __vue_render__$3 = function() {
+	  var _vm = this;
+	  var _h = _vm.$createElement;
+	  var _c = _vm._self._c || _h;
+	  return _c(
+	    "div",
+	    { staticClass: "activity-indicator", class: _vm.classes },
+	    _vm._l(_vm.nodes, function(i) {
+	      return _c("div")
+	    })
+	  )
+	};
+	var __vue_staticRenderFns__$3 = [];
+	__vue_render__$3._withStripped = true;
+
+	  /* style */
+	  const __vue_inject_styles__$3 = undefined;
+	  /* scoped */
+	  const __vue_scope_id__$3 = undefined;
+	  /* module identifier */
+	  const __vue_module_identifier__$3 = undefined;
+	  /* functional template */
+	  const __vue_is_functional_template__$3 = false;
+	  /* style inject */
+	  
+	  /* style inject SSR */
+	  
+
+	  
+	  var BaseType = normalizeComponent(
+	    { render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 },
+	    __vue_inject_styles__$3,
+	    __vue_script__$3,
+	    __vue_scope_id__$3,
+	    __vue_is_functional_template__$3,
+	    __vue_module_identifier__$3,
+	    undefined,
+	    undefined
+	  );
+
+	var script$4 = {
 
 	    name: 'activity-indicator-dots',
 
 	    extends: BaseType
 	};
 
-	var ActivityIndicatorSpinner = {
+	/* script */
+	            const __vue_script__$4 = script$4;
+	/* template */
+
+	  /* style */
+	  const __vue_inject_styles__$4 = undefined;
+	  /* scoped */
+	  const __vue_scope_id__$4 = undefined;
+	  /* module identifier */
+	  const __vue_module_identifier__$4 = undefined;
+	  /* functional template */
+	  const __vue_is_functional_template__$4 = undefined;
+	  /* style inject */
+	  
+	  /* style inject SSR */
+	  
+
+	  
+	  var ActivityIndicatorDots = normalizeComponent(
+	    {},
+	    __vue_inject_styles__$4,
+	    __vue_script__$4,
+	    __vue_scope_id__$4,
+	    __vue_is_functional_template__$4,
+	    __vue_module_identifier__$4,
+	    undefined,
+	    undefined
+	  );
+
+	var script$5 = {
 
 	    name: 'activity-indicator-spinner',
 
@@ -3565,7 +3630,38 @@
 	    })
 	};
 
-	var ActivityIndicator = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.center)?_c('div',{staticClass:"center-wrapper",class:{'position-relative': _vm.relative, 'position-fixed': _vm.fixed},style:(_vm.style)},[_c('div',{staticClass:"center-content d-flex flex-column align-items-center"},[_c(_vm.component,{tag:"component",attrs:{"size":_vm.size,"prefix":_vm.prefix}}),_vm._v(" "),(_vm.label)?_c('div',{staticClass:"activity-indicator-label",domProps:{"innerHTML":_vm._s(_vm.label)}}):_vm._e()],1)]):_c('div',{staticClass:"d-flex flex-column justify-content-center align-items-center",style:(_vm.style)},[_c(_vm.component,{tag:"component",attrs:{"size":_vm.size,"prefix":_vm.prefix}}),_vm._v(" "),(_vm.label)?_c('div',{staticClass:"activity-indicator-label",domProps:{"innerHTML":_vm._s(_vm.label)}}):_vm._e()],1)},staticRenderFns: [],
+	/* script */
+	            const __vue_script__$5 = script$5;
+	/* template */
+
+	  /* style */
+	  const __vue_inject_styles__$5 = undefined;
+	  /* scoped */
+	  const __vue_scope_id__$5 = undefined;
+	  /* module identifier */
+	  const __vue_module_identifier__$5 = undefined;
+	  /* functional template */
+	  const __vue_is_functional_template__$5 = undefined;
+	  /* style inject */
+	  
+	  /* style inject SSR */
+	  
+
+	  
+	  var ActivityIndicatorSpinner = normalizeComponent(
+	    {},
+	    __vue_inject_styles__$5,
+	    __vue_script__$5,
+	    __vue_scope_id__$5,
+	    __vue_is_functional_template__$5,
+	    __vue_module_identifier__$5,
+	    undefined,
+	    undefined
+	  );
+
+	//
+
+	var script$6 = {
 
 	    name: 'activity-indicator',
 
@@ -3625,372 +3721,755 @@
 
 	};
 
-	VueInstaller.use({
-
-	    install(Vue, options) {
-	        VueInstaller.components({
-	            ActivityIndicator
-	        });
-	    }
-
-	});
-
-	var CreditCardField = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form-group',{staticClass:"credit-card-field-wrapper",on:{"click":_vm.onClick}},[_vm._t("control",[_c('div',{staticClass:"credit-card-field",class:_vm.mergeClasses(_vm.controlClasses, _vm.variantClass, _vm.classes)},[_c('div',{staticClass:"credit-card-field-icon-wrapper"},[_c('div',{staticClass:"credit-card-field-icon-card"},[_c('div',{staticClass:"credit-card-field-icon-front"},[_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":['fab', 'cc-jcb'],"data-brand":"jcb"}}),_vm._v(" "),_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":['fab', 'cc-visa'],"data-brand":"visa"}}),_vm._v(" "),_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":['fab', 'cc-amex'],"data-brand":"amex"}}),_vm._v(" "),_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":['fab', 'cc-discover'],"data-brand":"discover"}}),_vm._v(" "),_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":['fab', 'cc-mastercard'],"data-brand":"mastercard"}}),_vm._v(" "),_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":['fab', 'cc-diners-club'],"data-brand":"dinersclub"}}),_vm._v(" "),_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":['far', 'credit-card'],"data-brand":"unknown","width":"20","height":"18"}})],1),_vm._v(" "),_c('div',{staticClass:"credit-card-field-icon-back"},[_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":['fas', 'credit-card'],"width":"23.33","height":"20"}})],1)])]),_vm._v(" "),_c('div',{staticClass:"credit-card-field-fields"},[_c('input',{directives:[{name:"focus",rawName:"v-focus.transform",modifiers:{"transform":true}},{name:"validate",rawName:"v-validate:number",value:(_vm.validateNumber),expression:"validateNumber",arg:"number"},{name:"model",rawName:"v-model",value:(_vm.card.number),expression:"card.number"}],staticClass:"credit-card-field-field credit-card-field-number",class:_vm.mergeClasses({'is-empty': !_vm.card.number, 'is-invalid': _vm.validated.number === false}),attrs:{"max":"19","type":"text","placeholder":"Card number"},domProps:{"value":(_vm.card.number)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.card, "number", $event.target.value);}}}),_vm._v(" "),_c('div',{staticClass:"credit-card-field-security-fields"},[_c('input',{directives:[{name:"focus",rawName:"v-focus"},{name:"validate",rawName:"v-validate:expiration",value:(_vm.validateExpiration),expression:"validateExpiration",arg:"expiration"},{name:"model",rawName:"v-model",value:(_vm.card.expiration),expression:"card.expiration"}],staticClass:"credit-card-field-field credit-card-field-expiration",class:_vm.mergeClasses({'is-empty': !_vm.card.expiration, 'is-invalid': _vm.validated.expiration === false}),attrs:{"type":"text","placeholder":"MM / YY","maxlength":"7"},domProps:{"value":(_vm.card.expiration)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.card, "expiration", $event.target.value);}}}),_vm._v(" "),_c('input',{directives:[{name:"focus",rawName:"v-focus",value:(_vm.validateCvc),expression:"validateCvc"},{name:"validate",rawName:"v-validate:cvc",value:(_vm.validateCvc),expression:"validateCvc",arg:"cvc"},{name:"model",rawName:"v-model",value:(_vm.card.cvc),expression:"card.cvc"}],staticClass:"credit-card-field-field credit-card-field-cvc",class:_vm.mergeClasses({'is-empty': !_vm.card.cvc, 'is-invalid': _vm.validated.cvc === false}),attrs:{"type":"text","placeholder":"CVC","maxlength":"4","autocomplete":"off"},domProps:{"value":(_vm.card.cvc)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.card, "cvc", $event.target.value);}}}),_vm._v(" "),_c('input',{directives:[{name:"focus",rawName:"v-focus",value:(_vm.validatePostalCode),expression:"validatePostalCode"},{name:"validate",rawName:"v-validate:postalCode",value:(_vm.validatePostalCode),expression:"validatePostalCode",arg:"postalCode"},{name:"model",rawName:"v-model",value:(_vm.card.postalCode),expression:"card.postalCode"}],staticClass:"credit-card-field-field credit-card-field-postal",class:_vm.mergeClasses({'is-empty': !_vm.card.postalCode, 'is-invalid': _vm.validated.postalCode === false}),attrs:{"max":"5","type":"text","placeholder":"Zip","maxlength":"5"},domProps:{"value":(_vm.card.postalCode)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.card, "postalCode", $event.target.value);}}})]),_vm._v(" "),_c('div',{staticClass:"credit-card-field-placeholder-mask"},[_vm._v("Number")]),_vm._v(" "),_c('div',{staticClass:"credit-card-field-number-mask",domProps:{"innerHTML":_vm._s(_vm.card.number)}})])])]),_vm._v(" "),_vm._t("activity-indicator",[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.activity),expression:"activity"}],staticClass:"credit-card-field-activity"},[_c('activity-indicator',{attrs:{"size":"sm","type":"dots","center":""}})],1)]),_vm._v(" "),_vm._t("default"),_vm._v(" "),_vm._t("help",[(_vm.helpText)?_c('help-text',{domProps:{"innerHTML":_vm._s(_vm.helpText)}}):_vm._e()]),_vm._v(" "),_vm._t("feedback",[(_vm.validFeedback)?_c('form-feedback',{attrs:{"valid":""},domProps:{"innerHTML":_vm._s(_vm.validFeedback)}}):_vm._e(),_vm._v(" "),(_vm.invalidFeedback)?_c('form-feedback',{attrs:{"invalid":""},domProps:{"innerHTML":_vm._s(_vm.invalidFeedback)}}):_vm._e()])],2)},staticRenderFns: [],
-
-	    name: 'credit-card-field',
-
-	    mixins: [
-	        MergeClasses,
-	        Variant,
-	        FormControl
-	    ],
-
-	    components: {
-	        ActivityIndicator,
-	        FormGroup,
-	        FormFeedback,
-	        HelpText,
-	        Icon: FontAwesomeIcon
-	    },
-
-	    props: {
-
-	        activity: {
-	            type: Boolean,
-	            default: false
-	        }
-
-	    },
-
-	    watch: {
-	        'card.number': function(newVal, oldVal) {
-	            this.brand = this.card.brand = lib$1.fns.cardType(newVal) || 'unknown';
-	            this.validated.number = null;
-
-	            if (this.$el.querySelector('.credit-card-field-lg')) {
-	                this.showSecurityFields = this.card.number.length >= 14;
-	            }
+	/* script */
+	            const __vue_script__$6 = script$6;
+	            
+	/* template */
+	var __vue_render__$4 = function() {
+	  var _vm = this;
+	  var _h = _vm.$createElement;
+	  var _c = _vm._self._c || _h;
+	  return _vm.center
+	    ? _c(
+	        "div",
+	        {
+	          staticClass: "center-wrapper",
+	          class: {
+	            "position-relative": _vm.relative,
+	            "position-fixed": _vm.fixed
+	          },
+	          style: _vm.style
 	        },
-	        'card.expiration': function(newVal, oldVal) {
-	            this.validated.expiration = null;
-	        },
-	        'card.cvc': function(newVal, oldVal) {
-	            this.validated.cvc = null;
-	        },
-	        'card.postalCode': function(newVal, oldVal) {
-	            this.validated.postalCode = null;
-	        }
-	    },
-
-	    directives: {
-	        focus: {
-	            bind(el, binding, vnode) {
-	                el.addEventListener('focus', event => {
-	                    el.style.transform = '';
-	                    el.classList.add('is-focused');
-	                    vnode.context.isFocused = true;
-	                    vnode.context.focusedElement = event.target;
-	                });
-
-	                el.addEventListener('blur', event => {
-	                    el.classList.remove('is-focused');
-	                    vnode.context.isFocused = false;
-
-	                    if (binding.modifiers.transform && vnode.context.shouldTransform(el)) {
-	                        vnode.context.addTransform(el);
-	                    }
-	                });
-	            }
-	        },
-	        validate: {
-	            bind(el, binding, vnode) {
-	                function validate(isValid) {
-	                    vnode.context.validated[binding.arg] = el.value === '' ? false : binding.value && binding.value(el.value);
-	                    vnode.context.$emit(isValid ? 'valid' : 'invalid', vnode.context.getEventPayload(el, isValid));
-
-	                    if (vnode.context.isComplete() &&
-	                        vnode.context.isValid() &&
-	                        vnode.context.hasChanged()) {
-	                        vnode.context.$emit('complete', vnode.context.getEventPayload(el, isValid));
-	                    }
-	                }
-
-	                function maxLength(isValid) {
-	                    return el.getAttribute('max') && el.value.length >= parseInt(el.getAttribute('max'));
-	                }
-
-	                el.addEventListener('keydown', event => {
-	                    const isValid = binding.value && binding.value(el.value);
-
-	                    if ((isValid || maxLength()) && vnode.context.isPrintableKeyCode(event)) {
-	                        event.preventDefault();
-	                    }
-	                    else if (!el.value && event.keyCode === 8) {
-	                        vnode.context.focusPrevElement(el);
-	                    }
-
-	                    vnode.context.previousValue = JSON.stringify(vnode.context.card);
-	                });
-
-	                el.addEventListener('keyup', event => {
-	                    if (vnode.context.isPrintableKeyCode(event)) {
-	                        const isValid = binding.value && binding.value(el.value);
-
-	                        if (maxLength()) {
-	                            validate(isValid);
-	                        }
-
-	                        if (isValid) {
-	                            vnode.context.focusNextElement(el);
-	                        }
-
-	                        vnode.context.$emit('input', vnode.context.card);
-
-	                        if (vnode.context.hasChanged()) {
-	                            vnode.context.$emit('change', vnode.context.getEventPayload(el, isValid));
-	                        }
-	                    }
-	                });
-
-	                el.addEventListener('blur', event => {
-	                    el.value !== '' && validate(binding.value && binding.value(el.value));
-	                });
-	            }
-	        }
-	    },
-
-	    computed: {
-
-	        classes() {
-	            const classes = {
-	                'show-security-fields': this.showSecurityFields,
-	                'credit-card-field-sm': this.width < 300,
-	                'credit-card-field-lg': this.width > 400,
-	                'has-activity': this.activity,
-	                'is-focused': this.isFocused,
-	                'is-invalid': this.isInvalid()
-	            };
-
-	            classes[`brand-${this.brand || 'unknown'}`] = true;
-
-	            if (this.isFocused) {
-	                classes[`is-focused-${this.getClassName(this.focusedElement)}`] = true;
-	            }
-	            else if (this.focusedElement) {
-	                classes[`last-focused-${this.getClassName(this.focusedElement)}`] = true;
-	            }
-
-	            for (let i in this.validated) {
-	                classes[`is-invalid-${i}`] = this.validated[i] === false;
-	            }
-
-	            return classes;
-	        }
-	    },
-
-	    methods: {
-
-	        addTransform(el) {
-	            const positionInfo = this.$el.querySelector('.credit-card-field-number-mask').getBoundingClientRect();
-	            const parts = el.value.split(' ');
-	            const totalWidth = positionInfo.width;
-	            const width = this.getTextWidth(parts[parts.length - 1].trim(), el);
-	            el.style.transform = 'translateX(' + ((totalWidth - width) * -1) + 'px)';
-	        },
-
-	        shouldTransform(el, offset = 1.25) {
-	            const totalWidth = el.offsetWidth - this.$el.querySelector('.credit-card-field-security-fields').offsetWidth;
-	            return totalWidth <= this.getTextWidth(el.value, el) * offset;
-	        },
-
-	        getDefaultCard() {
-	            return {
-	                number: this.$attrs.number || '',
-	                expiration: this.$attrs.expiration || '',
-	                cvc: this.$attrs.cvc || '',
-	                postalCode: this.$attrs.postalCode || ''
-	            };
-	        },
-
-	        getCardField() {
-	            return this.$el.querySelector('.credit-card-field');
-	        },
-
-	        getEventPayload(el, isValid) {
-	            const card = JSON.parse(JSON.stringify(this.card));
-	            const expiration = card.expiration.split('/');
-
-	            card.numberFormatted = card.number;
-	            card.number = card.number.replace(/\s/g, '');
-	            card.expMonth = expiration[0] ? expiration[0].trim() : null;
-	            card.expYear = expiration[1] ? expiration[1].trim() : null;
-
-	            return {
-	                card: card,
-	                brand: this.brand,
-	                invalid: this.isInvalid(),
-	                complete: this.isComplete(),
-	                input: {
-	                    el: el,
-	                    valid: isValid
-	                }
-	            };
-	        },
-
-	        getTextWidth(text, el) {
-	            const defaultView = (el.ownerDocument || document).defaultView;
-	            const computedStyle = defaultView.getComputedStyle(el);
-	            // re-use canvas object for better performance
-	            var canvas = document.createElement('canvas');
-	            var context = canvas.getContext('2d');
-	            context.margin = 0;
-	            context.font = computedStyle.font;
-	            var metrics = context.measureText(text);
-	            return metrics.width;
-	        },
-
-	        getClassName(el) {
-	            const classes = el.classList.item(1).split('-');
-	            return classes[classes.length - 1];
-	        },
-
-	        focusNextElement(el) {
-	            if (el.nextElementSibling && el.nextElementSibling.children[0]) {
-	                el.nextElementSibling.children[0].focus();
-	            }
-	            else if (el.nextElementSibling) {
-	                el.nextElementSibling.focus();
-	            }
-	        },
-
-	        focusPrevElement(el) {
-	            if (!el.value && el.previousElementSibling) {
-	                el.previousElementSibling.focus();
-	            }
-	            else if (!el.value) {
-	                this.$el.querySelector('.credit-card-field-number').focus();
-	            }
-	        },
-
-	        hasChanged() {
-	            return this.previousValue !== JSON.stringify(this.card);
-	        },
-
-	        validateCvc(value) {
-	            return lib$1.fns.validateCardCVC(value);
-	        },
-
-	        validateNumber(value) {
-	            return lib$1.fns.validateCardNumber(value);
-	        },
-
-	        validateExpiration(value) {
-	            return lib$1.fns.validateCardExpiry(value);
-	        },
-
-	        validatePostalCode(value) {
-	            return value.match(/^\d{5}(?:[-\s]\d{4})?$/) !== null;
-	        },
-
-	        isPrintableKeyCode(event) {
-	            const keycode = event.keyCode;
-
-	            return (
-	                (keycode > 47 && keycode < 58) || // number keys
-	                keycode === 32 || keycode === 13 || // spacebar & return key(s) (if you want to allow carriage returns)
-	                (keycode > 64 && keycode < 91) || // letter keys
-	                (keycode > 95 && keycode < 112) || // numpad keys
-	                (keycode > 185 && keycode < 193) || // ;=,-./` (in order)
-	                (keycode > 218 && keycode < 223) // [\]' (in order)
-	            );
-	        },
-
-	        isValid() {
-	            for (let i in this.validated) {
-	                if (this.validated[i] !== true) {
-	                    return false;
-	                }
-	            }
-
-	            return true;
-	        },
-
-	        isInvalid() {
-	            for (let i in this.validated) {
-	                if (this.validated[i] === false) {
-	                    return true;
-	                }
-	            }
-
-	            return false;
-	        },
-
-	        isComplete() {
-	            return !!((
-	                this.validated.number &&
-	                this.validated.expiration &&
-	                this.validated.cvc &&
-	                this.validated.postalCode
-	            ));
-	        },
-
-	        onResize(event) {
-	            this.width = this.$el.offsetWidth;
-	            return this.onResize;
-	        },
-
-	        onClick(event) {
-	            if (!event.target.classList.contains('credit-card-field-field')) {
-	                this.focusedElement ? this.focusedElement.focus() : this.$el.querySelector('.credit-card-field-field').focus();
-	            }
-	        }
-
-	    },
-
-	    created() {
-	        this.card = this.getDefaultCard();
-	    },
-
-	    mounted() {
-	        lib$1.formatCardCVC(this.$el.querySelector('.credit-card-field-cvc'));
-	        lib$1.restrictNumeric(this.$el.querySelector('.credit-card-field-postal'));
-	        lib$1.formatCardNumber(this.$el.querySelector('.credit-card-field-number'));
-	        lib$1.formatCardExpiry(this.$el.querySelector('.credit-card-field-expiration'));
-
-	        this.$emit('input', this.card);
-
-	        window.addEventListener('resize', this.onResize());
-	    },
-
-	    destroyed() {
-	        window.removeEventListener('resize', this.onResize);
-	    },
-
-	    data() {
-	        return {
-	            width: null,
-	            isFocused: false,
-	            focusedElement: null,
-	            previousValue: null,
-	            showSecurityFields: false,
-	            brand: null,
-	            validated: {
-	                number: null,
-	                expiration: null,
-	                cvc: null,
-	                postalCode: null
+	        [
+	          _c(
+	            "div",
+	            {
+	              staticClass:
+	                "center-content d-flex flex-column align-items-center"
 	            },
-	            card: {
-	                brand: null,
-	                number: null,
-	                expiration: null,
-	                cvc: null,
-	                postalCode: null
-	            }
-	        };
-	    }
-
+	            [
+	              _c(_vm.component, {
+	                tag: "component",
+	                attrs: { size: _vm.size, prefix: _vm.prefix }
+	              }),
+	              _vm._v(" "),
+	              _vm.label
+	                ? _c("div", {
+	                    staticClass: "activity-indicator-label",
+	                    domProps: { innerHTML: _vm._s(_vm.label) }
+	                  })
+	                : _vm._e()
+	            ],
+	            1
+	          )
+	        ]
+	      )
+	    : _c(
+	        "div",
+	        {
+	          staticClass:
+	            "d-flex flex-column justify-content-center align-items-center",
+	          style: _vm.style
+	        },
+	        [
+	          _c(_vm.component, {
+	            tag: "component",
+	            attrs: { size: _vm.size, prefix: _vm.prefix }
+	          }),
+	          _vm._v(" "),
+	          _vm.label
+	            ? _c("div", {
+	                staticClass: "activity-indicator-label",
+	                domProps: { innerHTML: _vm._s(_vm.label) }
+	              })
+	            : _vm._e()
+	        ],
+	        1
+	      )
 	};
+	var __vue_staticRenderFns__$4 = [];
+	__vue_render__$4._withStripped = true;
+
+	  /* style */
+	  const __vue_inject_styles__$6 = undefined;
+	  /* scoped */
+	  const __vue_scope_id__$6 = undefined;
+	  /* module identifier */
+	  const __vue_module_identifier__$6 = undefined;
+	  /* functional template */
+	  const __vue_is_functional_template__$6 = false;
+	  /* style inject */
+	  
+	  /* style inject SSR */
+	  
+
+	  
+	  var ActivityIndicator = normalizeComponent(
+	    { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
+	    __vue_inject_styles__$6,
+	    __vue_script__$6,
+	    __vue_scope_id__$6,
+	    __vue_is_functional_template__$6,
+	    __vue_module_identifier__$6,
+	    undefined,
+	    undefined
+	  );
+
+	//
+	var script$7 = {
+	  name: 'credit-card-field',
+	  mixins: [MergeClasses, Variant, FormControl],
+	  components: {
+	    ActivityIndicator: ActivityIndicator,
+	    FormGroup: FormGroup,
+	    FormFeedback: FormFeedback,
+	    HelpText: HelpText,
+	    Icon: FontAwesomeIcon
+	  },
+	  props: {
+	    activity: {
+	      type: Boolean,
+	      default: false
+	    }
+	  },
+	  watch: {
+	    'card.number': function cardNumber(newVal, oldVal) {
+	      this.brand = this.card.brand = lib$1.fns.cardType(newVal) || 'unknown';
+	      this.validated.number = null;
+
+	      if (this.$el.querySelector('.credit-card-field-lg')) {
+	        this.showSecurityFields = this.card.number.length >= 14;
+	      }
+	    },
+	    'card.expiration': function cardExpiration(newVal, oldVal) {
+	      this.validated.expiration = null;
+	    },
+	    'card.cvc': function cardCvc(newVal, oldVal) {
+	      this.validated.cvc = null;
+	    },
+	    'card.postalCode': function cardPostalCode(newVal, oldVal) {
+	      this.validated.postalCode = null;
+	    }
+	  },
+	  directives: {
+	    focus: {
+	      bind: function bind(el, binding, vnode) {
+	        el.addEventListener('focus', function (event) {
+	          el.style.transform = '';
+	          el.classList.add('is-focused');
+	          vnode.context.isFocused = true;
+	          vnode.context.focusedElement = event.target;
+	        });
+	        el.addEventListener('blur', function (event) {
+	          el.classList.remove('is-focused');
+	          vnode.context.isFocused = false;
+
+	          if (binding.modifiers.transform && vnode.context.shouldTransform(el)) {
+	            vnode.context.addTransform(el);
+	          }
+	        });
+	      }
+	    },
+	    validate: {
+	      bind: function bind(el, binding, vnode) {
+	        function validate(isValid) {
+	          vnode.context.validated[binding.arg] = el.value === '' ? false : binding.value && binding.value(el.value);
+	          vnode.context.$emit(isValid ? 'valid' : 'invalid', vnode.context.getEventPayload(el, isValid));
+
+	          if (vnode.context.isComplete() && vnode.context.isValid() && vnode.context.hasChanged()) {
+	            vnode.context.$emit('complete', vnode.context.getEventPayload(el, isValid));
+	          }
+	        }
+
+	        function maxLength(isValid) {
+	          return el.getAttribute('max') && el.value.length >= parseInt(el.getAttribute('max'));
+	        }
+
+	        el.addEventListener('keydown', function (event) {
+	          var isValid = binding.value && binding.value(el.value);
+
+	          if ((isValid || maxLength()) && vnode.context.isPrintableKeyCode(event)) {
+	            event.preventDefault();
+	          } else if (!el.value && event.keyCode === 8) {
+	            vnode.context.focusPrevElement(el);
+	          }
+
+	          vnode.context.previousValue = JSON.stringify(vnode.context.card);
+	        });
+	        el.addEventListener('keyup', function (event) {
+	          if (vnode.context.isPrintableKeyCode(event)) {
+	            var isValid = binding.value && binding.value(el.value);
+
+	            if (maxLength()) {
+	              validate(isValid);
+	            }
+
+	            if (isValid) {
+	              vnode.context.focusNextElement(el);
+	            }
+
+	            vnode.context.$emit('input', vnode.context.card);
+
+	            if (vnode.context.hasChanged()) {
+	              vnode.context.$emit('change', vnode.context.getEventPayload(el, isValid));
+	            }
+	          }
+	        });
+	        el.addEventListener('blur', function (event) {
+	          el.value !== '' && validate(binding.value && binding.value(el.value));
+	        });
+	      }
+	    }
+	  },
+	  computed: {
+	    classes: function classes() {
+	      var classes = {
+	        'show-security-fields': this.showSecurityFields,
+	        'credit-card-field-sm': this.width < 300,
+	        'credit-card-field-lg': this.width > 400,
+	        'has-activity': this.activity,
+	        'is-focused': this.isFocused,
+	        'is-invalid': this.isInvalid()
+	      };
+	      classes["brand-".concat(this.brand || 'unknown')] = true;
+
+	      if (this.isFocused) {
+	        classes["is-focused-".concat(this.getClassName(this.focusedElement))] = true;
+	      } else if (this.focusedElement) {
+	        classes["last-focused-".concat(this.getClassName(this.focusedElement))] = true;
+	      }
+
+	      for (var i in this.validated) {
+	        classes["is-invalid-".concat(i)] = this.validated[i] === false;
+	      }
+
+	      return classes;
+	    }
+	  },
+	  methods: {
+	    addTransform: function addTransform(el) {
+	      var positionInfo = this.$el.querySelector('.credit-card-field-number-mask').getBoundingClientRect();
+	      var parts = el.value.split(' ');
+	      var totalWidth = positionInfo.width;
+	      var width = this.getTextWidth(parts[parts.length - 1].trim(), el);
+	      el.style.transform = 'translateX(' + (totalWidth - width) * -1 + 'px)';
+	    },
+	    shouldTransform: function shouldTransform(el) {
+	      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1.25;
+	      var totalWidth = el.offsetWidth - this.$el.querySelector('.credit-card-field-security-fields').offsetWidth;
+	      return totalWidth <= this.getTextWidth(el.value, el) * offset;
+	    },
+	    getDefaultCard: function getDefaultCard() {
+	      return {
+	        number: this.$attrs.number || '',
+	        expiration: this.$attrs.expiration || '',
+	        cvc: this.$attrs.cvc || '',
+	        postalCode: this.$attrs.postalCode || ''
+	      };
+	    },
+	    getCardField: function getCardField() {
+	      return this.$el.querySelector('.credit-card-field');
+	    },
+	    getEventPayload: function getEventPayload(el, isValid) {
+	      var card = JSON.parse(JSON.stringify(this.card));
+	      var expiration = card.expiration.split('/');
+	      card.numberFormatted = card.number;
+	      card.number = card.number.replace(/\s/g, '');
+	      card.expMonth = expiration[0] ? expiration[0].trim() : null;
+	      card.expYear = expiration[1] ? expiration[1].trim() : null;
+	      return {
+	        card: card,
+	        brand: this.brand,
+	        invalid: this.isInvalid(),
+	        complete: this.isComplete(),
+	        input: {
+	          el: el,
+	          valid: isValid
+	        }
+	      };
+	    },
+	    getTextWidth: function getTextWidth(text, el) {
+	      var defaultView = (el.ownerDocument || document).defaultView;
+	      var computedStyle = defaultView.getComputedStyle(el); // re-use canvas object for better performance
+
+	      var canvas = document.createElement('canvas');
+	      var context = canvas.getContext('2d');
+	      context.margin = 0;
+	      context.font = computedStyle.font;
+	      var metrics = context.measureText(text);
+	      return metrics.width;
+	    },
+	    getClassName: function getClassName(el) {
+	      var classes = el.classList.item(1).split('-');
+	      return classes[classes.length - 1];
+	    },
+	    focusNextElement: function focusNextElement(el) {
+	      if (el.nextElementSibling && el.nextElementSibling.children[0]) {
+	        el.nextElementSibling.children[0].focus();
+	      } else if (el.nextElementSibling) {
+	        el.nextElementSibling.focus();
+	      }
+	    },
+	    focusPrevElement: function focusPrevElement(el) {
+	      if (!el.value && el.previousElementSibling) {
+	        el.previousElementSibling.focus();
+	      } else if (!el.value) {
+	        this.$el.querySelector('.credit-card-field-number').focus();
+	      }
+	    },
+	    hasChanged: function hasChanged() {
+	      return this.previousValue !== JSON.stringify(this.card);
+	    },
+	    validateCvc: function validateCvc(value) {
+	      return lib$1.fns.validateCardCVC(value);
+	    },
+	    validateNumber: function validateNumber(value) {
+	      return lib$1.fns.validateCardNumber(value);
+	    },
+	    validateExpiration: function validateExpiration(value) {
+	      return lib$1.fns.validateCardExpiry(value);
+	    },
+	    validatePostalCode: function validatePostalCode(value) {
+	      return value.match(/^\d{5}(?:[-\s]\d{4})?$/) !== null;
+	    },
+	    isPrintableKeyCode: function isPrintableKeyCode(event) {
+	      var keycode = event.keyCode;
+	      return keycode > 47 && keycode < 58 || // number keys
+	      keycode === 32 || keycode === 13 || // spacebar & return key(s) (if you want to allow carriage returns)
+	      keycode > 64 && keycode < 91 || // letter keys
+	      keycode > 95 && keycode < 112 || // numpad keys
+	      keycode > 185 && keycode < 193 || // ;=,-./` (in order)
+	      keycode > 218 && keycode < 223 // [\]' (in order)
+	      ;
+	    },
+	    isValid: function isValid() {
+	      for (var i in this.validated) {
+	        if (this.validated[i] !== true) {
+	          return false;
+	        }
+	      }
+
+	      return true;
+	    },
+	    isInvalid: function isInvalid() {
+	      for (var i in this.validated) {
+	        if (this.validated[i] === false) {
+	          return true;
+	        }
+	      }
+
+	      return false;
+	    },
+	    isComplete: function isComplete() {
+	      return !!(this.validated.number && this.validated.expiration && this.validated.cvc && this.validated.postalCode);
+	    },
+	    onResize: function onResize(event) {
+	      this.width = this.$el.offsetWidth;
+	      return this.onResize;
+	    },
+	    onClick: function onClick(event) {
+	      if (!event.target.classList.contains('credit-card-field-field')) {
+	        this.focusedElement ? this.focusedElement.focus() : this.$el.querySelector('.credit-card-field-field').focus();
+	      }
+	    }
+	  },
+	  created: function created() {
+	    this.card = this.getDefaultCard();
+	  },
+	  mounted: function mounted() {
+	    lib$1.formatCardCVC(this.$el.querySelector('.credit-card-field-cvc'));
+	    lib$1.restrictNumeric(this.$el.querySelector('.credit-card-field-postal'));
+	    lib$1.formatCardNumber(this.$el.querySelector('.credit-card-field-number'));
+	    lib$1.formatCardExpiry(this.$el.querySelector('.credit-card-field-expiration'));
+	    this.$emit('input', this.card);
+	    window.addEventListener('resize', this.onResize());
+	  },
+	  destroyed: function destroyed() {
+	    window.removeEventListener('resize', this.onResize);
+	  },
+	  data: function data() {
+	    return {
+	      width: null,
+	      isFocused: false,
+	      focusedElement: null,
+	      previousValue: null,
+	      showSecurityFields: false,
+	      brand: null,
+	      validated: {
+	        number: null,
+	        expiration: null,
+	        cvc: null,
+	        postalCode: null
+	      },
+	      card: {
+	        brand: null,
+	        number: null,
+	        expiration: null,
+	        cvc: null,
+	        postalCode: null
+	      }
+	    };
+	  }
+	};
+
+	/* script */
+	            const __vue_script__$7 = script$7;
+	/* template */
+	var __vue_render__$5 = function() {
+	  var _vm = this;
+	  var _h = _vm.$createElement;
+	  var _c = _vm._self._c || _h;
+	  return _c(
+	    "form-group",
+	    { staticClass: "credit-card-field-wrapper", on: { click: _vm.onClick } },
+	    [
+	      _vm._t("control", [
+	        _c(
+	          "div",
+	          {
+	            staticClass: "credit-card-field",
+	            class: _vm.mergeClasses(
+	              _vm.controlClasses,
+	              _vm.variantClass,
+	              _vm.classes
+	            )
+	          },
+	          [
+	            _c("div", { staticClass: "credit-card-field-icon-wrapper" }, [
+	              _c("div", { staticClass: "credit-card-field-icon-card" }, [
+	                _c(
+	                  "div",
+	                  { staticClass: "credit-card-field-icon-front" },
+	                  [
+	                    _c("icon", {
+	                      staticClass: "credit-card-field-icon",
+	                      attrs: { icon: ["fab", "cc-jcb"], "data-brand": "jcb" }
+	                    }),
+	                    _vm._v(" "),
+	                    _c("icon", {
+	                      staticClass: "credit-card-field-icon",
+	                      attrs: { icon: ["fab", "cc-visa"], "data-brand": "visa" }
+	                    }),
+	                    _vm._v(" "),
+	                    _c("icon", {
+	                      staticClass: "credit-card-field-icon",
+	                      attrs: { icon: ["fab", "cc-amex"], "data-brand": "amex" }
+	                    }),
+	                    _vm._v(" "),
+	                    _c("icon", {
+	                      staticClass: "credit-card-field-icon",
+	                      attrs: {
+	                        icon: ["fab", "cc-discover"],
+	                        "data-brand": "discover"
+	                      }
+	                    }),
+	                    _vm._v(" "),
+	                    _c("icon", {
+	                      staticClass: "credit-card-field-icon",
+	                      attrs: {
+	                        icon: ["fab", "cc-mastercard"],
+	                        "data-brand": "mastercard"
+	                      }
+	                    }),
+	                    _vm._v(" "),
+	                    _c("icon", {
+	                      staticClass: "credit-card-field-icon",
+	                      attrs: {
+	                        icon: ["fab", "cc-diners-club"],
+	                        "data-brand": "dinersclub"
+	                      }
+	                    }),
+	                    _vm._v(" "),
+	                    _c("icon", {
+	                      staticClass: "credit-card-field-icon",
+	                      attrs: {
+	                        icon: ["far", "credit-card"],
+	                        "data-brand": "unknown",
+	                        width: "20",
+	                        height: "18"
+	                      }
+	                    })
+	                  ],
+	                  1
+	                ),
+	                _vm._v(" "),
+	                _c(
+	                  "div",
+	                  { staticClass: "credit-card-field-icon-back" },
+	                  [
+	                    _c("icon", {
+	                      staticClass: "credit-card-field-icon",
+	                      attrs: {
+	                        icon: ["fas", "credit-card"],
+	                        width: "23.33",
+	                        height: "20"
+	                      }
+	                    })
+	                  ],
+	                  1
+	                )
+	              ])
+	            ]),
+	            _vm._v(" "),
+	            _c("div", { staticClass: "credit-card-field-fields" }, [
+	              _c("input", {
+	                directives: [
+	                  {
+	                    name: "focus",
+	                    rawName: "v-focus.transform",
+	                    modifiers: { transform: true }
+	                  },
+	                  {
+	                    name: "validate",
+	                    rawName: "v-validate:number",
+	                    value: _vm.validateNumber,
+	                    expression: "validateNumber",
+	                    arg: "number"
+	                  },
+	                  {
+	                    name: "model",
+	                    rawName: "v-model",
+	                    value: _vm.card.number,
+	                    expression: "card.number"
+	                  }
+	                ],
+	                staticClass: "credit-card-field-field credit-card-field-number",
+	                class: _vm.mergeClasses({
+	                  "is-empty": !_vm.card.number,
+	                  "is-invalid": _vm.validated.number === false
+	                }),
+	                attrs: { max: "19", type: "text", placeholder: "Card number" },
+	                domProps: { value: _vm.card.number },
+	                on: {
+	                  input: function($event) {
+	                    if ($event.target.composing) {
+	                      return
+	                    }
+	                    _vm.$set(_vm.card, "number", $event.target.value);
+	                  }
+	                }
+	              }),
+	              _vm._v(" "),
+	              _c("div", { staticClass: "credit-card-field-security-fields" }, [
+	                _c("input", {
+	                  directives: [
+	                    { name: "focus", rawName: "v-focus" },
+	                    {
+	                      name: "validate",
+	                      rawName: "v-validate:expiration",
+	                      value: _vm.validateExpiration,
+	                      expression: "validateExpiration",
+	                      arg: "expiration"
+	                    },
+	                    {
+	                      name: "model",
+	                      rawName: "v-model",
+	                      value: _vm.card.expiration,
+	                      expression: "card.expiration"
+	                    }
+	                  ],
+	                  staticClass:
+	                    "credit-card-field-field credit-card-field-expiration",
+	                  class: _vm.mergeClasses({
+	                    "is-empty": !_vm.card.expiration,
+	                    "is-invalid": _vm.validated.expiration === false
+	                  }),
+	                  attrs: {
+	                    type: "text",
+	                    placeholder: "MM / YY",
+	                    maxlength: "7"
+	                  },
+	                  domProps: { value: _vm.card.expiration },
+	                  on: {
+	                    input: function($event) {
+	                      if ($event.target.composing) {
+	                        return
+	                      }
+	                      _vm.$set(_vm.card, "expiration", $event.target.value);
+	                    }
+	                  }
+	                }),
+	                _vm._v(" "),
+	                _c("input", {
+	                  directives: [
+	                    {
+	                      name: "focus",
+	                      rawName: "v-focus",
+	                      value: _vm.validateCvc,
+	                      expression: "validateCvc"
+	                    },
+	                    {
+	                      name: "validate",
+	                      rawName: "v-validate:cvc",
+	                      value: _vm.validateCvc,
+	                      expression: "validateCvc",
+	                      arg: "cvc"
+	                    },
+	                    {
+	                      name: "model",
+	                      rawName: "v-model",
+	                      value: _vm.card.cvc,
+	                      expression: "card.cvc"
+	                    }
+	                  ],
+	                  staticClass: "credit-card-field-field credit-card-field-cvc",
+	                  class: _vm.mergeClasses({
+	                    "is-empty": !_vm.card.cvc,
+	                    "is-invalid": _vm.validated.cvc === false
+	                  }),
+	                  attrs: {
+	                    type: "text",
+	                    placeholder: "CVC",
+	                    maxlength: "4",
+	                    autocomplete: "off"
+	                  },
+	                  domProps: { value: _vm.card.cvc },
+	                  on: {
+	                    input: function($event) {
+	                      if ($event.target.composing) {
+	                        return
+	                      }
+	                      _vm.$set(_vm.card, "cvc", $event.target.value);
+	                    }
+	                  }
+	                }),
+	                _vm._v(" "),
+	                _c("input", {
+	                  directives: [
+	                    {
+	                      name: "focus",
+	                      rawName: "v-focus",
+	                      value: _vm.validatePostalCode,
+	                      expression: "validatePostalCode"
+	                    },
+	                    {
+	                      name: "validate",
+	                      rawName: "v-validate:postalCode",
+	                      value: _vm.validatePostalCode,
+	                      expression: "validatePostalCode",
+	                      arg: "postalCode"
+	                    },
+	                    {
+	                      name: "model",
+	                      rawName: "v-model",
+	                      value: _vm.card.postalCode,
+	                      expression: "card.postalCode"
+	                    }
+	                  ],
+	                  staticClass:
+	                    "credit-card-field-field credit-card-field-postal",
+	                  class: _vm.mergeClasses({
+	                    "is-empty": !_vm.card.postalCode,
+	                    "is-invalid": _vm.validated.postalCode === false
+	                  }),
+	                  attrs: {
+	                    max: "5",
+	                    type: "text",
+	                    placeholder: "Zip",
+	                    maxlength: "5"
+	                  },
+	                  domProps: { value: _vm.card.postalCode },
+	                  on: {
+	                    input: function($event) {
+	                      if ($event.target.composing) {
+	                        return
+	                      }
+	                      _vm.$set(_vm.card, "postalCode", $event.target.value);
+	                    }
+	                  }
+	                })
+	              ]),
+	              _vm._v(" "),
+	              _c("div", { staticClass: "credit-card-field-placeholder-mask" }, [
+	                _vm._v("Number")
+	              ]),
+	              _vm._v(" "),
+	              _c("div", {
+	                staticClass: "credit-card-field-number-mask",
+	                domProps: { innerHTML: _vm._s(_vm.card.number) }
+	              })
+	            ])
+	          ]
+	        )
+	      ]),
+	      _vm._v(" "),
+	      _vm._t("activity-indicator", [
+	        _c(
+	          "div",
+	          {
+	            directives: [
+	              {
+	                name: "show",
+	                rawName: "v-show",
+	                value: _vm.activity,
+	                expression: "activity"
+	              }
+	            ],
+	            staticClass: "credit-card-field-activity"
+	          },
+	          [
+	            _c("activity-indicator", {
+	              attrs: { size: "sm", type: "dots", center: "" }
+	            })
+	          ],
+	          1
+	        )
+	      ]),
+	      _vm._v(" "),
+	      _vm._t("default"),
+	      _vm._v(" "),
+	      _vm._t("help", [
+	        _vm.helpText
+	          ? _c("help-text", { domProps: { innerHTML: _vm._s(_vm.helpText) } })
+	          : _vm._e()
+	      ]),
+	      _vm._v(" "),
+	      _vm._t("feedback", [
+	        _vm.validFeedback
+	          ? _c("form-feedback", {
+	              attrs: { valid: "" },
+	              domProps: { innerHTML: _vm._s(_vm.validFeedback) }
+	            })
+	          : _vm._e(),
+	        _vm._v(" "),
+	        _vm.invalidFeedback
+	          ? _c("form-feedback", {
+	              attrs: { invalid: "" },
+	              domProps: { innerHTML: _vm._s(_vm.invalidFeedback) }
+	            })
+	          : _vm._e()
+	      ])
+	    ],
+	    2
+	  )
+	};
+	var __vue_staticRenderFns__$5 = [];
+	__vue_render__$5._withStripped = true;
+
+	  /* style */
+	  const __vue_inject_styles__$7 = undefined;
+	  /* scoped */
+	  const __vue_scope_id__$7 = undefined;
+	  /* module identifier */
+	  const __vue_module_identifier__$7 = undefined;
+	  /* functional template */
+	  const __vue_is_functional_template__$7 = false;
+	  /* style inject */
+	  
+	  /* style inject SSR */
+	  
+
+	  
+	  var CreditCardField = normalizeComponent(
+	    { render: __vue_render__$5, staticRenderFns: __vue_staticRenderFns__$5 },
+	    __vue_inject_styles__$7,
+	    __vue_script__$7,
+	    __vue_scope_id__$7,
+	    __vue_is_functional_template__$7,
+	    __vue_module_identifier__$7,
+	    undefined,
+	    undefined
+	  );
 
 	function install(vue, options) {
 	  vue.component('credit-card-field', CreditCardField);

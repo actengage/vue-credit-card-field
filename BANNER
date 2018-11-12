@@ -1,0 +1,4 @@
+<%= pkg.name %>
+<%= pkg.description %>
+<%= pkg.version %>
+<%= moment().format('YYYY-MM-DD') %>
