@@ -1,6 +1,9 @@
 {
     "name": "vue-credit-card-field",
-    "version": "0.2.2",
+    "version": "0.2.3",
+    "main": "./dist/vue-credit-card-field.js",
+    "module": "./dist/vue-credit-card-field.es.js",
+    "author": "Justin Kimbrell",
     "devDependencies": {
         "@babel/cli": "^7.1.2",
         "@babel/core": "^7.1.2",
