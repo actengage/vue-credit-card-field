@@ -1,7 +1,7 @@
 /**
  * vue-credit-card-field
  *
- * 0.2.9
+ * 0.2.10
  * 2019-04-09
  */
 
@@ -2328,6 +2328,21 @@ function isObject(value) {
     return (typeof value === 'object') && !isNull(value) && !isArray(value);
 }
 
+/**
+ * Returns a function, that, as long as it continues to be invoked, will not
+ * be triggered. The function will be called after it stops being called for
+ * N milliseconds. If `immediate` is passed, trigger the function on the
+ * leading edge, instead of the trailing. The function also has a property 'clear' 
+ * that is a function which will clear the timer to prevent previously scheduled executions. 
+ *
+ * @source underscore.js
+ * @see http://unscriptable.com/2009/03/20/debouncing-javascript-methods/
+ * @param {Function} function to wrap
+ * @param {Number} timeout in ms (`100`)
+ * @param {Boolean} whether to execute at the beginning (`false`)
+ * @api public
+ */
+
 function isNumber(value) {
     return (typeof value === 'number') || (
         value ? value.toString() === '[object Number]' : false
@@ -2370,10 +2385,11 @@ function isEmpty(value) {
 }
 
 function kebabCase(str) {
-    return str.replace(/([a-z])([A-Z])/g, '$1-$2')
-        .replace(/\s+/g, '-')
-        .replace(/_/g, '-')
-        .toLowerCase();
+    return str && str.replace ?
+        str.replace(/([a-z])([A-Z])/g, '$1-$2')
+            .replace(/\s+/g, '-')
+            .replace(/_/g, '-')
+            .toLowerCase() : null;
 }
 
 function mapKeys(object, fn) {
@@ -2424,7 +2440,7 @@ var Variant = {
     computed: {
 
         variantClassPrefix() {
-            return this.$options.name;
+            return kebabCase(this.$options.name);
         },
 
         variantClass() {
@@ -2490,7 +2506,7 @@ var Screenreaders = {
 
 var script = {
 
-    name: 'help-text',
+    name: 'HelpText',
 
     mixins: [
         Colorable,
@@ -2936,12 +2952,12 @@ var FormControl = {
         controlAttributes() {
             return Object.keys(this.$attrs)
                 .concat([['class', this.controlClasses]])
-                .reduce((carry, key$$1) => {
-                    if(isArray(key$$1)) {
-                        carry[key$$1[0]] = key$$1[1];
+                .reduce((carry, key) => {
+                    if(isArray(key)) {
+                        carry[key[0]] = key[1];
                     }
                     else {
-                        carry[key$$1] = this[key$$1] || this.$attrs[key$$1];
+                        carry[key] = this[key] || this.$attrs[key];
                     }
 
                     return carry;
@@ -2963,7 +2979,7 @@ var FormControl = {
         },
 
         formGroupClasses() {
-            const name = prefix(this.$options.name, this.custom ? customPrefix : '');
+            const name = prefix(kebabCase(this.$options.name), this.custom ? customPrefix : '');
 
             return this.mergeClasses(name, prefix(this.size, name), {
                 'has-activity': this.activity,
@@ -3009,12 +3025,10 @@ var FormControl = {
 //
 //
 //
-//
-//
 
 var script$1 = {
 
-    name: 'form-group',
+    name: 'FormGroup',
 
     props: {
 
@@ -3073,7 +3087,7 @@ __vue_render__$1._withStripped = true;
 
 var script$2 = {
 
-    name: 'form-feedback',
+    name: 'FormFeedback',
 
     mixins: [
         Colorable
@@ -3587,11 +3601,6 @@ function unit(height) {
 }
 
 //
-//
-//
-//
-//
-//
 
 var script$3 = {
 
@@ -3613,8 +3622,9 @@ var script$3 = {
     computed: {
         classes: function() {
             const classes = {};
+            const name = kebabCase(this.$options.name);
 
-            classes[this.$options.name] = !!this.$options.name;
+            classes[name] = !!name;
             classes[this.prefix + this.size.replace(this.prefix, '')] = !!this.size;
 
             return classes;
@@ -3635,7 +3645,7 @@ var __vue_render__$3 = function() {
     "div",
     { staticClass: "activity-indicator", class: _vm.classes },
     _vm._l(_vm.nodes, function(i) {
-      return _c("div")
+      return _c("div", { key: i })
     }),
     0
   )
@@ -3670,7 +3680,7 @@ __vue_render__$3._withStripped = true;
 
 var script$4 = {
 
-    name: 'activity-indicator-dots',
+    name: 'ActivityIndicatorDots',
 
     extends: BaseType
 };
@@ -3706,7 +3716,7 @@ var script$4 = {
 
 var script$5 = {
 
-    name: 'activity-indicator-spinner',
+    name: 'ActivityIndicatorSpinner',
 
     extends: BaseType,
 
@@ -3751,7 +3761,12 @@ var script$5 = {
 
 var script$6 = {
 
-    name: 'activity-indicator',
+    name: 'ActivityIndicator',
+
+    components: {
+        ActivityIndicatorDots,
+        ActivityIndicatorSpinner
+    },
 
     extends: BaseType,
 
@@ -3782,11 +3797,6 @@ var script$6 = {
 
         minWidth: [String, Number]
 
-    },
-
-    components: {
-        ActivityIndicatorDots,
-        ActivityIndicatorSpinner
     },
 
     computed: {

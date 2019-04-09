@@ -106,7 +106,7 @@ Contributors:
 ---
 
 Name: vue-interface
-Version: 0.2.95
+Version: 0.3.32
 License: undefined
 Private: false
 Description: Official README coming soon...

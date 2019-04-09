@@ -1,6 +1,6 @@
 {
     "name": "vue-credit-card-field",
-    "version": "0.2.9",
+    "version": "0.2.10",
     "main": "./dist/vue-credit-card-field.js",
     "module": "./dist/vue-credit-card-field.es.js",
     "author": "Justin Kimbrell",
@@ -69,7 +69,7 @@
         "bootstrap": "^4.3.1",
         "payment": "^2.3.0",
         "vue": "^2.6.10",
-        "vue-interface": "^0.2.95"
+        "vue-interface": "^0.3.32"
     },
     "scripts": {
         "build": "./node_modules/.bin/rollup -c",
