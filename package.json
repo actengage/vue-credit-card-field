@@ -1,6 +1,6 @@
 {
     "name": "vue-credit-card-field",
-    "version": "0.2.8",
+    "version": "0.2.9",
     "main": "./dist/vue-credit-card-field.js",
     "module": "./dist/vue-credit-card-field.es.js",
     "author": "Justin Kimbrell",
@@ -51,7 +51,6 @@
         "rollup-plugin-serve": "^0.6.1",
         "rollup-plugin-uglify-es": "0.0.1",
         "rollup-plugin-vue": "github:objectivehtml/rollup-plugin-vue#patch-1",
-        "vue-interface": "^0.2.95",
         "vue-jest": "^3.0.4",
         "vue-jest-utils": "^0.2.0",
         "vue-server-renderer": "^2.6.10",
@@ -69,7 +68,8 @@
         "@fortawesome/vue-fontawesome": "^0.1.6",
         "bootstrap": "^4.3.1",
         "payment": "^2.3.0",
-        "vue": "^2.6.10"
+        "vue": "^2.6.10",
+        "vue-interface": "^0.2.95"
     },
     "scripts": {
         "build": "./node_modules/.bin/rollup -c",
