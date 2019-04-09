@@ -21,7 +21,7 @@ Author: Jesse Pollak
 ---
 
 Name: @fortawesome/free-brands-svg-icons
-Version: 5.5.0
+Version: 5.8.1
 License: (CC-BY-4.0 AND MIT)
 Private: false
 Description: The iconic font, CSS, and SVG framework
@@ -38,7 +38,7 @@ Contributors:
 ---
 
 Name: @fortawesome/free-solid-svg-icons
-Version: 5.5.0
+Version: 5.8.1
 License: (CC-BY-4.0 AND MIT)
 Private: false
 Description: The iconic font, CSS, and SVG framework
@@ -55,7 +55,7 @@ Contributors:
 ---
 
 Name: @fortawesome/free-regular-svg-icons
-Version: 5.5.0
+Version: 5.8.1
 License: (CC-BY-4.0 AND MIT)
 Private: false
 Description: The iconic font, CSS, and SVG framework
@@ -72,7 +72,7 @@ Contributors:
 ---
 
 Name: @fortawesome/vue-fontawesome
-Version: 0.1.2
+Version: 0.1.6
 License: MIT
 Private: false
 Description: Official Vue component for Font Awesome 5
@@ -81,11 +81,15 @@ Homepage: https://github.com/FortAwesome/vue-fontawesome
 Contributors:
   Travis Chase <travis@fontawesome.com>
   Rob Madole <rob@fontawesome.com>
+  SirLamer <github.com/SirLamer>
+  Liu Xinyu <github.com/meteorlxy>
+  Xaver Schulz <github.com/schulz3000>
+  Yannick Ihmels <github.com/ihmels>
 
 ---
 
 Name: @fortawesome/fontawesome-svg-core
-Version: 1.2.8
+Version: 1.2.17
 License: MIT
 Private: false
 Description: The iconic font, CSS, and SVG framework
@@ -102,7 +106,7 @@ Contributors:
 ---
 
 Name: vue-interface
-Version: 0.2.52
+Version: 0.2.95
 License: undefined
 Private: false
 Description: Official README coming soon...
