@@ -1,8 +1,8 @@
 /**
  * vue-credit-card-field
  *
- * 0.2.10
- * 2019-04-09
+ * 0.2.11
+ * 2019-04-29
  */
 
 (function (global, factory) {
