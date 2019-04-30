@@ -252,18 +252,7 @@
         color: #28a745;
 }
 
-/*# sourceMappingURL=CreditCardField.vue.map */.form-group, .form-group .form-group-inner {
-  position: relative;
-}
-.form-group .activity-indicator {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translate(-1rem, -50%);
-  transition: all .25s ease-in;
-}
-
-/*# sourceMappingURL=FormGroup.vue.map */.center-wrapper {
+/*# sourceMappingURL=CreditCardField.vue.map */.center-wrapper {
   position: absolute;
   top: 0;
   left: 0;
@@ -277,7 +266,18 @@
     transform: translate(-50%, -50%);
 }
 
-/*# sourceMappingURL=ActivityIndicator.vue.map */.activity-indicator-dots > div {
+/*# sourceMappingURL=ActivityIndicator.vue.map */.form-group, .form-group .form-group-inner {
+  position: relative;
+}
+.form-group .activity-indicator {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(-1rem, -50%);
+  transition: all .25s ease-in;
+}
+
+/*# sourceMappingURL=FormGroup.vue.map */.activity-indicator-dots > div {
   border-radius: 100%;
   display: inline-block;
   background-color: #212529;

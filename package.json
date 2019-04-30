@@ -1,6 +1,6 @@
 {
     "name": "vue-credit-card-field",
-    "version": "0.2.11",
+    "version": "0.2.12",
     "main": "./dist/vue-credit-card-field.js",
     "module": "./dist/vue-credit-card-field.es.js",
     "author": "Justin Kimbrell",

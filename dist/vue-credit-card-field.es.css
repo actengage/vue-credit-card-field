@@ -277,89 +277,7 @@
     transform: translate(-50%, -50%);
 }
 
-/*# sourceMappingURL=ActivityIndicator.vue.map */.activity-indicator-dots > div {
-  border-radius: 100%;
-  display: inline-block;
-  background-color: #212529;
-  width: 0.6rem;
-  height: 0.6rem;
-  animation: activity-indicator-dots 1.4s infinite ease-in-out both;
-}
-.activity-indicator-dots > div:not(:last-child) {
-  margin-right: 0.198rem;
-}
-.activity-indicator-dots.activity-indicator-xs > div {
-  width: 0.3rem;
-  height: 0.3rem;
-}
-.activity-indicator-dots.activity-indicator-sm > div {
-  width: 0.45rem;
-  height: 0.45rem;
-}
-.activity-indicator-dots.activity-indicator-md > div {
-  width: 0.6rem;
-  height: 0.6rem;
-}
-.activity-indicator-dots.activity-indicator-lg > div {
-  width: 0.9rem;
-  height: 0.9rem;
-}
-.activity-indicator-dots.activity-indicator-xl > div {
-  width: 1.2rem;
-  height: 1.2rem;
-}
-.activity-indicator-dots > div:nth-child(1) {
-  animation-delay: 0s;
-}
-.activity-indicator-dots > div:nth-child(2) {
-  animation-delay: 0.16s;
-}
-.activity-indicator-dots > div:nth-child(3) {
-  animation-delay: 0.32s;
-}
-.activity-indicator-dots > div:nth-child(4) {
-  animation-delay: 0.48s;
-}
-.activity-indicator-dots > div:nth-child(5) {
-  animation-delay: 0.64s;
-}
-.activity-indicator-dots > div:nth-child(6) {
-  animation-delay: 0.8s;
-}
-.activity-indicator-dots > div:nth-child(7) {
-  animation-delay: 0.96s;
-}
-.activity-indicator-dots > div:nth-child(8) {
-  animation-delay: 1.12s;
-}
-.activity-indicator-dots > div:nth-child(9) {
-  animation-delay: 1.28s;
-}
-.activity-indicator-dots > div:nth-child(10) {
-  animation-delay: 1.44s;
-}
-.activity-indicator-dots > div:nth-child(11) {
-  animation-delay: 1.6s;
-}
-.activity-indicator-dots > div:nth-child(12) {
-  animation-delay: 1.76s;
-}
-.activity-indicator-dots > div:nth-child(13) {
-  animation-delay: 1.92s;
-}
-@keyframes activity-indicator-dots {
-0%, 80%, 100% {
-    transform: scale(0);
-}
-40% {
-    transform: scale(1);
-}
-}
-.btn-activity-indicator-dots:not(.btn-warning) .activity-indicator-dots > div {
-  background: white;
-}
-
-/*# sourceMappingURL=Dots.vue.map */.activity-indicator-spinner {
+/*# sourceMappingURL=ActivityIndicator.vue.map */.activity-indicator-spinner {
   position: relative;
   width: 2.25rem;
   height: 2.25rem;
@@ -1037,4 +955,86 @@
   background-color: white;
 }
 
-/*# sourceMappingURL=Spinner.vue.map */
+/*# sourceMappingURL=Spinner.vue.map */.activity-indicator-dots > div {
+  border-radius: 100%;
+  display: inline-block;
+  background-color: #212529;
+  width: 0.6rem;
+  height: 0.6rem;
+  animation: activity-indicator-dots 1.4s infinite ease-in-out both;
+}
+.activity-indicator-dots > div:not(:last-child) {
+  margin-right: 0.198rem;
+}
+.activity-indicator-dots.activity-indicator-xs > div {
+  width: 0.3rem;
+  height: 0.3rem;
+}
+.activity-indicator-dots.activity-indicator-sm > div {
+  width: 0.45rem;
+  height: 0.45rem;
+}
+.activity-indicator-dots.activity-indicator-md > div {
+  width: 0.6rem;
+  height: 0.6rem;
+}
+.activity-indicator-dots.activity-indicator-lg > div {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+.activity-indicator-dots.activity-indicator-xl > div {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.activity-indicator-dots > div:nth-child(1) {
+  animation-delay: 0s;
+}
+.activity-indicator-dots > div:nth-child(2) {
+  animation-delay: 0.16s;
+}
+.activity-indicator-dots > div:nth-child(3) {
+  animation-delay: 0.32s;
+}
+.activity-indicator-dots > div:nth-child(4) {
+  animation-delay: 0.48s;
+}
+.activity-indicator-dots > div:nth-child(5) {
+  animation-delay: 0.64s;
+}
+.activity-indicator-dots > div:nth-child(6) {
+  animation-delay: 0.8s;
+}
+.activity-indicator-dots > div:nth-child(7) {
+  animation-delay: 0.96s;
+}
+.activity-indicator-dots > div:nth-child(8) {
+  animation-delay: 1.12s;
+}
+.activity-indicator-dots > div:nth-child(9) {
+  animation-delay: 1.28s;
+}
+.activity-indicator-dots > div:nth-child(10) {
+  animation-delay: 1.44s;
+}
+.activity-indicator-dots > div:nth-child(11) {
+  animation-delay: 1.6s;
+}
+.activity-indicator-dots > div:nth-child(12) {
+  animation-delay: 1.76s;
+}
+.activity-indicator-dots > div:nth-child(13) {
+  animation-delay: 1.92s;
+}
+@keyframes activity-indicator-dots {
+0%, 80%, 100% {
+    transform: scale(0);
+}
+40% {
+    transform: scale(1);
+}
+}
+.btn-activity-indicator-dots:not(.btn-warning) .activity-indicator-dots > div {
+  background: white;
+}
+
+/*# sourceMappingURL=Dots.vue.map */
