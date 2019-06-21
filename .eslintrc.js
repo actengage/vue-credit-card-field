@@ -1,24 +1,43 @@
 module.exports = {
-    root: true,
-    parser: 'babel-eslint',
-    parserOptions: {
-        sourceType: 'module'
-    },
-    // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-    extends: 'standard',
-    // required to lint *.vue files
-    plugins: [
-        'html',
-        'jest'
+    extends: [
+        'plugin:vue/recommended'
     ],
-    env: {
-        'browser': true,
-        'node': true,
-        'jest': true
+    parserOptions: {
+        'parser': 'babel-eslint'
     },
     // add your custom rules here
     rules: {
+        'vue/no-v-html': 0,
+        'vue/require-default-prop': 0,
+        "vue/max-attributes-per-line": ["error", {
+            "singleline": 10,
+            "multiline": {
+                "max": 1,
+                "allowFirstLine": false
+            }
+        }],
+        "vue/html-indent": ["error", 4, {
+            "attribute": false,
+            "baseIndent": 1,
+            "closeBracket": 1,
+            "alignAttributesVertically": false,
+            "ignores": []
+        }],
+        "vue/html-closing-bracket-newline": ["error", {
+            "singleline": "never",
+            "multiline": "never"
+        }],
+        // Ensure no space after keywords like if.
+        'keyword-spacing': ["error", {
+            "overrides": {
+                "if": { "after": false },
+                "for": { "after": false },
+                "while": { "after": false }
+            }
+        }],
+        // Use alternative brace style
         'brace-style': ['error', 'stroustrup'],
+        // No spaces before parens
         'space-before-function-paren': ['error', 'never'],
         // Indent for tabs because spaces suck
         'indent': ['error', 4],
@@ -31,4 +50,4 @@ module.exports = {
         // allow debugger during development
         'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
     }
-}
+};
