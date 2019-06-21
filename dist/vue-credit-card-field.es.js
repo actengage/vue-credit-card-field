@@ -1,8 +1,8 @@
 /**
  * vue-credit-card-field
  *
- * 0.2.12
- * 2019-04-29
+ * 0.2.13
+ * 2019-06-21
  */
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -879,7 +879,7 @@ function makeInlineSvgAbstract(params) {
       'data-prefix': prefix,
       'data-icon': iconName,
       'class': attrClass,
-      'role': 'img',
+      'role': extra.attributes.role || 'img',
       'xmlns': 'http://www.w3.org/2000/svg',
       'viewBox': "0 0 ".concat(width, " ").concat(height)
     })
@@ -4417,7 +4417,6 @@ var __vue_render__$5 = function() {
                   attrs: {
                     type: "text",
                     placeholder: "CVC",
-                    maxlength: "4",
                     autocomplete: "off"
                   },
                   domProps: { value: _vm.card.cvc },

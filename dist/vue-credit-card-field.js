@@ -1,8 +1,8 @@
 /**
  * vue-credit-card-field
  *
- * 0.2.12
- * 2019-04-29
+ * 0.2.13
+ * 2019-06-21
  */
 
 (function (global, factory) {
@@ -885,7 +885,7 @@
 	      'data-prefix': prefix,
 	      'data-icon': iconName,
 	      'class': attrClass,
-	      'role': 'img',
+	      'role': extra.attributes.role || 'img',
 	      'xmlns': 'http://www.w3.org/2000/svg',
 	      'viewBox': "0 0 ".concat(width, " ").concat(height)
 	    })
@@ -4423,7 +4423,6 @@
 	                  attrs: {
 	                    type: "text",
 	                    placeholder: "CVC",
-	                    maxlength: "4",
 	                    autocomplete: "off"
 	                  },
 	                  domProps: { value: _vm.card.cvc },
