@@ -121,7 +121,7 @@
 </template>
 
 <script>
-import InlineCreditCardField from '../Components/InlineCreditCardField';
+import InlineCreditCardField from '../src/Components/InlineCreditCardField';
 
 export default {
 

@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import examples from './examples';
+import examples from '../examples';
 import { startCase, camelCase, kebabCase } from 'lodash';
 
 export default {

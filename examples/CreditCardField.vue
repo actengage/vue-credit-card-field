@@ -13,9 +13,15 @@
         <h3>Basic Usage</h3>
 
         <form>
-            <credit-card-field v-model="card"></credit-card-field>
+            <credit-card-field
+                v-model="card"
+                :activity="activity"
+                @change="onChange"
+                @valid="onValid"
+                @invalid="onInvalid"
+            />
         </form>
-        
+
         <p>
             The field works like most input fields and will update the model reactively.
             The card is represent as an object with various properties associated with
@@ -29,7 +35,7 @@
 </template>
 
 <script>
-import CreditCardField from '../Components/CreditCardField';
+import CreditCardField from '../src/Components/CreditCardField';
 
 export default {
 
@@ -37,9 +43,26 @@ export default {
         CreditCardField
     },
 
+    methods: {
+
+        onChange() {
+            console.log('change', arguments);
+        },
+
+        onValid() {
+            this.activity = true;
+        },
+
+        onInvalid() {
+            console.log('invalid', arguments)
+        }
+
+    },
+
     data() {
         return {
-            card: {}
+            card: {},
+            activity: false
         }
     }
 

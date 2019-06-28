@@ -1,4 +1,5 @@
 import validator from 'card-validator';
+import { input, value, shouldFormat } from '../Helpers';
 
 const METHODS = {
     'cvc': 'cvv',
@@ -19,25 +20,80 @@ export default {
 
         let prevValue;
 
-        function validate(e) {
-            // As the input changed
-            if(e.target.value !== prevValue) {
-                const response = method(e.target.value, binding.value);
-        
-                if(response.isValid) {
-                    el.dispatchEvent(new Event('valid'));
-                }
-                else if(!response.isPotentiallyValid) {
-                    el.dispatchEvent(new Event('invalid'));
-                }
-            }
-        
-            prevValue = e.target.value;
+        function get() {
+            return binding.expression.split('.').reduce((carry, attr) => {
+                return vnode.context[attr] || carry[attr];
+            }, null);
         }
 
-        el.addEventListener('blur', validate);
-        el.addEventListener('keyup', validate);
+        function set(value) {
+            binding.expression.split('.').reduce((carry, attr) => {
+                if(vnode.context[attr] instanceof Object) {
+                    return vnode.context[attr];
+                }
+                else {
+                    vnode.context.$set(carry, attr, value);        
+                }
+            }, null);
+        }
+                
+        function validate(force = false) {
+            return e => {
+                if( shouldFormat(e) && 
+                    e.target.value && 
+                    (e.target.value !== prevValue || force)) {
+                    dispatch(e.target.value, force);
+
+                    prevValue = e.target.value;
+                }            
+            };
+        }
         
+        function dispatch(str, force = false) {
+            const response = method(str, value(vnode.data.attrs.validator));
+                        
+            if(!response.isValid && (!response.isPotentiallyValid || force)) {
+                el.dispatchEvent(new Event('invalid'));
+            }
+            else if(response.isValid) {
+                el.dispatchEvent(new Event('valid'));
+            }
+            else if(response.isPotentiallyValid) {
+                el.dispatchEvent(new Event('potentially-valid'));
+            }
+            
+            el.dispatchEvent(Object.assign(new Event('validate'), {
+                response
+            }));
+        }
+
+        const inputEl = input(el);
+
+        inputEl.addEventListener('paste', e => {
+            const clipboardData = e.clipboardData || window.clipboardData;
+            const value = clipboardData.getData('text/plain');
+            
+            setTimeout(() => {
+                dispatch(value);
+            });
+        });
+
+        inputEl.addEventListener('blur', validate(true));
+        inputEl.addEventListener('keyup', validate());
+        inputEl.addEventListener('change', validate());
+        inputEl.addEventListener('revalidate', dispatch);
+
+        el.addEventListener('valid', e => set(true));
+        el.addEventListener('invalid', e => set(false));
+        el.addEventListener('potentially-valid', e =>  set(null));
+
+        el.addEventListener('validate', ({ response }) => {
+            vnode.componentInstance.$emit('validate', el, response, get());
+        });
+
+        if(inputEl.value) {
+            dispatch(inputEl.value);
+        }
     }
 
 };

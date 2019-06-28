@@ -1,9 +1,11 @@
-export default function format(cardNumber, types) {
-    if(!cardNumber || !types) {
+export default function format(cardNumber, type) {
+    if(!cardNumber || !type) {
         return cardNumber;
     }
 
-    const parts = [], { gaps } = types;
+    cardNumber = cardNumber.replace(/[^\d\/]/g, '');
+
+    const parts = [], { gaps } = type;
     const offsets = [].concat(0, gaps, cardNumber.length);
 
     for(let i = 0; offsets[i] < cardNumber.length; i++) {

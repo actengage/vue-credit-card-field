@@ -1,87 +1,144 @@
 <template>
 
-    <form-group class="credit-card-field" :class="{'has-brand': !!type}">
+    <form-group class="credit-card-field" :class="{'has-brand': !!type, 'has-errors': hasErrors, [`is-focused-${focused}`]: focused}">
         <div class="credit-card-field-rows">
-            <div class="credit-card-field-row">
-                <input-field
-                    v-model="card.name"
-                    custom
-                    id="name"
-                    name="name"
-                    label="Name"
-                    placeholder="Name on card"
-                />
-            </div>
-
-            <div class="credit-card-field-row">
+            <div class="credit-card-field-row" :class="{'has-error': currentErrors.number}">
                 <input-field
                     v-card-number
-                    v-validate:number
-                    v-model="card.number"
+                    v-model="card.numberFormatted"
+                    v-bubble:blur="onBlur"
+                    v-bubble:focus="() => focused = 'number'"
+                    v-validate:number="validated.number"
+                    :disabled="activity"
                     :errors="currentErrors"
                     custom
                     id="number"
+                    ref="number"
                     name="number"
                     label="Card Number"
+                    autocomplete="off"
                     placeholder="Credit Card Number"
-                    @invalid="() => errors['number']"
+                    @validate="onValidate"
                     @card-types.native="onCardTypeChange"
-                />
-                <div class="credit-card-icons">
-                    <div class="credit-card-field-icon-wrapper">
-                        <div class="credit-card-field-icon-card">
-                            <div class="credit-card-field-icon-front">
-                                <transition name="icon">
-                                    <icon :key="type && type.type" :icon="[icon ? 'fab' : 'far', icon || 'credit-card']" :data-brand="type && type.niceType || 'unknown'" class="credit-card-field-icon" width="20" height="18"/>
-                                </transition>
-                            </div>
-                            <div class="credit-card-field-icon-back">
-                                <icon :icon="['fas', 'credit-card']" class="credit-card-field-icon" width="23.33" height="20"/>
-                            </div>
-                        </div>
-                    </div>
+                    @valid.native="() => onValid('number', showName ? 'name' : 'month')">
+                    <template #activity>
+                        <animate-css name="fade">
+                            <activity-indicator v-if="activity" key="activity" :size="size" />
+                            <div v-else key="icons" class="credit-card-icons">
+                                <animate-css mode="out-in" name="flip" y>
+                                    <div v-if="focused !== 'cvc'" key="front" class="credit-card-field-icon-card">
+                                        <icon :icon="[icon ? 'fab' : 'far', icon || 'credit-card']" :data-brand="type && type.niceType || 'unknown'" class="credit-card-field-icon" width="20" height="18"/>
+                                    </div>                                
+                                    <div v-else key="back" class="credit-card-field-icon-card">
+                                        <icon :icon="['fas', 'credit-card']" class="credit-card-field-icon" width="23.33" height="20"/>
+                                    </div>                                
+                                </animate-css>
+                            </div>                          
+                        </animate-css>
+                    </template>
+                </input-field>
+            </div>
+            
+            <animate-css name="fade">
+                <div v-if="showSecurityFields && showName" class="credit-card-field-row" :class="{'has-error': currentErrors.name}">
+                    <input-field
+                        v-model="card.name"
+                        v-bubble:focus="() => focused = 'name'"
+                        :disabled="activity"
+                        :errors="currentErrors"
+                        @blur="e => e.target.value && (validated.name = !!e.target.value)"
+                        custom
+                        id="name"
+                        ref="name"
+                        name="name"
+                        label="Name"
+                        placeholder="Name on Card"
+                        class="credit-card-field-name"
+                    />
                 </div>
-            </div>
+            </animate-css>
+            <animate-css name="fade">
+                <div v-if="showSecurityFields" class="credit-card-field-row d-flex" :class="{'has-error': currentErrors.month || currentErrors.year || currentErrors.cvc || currentErrors.zip}">
+                    <select-field
+                        v-bubble
+                        v-model="card.expMonth"
+                        v-bubble:blur="onBlur"
+                        v-bubble:focus="() => focused = 'month'"
+                        v-validate:month="validated.month"
+                        :disabled="activity"
+                        :errors="currentErrors"
+                        custom
+                        id="month"
+                        ref="month"
+                        name="month"
+                        label="Month"
+                        placeholder="Month"
+                        class="credit-card-field-month"
+                        @valid.native="() => onValid('month', 'year')">
+                        <option v-for="i in 12" :key="i">{{ padZero(i, 2) }}</option>
+                    </select-field>
 
-            <div class="credit-card-field-row d-flex">
-                <select-field
-                    v-model="card.exp_month"
-                    :errors="currentErrors"
-                    custom
-                    id="month"
-                    name="month"
-                    label="Month"
-                    placeholder="Month"
-                    class="credit-card-field-month">
-                    <option v-for="i in 12" :key="i">{{ padZero(i, 2) }}</option>
-                </select-field>
+                    <select-field
+                        v-bubble
+                        v-model="card.expYear"
+                        v-bubble:blur="onBlur"
+                        v-bubble:focus="() => focused = 'year'"
+                        v-validate:year="validated.year"
+                        :disabled="activity"
+                        :errors="currentErrors"
+                        custom
+                        id="year"
+                        ref="year"
+                        name="year"
+                        label="Year"
+                        placeholder="Year"
+                        class="credit-card-field-year"
+                        @valid.native="() => onValid('year', 'cvc')">
+                        <option v-for="i in years" :key="i">{{i}}</option>
+                    </select-field>
 
-                <select-field
-                    v-model="card.exp_year"
-                    :errors="currentErrors"
-                    custom
-                    id="year"
-                    name="year"
-                    label="Year"
-                    placeholder="Year"
-                    class="credit-card-field-year">
-                    <option v-for="i in years" :key="i">{{i}}</option>
-                </select-field>
+                    <input-field
+                        v-bubble
+                        v-model="card.cvc"
+                        v-bubble:blur="onBlur"
+                        v-bubble:focus="() => focused = 'cvc'"
+                        v-validate:cvc="validated.cvc"
+                        :disabled="activity"
+                        :errors="currentErrors"
+                        :maxlength="code && code.size"
+                        :label="code && code.name || 'CVC'"
+                        :placeholder="code && code.name || 'CVC'"
+                        :validator="() => type && type.code.size"
+                        custom
+                        id="cvc"
+                        ref="cvc"
+                        name="cvc"
+                        class="credit-card-field-cvc"
+                        @valid.native="() => onValid('cvc', 'zip')"
+                    />
 
-                <input-field
-                    v-validate:cvc
-                    v-model="card.cvc"
-                    :errors="currentErrors"
-                    :maxlength="code && code.size"
-                    :label="code && code.name || 'CVC'"
-                    :placeholder="code && code.name || 'CVC'"
-                    custom
-                    id="cvc"
-                    name="cvc"
-                    class="credit-card-field-cvc"
-                />
-                <input-field v-model="card.postalCode" label="Zip Code" placeholder="Zip Code" maxlength="5" class="credit-card-field-zip" custom />
-            </div>
+                    <input-field
+                        v-if="showZip"
+                        v-bubble
+                        v-model="card.zip"
+                        v-bubble:blur="onBlur"
+                        v-bubble:focus="() => focused = 'zip'"
+                        v-validate:zip="validated.zip"
+                        :disabled="activity"
+                        :errors="currentErrors"
+                        :validator="{minLength: 5}"
+                        custom
+                        id="zip"
+                        ref="zip"
+                        name="zip"
+                        maxlength="5"
+                        label="Zip Code"
+                        placeholder="Zip Code"
+                        class="credit-card-field-zip"
+                        @valid.native="() => onValid('zip')"
+                    />
+                </div>
+            </animate-css>
         </div>
 
         <slot/>
@@ -102,7 +159,8 @@
 <script>
 import '../icons';
 import Payment from 'payment';
-import { format } from '../Helpers';
+import { format, input } from '../Helpers';
+import Bubble from '../Directives/Bubble';
 import Validate from '../Directives/Validate';
 import CardNumber from '../Directives/CardNumber';
 import Variant from 'vue-interface/src/Mixins/Variant';
@@ -111,10 +169,16 @@ import FormControl from 'vue-interface/src/Mixins/FormControl';
 import FormGroup from 'vue-interface/src/Components/FormGroup';
 import InputField from 'vue-interface/src/Components/InputField';
 import MergeClasses from 'vue-interface/src/Mixins/MergeClasses';
+import AnimateCss from 'vue-interface/src/Components/AnimateCss';
 import SelectField from 'vue-interface/src/Components/SelectField';
 import FormFeedback from 'vue-interface/src/Components/FormFeedback';
 import { FontAwesomeIcon as Icon } from '@fortawesome/vue-fontawesome';
 import ActivityIndicator from 'vue-interface/src/Components/ActivityIndicator';
+
+const ICONS = {
+    'american-express': 'amex',
+    'diners-club': 'dinersclub',
+};
 
 export default {
 
@@ -130,6 +194,7 @@ export default {
         Icon,
         HelpText,
         FormGroup,
+        AnimateCss,
         InputField,
         SelectField,
         FormFeedback,
@@ -141,24 +206,151 @@ export default {
         activity: {
             type: Boolean,
             default: false
-        }
+        },
+
+        name: String,
+
+        number: [Number, String],
+
+        expMonth: String,
+
+        expYear: String,
+
+        cvc: String,
+
+        zip: String,
+        
+        showName: Boolean,
+        
+        showZip: Boolean
 
     },
 
     directives: {
+        Bubble,
         Validate,
         CardNumber
     },
 
     watch: {
 
+        card: {
+            deep: true,
+            handler(value) {
+                this.$emit('input', Object.assign({
+                    name: null,
+                    number: null,
+                    numberFormatted: null,
+                    expMonth: null,
+                    expYear: null,
+                    expiration: null,
+                    zip: null
+                }, value));
+            }
+        },
+
+        validated: {
+            deep: true,
+            handler(value, oldValue) {
+                const entries = Object.entries(value);
+
+                entries.forEach(([key, value]) => {
+                    this.$set(this.currentErrors, key, value === false);
+                });
+
+                if(this.showSecurityFields) {
+                    this.$nextTick(() => {
+                        if(this.totalFields === this.totalValidFields) {
+                            this.isValid = true;
+                        }
+                        else if(this.totalInvalidFields) {
+                            this.isValid = false;
+                        }
+                        else {
+                            this.isValid = null;
+                        }
+                    });
+                }
+            }
+        },
+
         ['card.number'](value) {
-            this.card.number = format(value.replace(/[^\d\/]/g, ''), this.type);
+            this.card.number = value ? value.replace(/\s/g, '') : value;
+        },
+
+        ['card.numberFormatted'](value) {
+            this.$set(this.card, 'number', value);
+            this.$set(this.card, 'numberFormatted', format(value, this.type));
+        },
+
+        ['card.expMonth'](value) {
+            if(this.card.expMonth && this.card.expYear) {
+                this.$set(this.card, 'expiration', `${this.card.expMonth} / ${this.card.expYear}`);
+            }
+        },
+
+        ['card.expYear'](value) {
+            if(this.card.expMonth && this.card.expYear) {
+                this.$set(this.card, 'expiration', `${this.card.expMonth} / ${this.card.expYear}`);
+            }
+        },
+
+        ['validated.number'](value, old) {
+            if(!this.showSecurityFields && value === true) {
+                this.showSecurityFields = true;
+            }
+        },
+
+        isValid(value) {
+            const e = {
+                
+            };
+
+            if(value === true) {
+                this.$emit('valid', e);
+            }
+            else if(value === false) {
+                this.$emit('invalid', e);
+            }
+        },
+
+        showSecurityFields(value) {
+            this.$nextTick(() => {
+                const field = this.showName ? 'name' : 'month';
+
+                this.$refs[field] && this.$refs[field].focus();
+            });
         }
 
     },
 
     computed: {
+
+        isPotentiallyValid() {
+            return this.isValid !== false;
+        },
+
+        totalFields() {
+            return Object.entries(this.$refs).length
+        },
+
+        totalValidFields() {
+            return Object.entries(this.validated)
+                .filter(([key, value]) => value === true)
+                .length;
+        },
+
+        totalInvalidFields() {
+            return Object.entries(this.validated)
+                .filter(([key, value]) => value === false)
+                .length;
+        },
+
+        hasErrors() {
+            return !!Object.entries(this.currentErrors)
+                .filter(([key, value]) => !!value)
+                .length;
+        },
 
         years() {
             const years = [], year = new Date().getFullYear();
@@ -174,42 +366,96 @@ export default {
 
     methods: {
 
+        dispatch(event) {
+            const el = this.$el.querySelector(':focus');
+
+            this.$emit(event, {
+                card: this.card,
+                type: this.type,
+                isValid: this.isValid,
+                isPotentiallyValid: this.isPotentiallyValid,
+                input: {
+                    el,
+                    isValid: null,
+                    isPotentiallyValid: null,
+                }
+            });
+        },
+
         padZero(num, places) {
             const zero = places - num.toString().length + 1;
 
             return Array(+(zero > 0 && zero)).join('0') + num;
         },
 
+        onBlur() {
+            setTimeout(() => {
+                if(!this.$el.querySelector(':focus')) {
+                   this.focused = null;
+                }
+            });
+        },
+
+        onValid(current, next) {
+            if(this.$refs[current] && this.$refs[current].$el.querySelector(':focus')) {
+                if(this.$refs[next]) {
+                    input(this.$refs[next].$el).focus();
+                }
+                else {
+                    input(this.$refs[current].$el).blur();
+                }
+            }
+        },
+
+        onValidate(el, { isValid, isPotentiallyValid }) {
+            this.$emit('change', {
+                card: this.card,
+                type: this.type,
+                isValid: this.isValid === true,
+                isPotentiallyValid: this.isPotentiallyValid,
+                input: {
+                    el,
+                    isValid,
+                    isPotentiallyValid 
+                }
+            });
+        },
+
         onCardTypeChange({ types }) {
             const [ type ] = types;
-
-            const ICONS = {
-                'american-express': 'amex',
-                'diners-club': 'dinersclub',
-            };
 
             this.type = type;
             this.code = type && type.code;
             this.icon = type && `cc-${(ICONS[type.type] || type.type)}`;
             this.$set(this.card, 'brand', type ? type.type : null);
+            this.$set(this.card, 'numberFormatted', format(this.card.number, this.type));
+            
+            this.$refs.number.$el.dispatchEvent(new Event('revalidate'));
         }
 
     },
 
     data() {
+        const card = {
+            name: this.name,
+            number: this.number,
+            numberFormatted: this.number,
+            expMonth: this.expMonth,
+            expYear: this.expYear,
+            cvc: this.cvc,
+            zip: this.zip
+        };
+
         return {
+            card,
             icon: null,
             code: null,
             type: null,
-            currentErrors: this.errors || {},
-            card: {
-                name: null,
-                brand: null,
-                number: null,
-                cvc: null,
-                expiration: null,
-                postalCode: null
-            }
+            focused: null,
+            isValid: null,
+            showSecurityFields: !!card.number,
+            validated: Object.assign({}, card),
+            currentErrors: Object.assign({}, this.errors)
         }
     }
 
@@ -234,40 +480,55 @@ export default {
         .is-invalid.custom-select {
             color: $danger;
             background-color: lighten($danger, 45%);
-        }
-        
+        }      
+    }
+
+    .credit-card-field-rows {
+        display: flex;
+        flex-direction: column;
     }
 
     .credit-card-field-row {
         position: relative;
+        flex-direction: row;
 
         &:first-child .form-group-inner,
         &:first-child .custom-control {
-            border-radius: .25em .25em 0 0;
+            border-top-left-radius : .25em;
+            border-top-right-radius : .25em;
         }
 
         &:last-child {
-            & > :not(:last-child) {
-                border-right: 1px solid $gray-300;
+            & > :last-child .form-group-inner,
+            & > :last-child .custom-control {
+                border-bottom-right-radius : .25em;
             }
 
             & > :first-child .form-group-inner,
             & > :first-child .custom-control {
-                border-radius: 0 0 0 .25em;
+                border-bottom-left-radius : .25em;
             }
-
-            & > :last-child .form-group-inner,
-            & > :last-child .custom-control {
-                border-radius: 0 0 .25em 0;
+            
+            &:not(:first-child) > :not(:last-child) {
+                .custom-select,
+                .custom-control {
+                    border-right: 1px solid $gray-300;
+                }
             }
         }
 
         &:not(:last-child) {
-            border-bottom: 1px solid $gray-200;
+            border-bottom: 1px solid $gray-300;
         }
 
-        &.has-error:not(:last-child) {
-            border-bottom: 1px solid $danger;
+        &.has-error {
+            &:not(:last-child) {
+                
+            }
+
+            .credit-card-field-icon {
+                color: $danger;
+            }
         }
 
         &.d-flex .form-group {
@@ -293,14 +554,18 @@ export default {
     }
 
     .custom-input-field .custom-control,
+    .custom-select-field .custom-select,
     .custom-select-field .form-group-inner {
         border: 0;
-        border-radius: 0;
-        background: none;
-        
+        background: inherit;
+        border-radius: inherit;
 
         &:after {
             border-left: none;
+        }
+
+        &:disabled {
+            background: $input-disabled-bg;
         }
     }
 
@@ -309,6 +574,7 @@ export default {
     .custom-select:focus,
     .custom-select.is-valid,
     .custom-select.is-invalid {
+
         &:focus {
             box-shadow: none;
         }
@@ -318,64 +584,38 @@ export default {
         z-index: 2;
     }
 
-    .credit-card-field-icon-wrapper {
+    .credit-card-icons {
         position: absolute;
         top: 0;
-        left: 0;
+        right: .25em;
         width: 2.5em;
         height: 100%;
         z-index: 2;
-        background: white;
     }
 
     .credit-card-field-icon-card {
         position: absolute;
-        left: 0;
         top: 0;
+        left: 0;
         width: 2.5em;
         height: 100%;
-        transition: transform 0.4s ease-in-out;
-        transform-style: preserve-3d;
+
+        &.animated {
+            animation-duration: 333ms;
+            animation-timing-function: ease-in;
+        }
 
         .credit-card-field-icon {
             height: 100%;
             width: 2.5em;
-            transition: .33s;
-            padding: 0 .5em;
+            padding: .25em;
             position: absolute;
             top: 0;
             left: 0;
-        }
-
-        .credit-card-field-icon-back,
-        .credit-card-field-icon-front .credit-card-field-icon {
             opacity: 1;
-            transform: scale(1);
-        }
-        
-        /* hide back of pane during swap */
-        .credit-card-field-icon-front,
-        .credit-card-field-icon-back {
-            backface-visibility: hidden;
-            position: absolute;
-            height: 100%;
-            width: 2.5em;
-            top: 0;
-            left: 0;
-        }
-
-        .credit-card-field-icon-front {
-            z-index: 3;
-            transform: rotateY(0deg);
-        }
-
-        .credit-card-field-icon-back {
-            transform: rotateY(180deg);
-        }
-
-        .credit-card-field-icon {
-            transition: 10s;
+            font-size: 1em;
         }
     }
+
 }
 </style>

@@ -7,11 +7,10 @@
   "scripts": {
     "commit": "git add -A && git commit -m 'Pre-release commit';",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name VueNotepad ./src/index.js",
     "lint": "vue-cli-service lint",
-    "release-patch": "npm run build && npm run commit && npm version patch; npm run release;",
-    "release-minor": "git add -A && npm run commit && npm run build && npm version minor; npm run release;",
-    "release-major": "git add -A && npm run commit && npm run build && npm version major; npm run release;",
+    "release-patch": "npm run commit && npm version patch; npm run release;",
+    "release-minor": "git add -A && npm run commit && npm version minor; npm run release;",
+    "release-major": "git add -A && npm run commit && npm version major; npm run release;",
     "release": "npm run commit; npm publish; git push --follow-tags;"
   },
   "dependencies": {
