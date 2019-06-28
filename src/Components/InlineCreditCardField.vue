@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import './icons';
+import '../icons';
 import Payment from 'payment';
 import Variant from 'vue-interface/src/Mixins/Variant';
 import HelpText from 'vue-interface/src/Components/HelpText';
@@ -428,8 +428,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import './node_modules/bootstrap/scss/functions.scss';
-@import './node_modules/bootstrap/scss/variables.scss';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
 
 .credit-card-field-wrapper {
     position: relative;

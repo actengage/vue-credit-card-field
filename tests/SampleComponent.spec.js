@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { mount } from '@vue/test-utils';
-import SampleComponent from '../src/Components/SampleComponent.vue';
+import SampleComponent from '../src/SampleComponent.vue';
 
 describe('Components/SampleComponent.vue', () => {
     test('if component is a Vue instance', () => {

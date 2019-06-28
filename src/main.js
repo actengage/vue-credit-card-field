@@ -1,15 +1,12 @@
-import CreditCardField from './CreditCardField';
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import VueRouter from 'vue-router';
 
-export {
-    CreditCardField
-};
+Vue.use(VueRouter);
+Vue.config.productionTip = false;
 
-function install(vue, options) {
-    vue.component('credit-card-field', CreditCardField);
-}
-
-if (window && window.Vue) {
-    window.Vue.use(install);
-}
-
-export default install;
+new Vue({
+    router,
+    render: h => h(App)
+}).$mount('#app');

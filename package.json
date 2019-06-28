@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "name": "vue-credit-card-field",
     "version": "0.2.13",
     "main": "./dist/vue-credit-card-field.js",
@@ -105,4 +106,57 @@
         ],
         "mapCoverage": true
     }
+=======
+  "name": "vue-credit-card-field",
+  "description": "A generic Bootstrap 4 capatible credit card field that mimics Stripe's behavior.",
+  "version": "0.3.0",
+  "module": "./src/index.js",
+  "main": "./dist/VueCreditCardField.umd.min.js",
+  "scripts": {
+    "commit": "git add -A && git commit -m 'Pre-release commit';",
+    "serve": "vue-cli-service serve",
+    "lint": "vue-cli-service lint",
+    "release-patch": "npm run commit && npm version patch; npm run release;",
+    "release-minor": "git add -A && npm run commit && npm version minor; npm run release;",
+    "release-major": "git add -A && npm run commit && npm version major; npm run release;",
+    "release": "npm run commit; npm publish; git push --follow-tags;"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.17",
+    "@fortawesome/free-brands-svg-icons": "^5.8.1",
+    "@fortawesome/free-regular-svg-icons": "^5.8.1",
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "@fortawesome/vue-fontawesome": "^0.1.6",
+    "bootstrap": "^4.3.1",
+    "card-validator": "^6.2.0",
+    "credit-card-type": "^8.2.0",
+    "payment": "^2.3.0",
+    "vue": "^2.6.10",
+    "vue-interface": "^0.4.11"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@vue/cli-plugin-babel": "^3.7.0",
+    "@vue/cli-plugin-eslint": "^3.7.0",
+    "@vue/cli-service": "^3.7.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-html": "^5.0.5",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jest": "^22.5.1",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^5.2.2",
+    "html-beautify-webpack-plugin": "^1.0.5",
+    "lodash": "^4.17.11",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.6",
+    "vue-template-compiler": "^2.6.10",
+    "webpack-manifest-plugin": "^2.0.4"
+  }
+>>>>>>> new-ui
 }
