@@ -362,15 +362,13 @@ export default {
     methods: {
 
         dispatch(event) {
-            const el = this.$el.querySelector(':focus');
-
             this.$emit(event, {
                 card: this.card,
                 type: this.type,
                 isValid: this.isValid,
                 isPotentiallyValid: this.isPotentiallyValid,
                 input: {
-                    el,
+                    el: this.$el.querySelector(':focus'),
                     isValid: null,
                     isPotentiallyValid: null,
                 }

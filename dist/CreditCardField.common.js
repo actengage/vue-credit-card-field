@@ -5530,14 +5530,14 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1b34c046-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Components/CreditCardField.vue?vue&type=template&id=787b0bff&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ddd4de70-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Components/CreditCardField.vue?vue&type=template&id=e0211c18&
 var render = function () {
 var _obj;
-var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form-group',{staticClass:"credit-card-field",class:( _obj = {'has-brand': !!_vm.type, 'has-errors': _vm.hasErrors}, _obj[("is-focused-" + _vm.focused)] = _vm.focused, _obj )},[_c('div',{staticClass:"credit-card-field-rows"},[_c('div',{staticClass:"credit-card-field-row",class:{'has-error': _vm.currentErrors.number}},[_c('input-field',{directives:[{name:"card-number",rawName:"v-card-number"},{name:"bubble",rawName:"v-bubble:blur",value:(_vm.onBlur),expression:"onBlur",arg:"blur"},{name:"bubble",rawName:"v-bubble:focus",value:(function () { return _vm.focused = 'number'; }),expression:"() => focused = 'number'",arg:"focus"},{name:"validate",rawName:"v-validate:number",value:(_vm.validated.number),expression:"validated.number",arg:"number"}],ref:"number",attrs:{"disabled":_vm.activity,"errors":_vm.currentErrors,"custom":"","id":"number","name":"number","label":"Card Number","autocomplete":"off","placeholder":"Credit Card Number"},on:{"validate":_vm.onValidate},nativeOn:{"card-types":function($event){return _vm.onCardTypeChange($event)},"valid":function($event){return (function () { return _vm.onValid('number', _vm.showName ? 'name' : 'month'); })($event)}},scopedSlots:_vm._u([{key:"activity",fn:function(){return [_c('animate-css',{attrs:{"name":"fade"}},[(_vm.activity)?_c('activity-indicator',{key:"activity",attrs:{"size":_vm.size}}):_c('div',{key:"icons",staticClass:"credit-card-icons"},[_c('animate-css',{attrs:{"mode":"out-in","name":"flip","y":""}},[(_vm.focused !== 'cvc')?_c('div',{key:"front",staticClass:"credit-card-field-icon-card"},[_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":[_vm.icon ? 'fab' : 'far', _vm.icon || 'credit-card'],"data-brand":_vm.type && _vm.type.niceType || 'unknown',"width":"20","height":"18"}})],1):_c('div',{key:"back",staticClass:"credit-card-field-icon-card"},[_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":['fas', 'credit-card'],"width":"23.33","height":"20"}})],1)])],1)],1)]},proxy:true}]),model:{value:(_vm.card.numberFormatted),callback:function ($$v) {_vm.$set(_vm.card, "numberFormatted", $$v)},expression:"card.numberFormatted"}})],1),_c('animate-css',{attrs:{"name":"fade"}},[(_vm.showSecurityFields && _vm.showName)?_c('div',{staticClass:"credit-card-field-row",class:{'has-error': _vm.currentErrors.name}},[_c('input-field',{directives:[{name:"bubble",rawName:"v-bubble:focus",value:(function () { return _vm.focused = 'name'; }),expression:"() => focused = 'name'",arg:"focus"}],ref:"name",staticClass:"credit-card-field-name",attrs:{"disabled":_vm.activity,"errors":_vm.currentErrors,"custom":"","id":"name","name":"name","label":"Name","placeholder":"Name on Card"},on:{"blur":function (e) { return e.target.value && (_vm.validated.name = !!e.target.value); }},model:{value:(_vm.card.name),callback:function ($$v) {_vm.$set(_vm.card, "name", $$v)},expression:"card.name"}})],1):_vm._e()]),_c('animate-css',{attrs:{"name":"fade"}},[(_vm.showSecurityFields)?_c('div',{staticClass:"credit-card-field-row d-flex",class:{'has-error': _vm.currentErrors.month || _vm.currentErrors.year || _vm.currentErrors.cvc || _vm.currentErrors.zip}},[_c('select-field',{directives:[{name:"bubble",rawName:"v-bubble"},{name:"bubble",rawName:"v-bubble:blur",value:(_vm.onBlur),expression:"onBlur",arg:"blur"},{name:"bubble",rawName:"v-bubble:focus",value:(function () { return _vm.focused = 'month'; }),expression:"() => focused = 'month'",arg:"focus"},{name:"validate",rawName:"v-validate:month",value:(_vm.validated.month),expression:"validated.month",arg:"month"}],ref:"month",staticClass:"credit-card-field-month",attrs:{"disabled":_vm.activity,"errors":_vm.currentErrors,"custom":"","id":"month","name":"month","label":"Month","placeholder":"Month"},nativeOn:{"valid":function($event){return (function () { return _vm.onValid('month', 'year'); })($event)}},model:{value:(_vm.card.expMonth),callback:function ($$v) {_vm.$set(_vm.card, "expMonth", $$v)},expression:"card.expMonth"}},_vm._l((12),function(i){return _c('option',{key:i},[_vm._v(_vm._s(_vm.padZero(i, 2)))])}),0),_c('select-field',{directives:[{name:"bubble",rawName:"v-bubble"},{name:"bubble",rawName:"v-bubble:blur",value:(_vm.onBlur),expression:"onBlur",arg:"blur"},{name:"bubble",rawName:"v-bubble:focus",value:(function () { return _vm.focused = 'year'; }),expression:"() => focused = 'year'",arg:"focus"},{name:"validate",rawName:"v-validate:year",value:(_vm.validated.year),expression:"validated.year",arg:"year"}],ref:"year",staticClass:"credit-card-field-year",attrs:{"disabled":_vm.activity,"errors":_vm.currentErrors,"custom":"","id":"year","name":"year","label":"Year","placeholder":"Year"},nativeOn:{"valid":function($event){return (function () { return _vm.onValid('year', 'cvc'); })($event)}},model:{value:(_vm.card.expYear),callback:function ($$v) {_vm.$set(_vm.card, "expYear", $$v)},expression:"card.expYear"}},_vm._l((_vm.years),function(i){return _c('option',{key:i},[_vm._v(_vm._s(i))])}),0),_c('input-field',{directives:[{name:"bubble",rawName:"v-bubble"},{name:"bubble",rawName:"v-bubble:blur",value:(_vm.onBlur),expression:"onBlur",arg:"blur"},{name:"bubble",rawName:"v-bubble:focus",value:(function () { return _vm.focused = 'cvc'; }),expression:"() => focused = 'cvc'",arg:"focus"},{name:"validate",rawName:"v-validate:cvc",value:(_vm.validated.cvc),expression:"validated.cvc",arg:"cvc"}],ref:"cvc",staticClass:"credit-card-field-cvc",attrs:{"disabled":_vm.activity,"errors":_vm.currentErrors,"maxlength":_vm.code && _vm.code.size,"label":_vm.code && _vm.code.name || 'CVC',"placeholder":_vm.code && _vm.code.name || 'CVC',"validator":function () { return _vm.type && _vm.type.code.size; },"custom":"","id":"cvc","name":"cvc"},nativeOn:{"valid":function($event){return (function () { return _vm.onValid('cvc', 'zip'); })($event)}},model:{value:(_vm.card.cvc),callback:function ($$v) {_vm.$set(_vm.card, "cvc", $$v)},expression:"card.cvc"}}),(_vm.showZip)?_c('input-field',{directives:[{name:"bubble",rawName:"v-bubble"},{name:"bubble",rawName:"v-bubble:blur",value:(_vm.onBlur),expression:"onBlur",arg:"blur"},{name:"bubble",rawName:"v-bubble:focus",value:(function () { return _vm.focused = 'zip'; }),expression:"() => focused = 'zip'",arg:"focus"},{name:"validate",rawName:"v-validate:zip",value:(_vm.validated.zip),expression:"validated.zip",arg:"zip"}],ref:"zip",staticClass:"credit-card-field-zip",attrs:{"disabled":_vm.activity,"errors":_vm.currentErrors,"validator":{minLength: 5},"custom":"","id":"zip","name":"zip","maxlength":"5","label":"Zip Code","placeholder":"Zip Code"},nativeOn:{"valid":function($event){return (function () { return _vm.onValid('zip'); })($event)}},model:{value:(_vm.card.zip),callback:function ($$v) {_vm.$set(_vm.card, "zip", $$v)},expression:"card.zip"}}):_vm._e()],1):_vm._e()])],1),_vm._t("default"),_vm._t("help",[(_vm.helpText)?_c('help-text',{domProps:{"innerHTML":_vm._s(_vm.helpText)}}):_vm._e()]),_vm._t("feedback",[(_vm.validFeedback)?_c('form-feedback',{attrs:{"valid":""},domProps:{"innerHTML":_vm._s(_vm.validFeedback)}}):_vm._e(),(_vm.invalidFeedback)?_c('form-feedback',{attrs:{"invalid":""},domProps:{"innerHTML":_vm._s(_vm.invalidFeedback)}}):_vm._e()])],2)}
+var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form-group',{staticClass:"credit-card-field",class:( _obj = {'has-brand': !!_vm.type, 'has-errors': _vm.hasErrors}, _obj[("is-focused-" + _vm.focused)] = _vm.focused, _obj )},[_c('div',{staticClass:"credit-card-field-rows"},[_c('div',{staticClass:"credit-card-field-row",class:{'has-error': _vm.currentErrors.number}},[_c('input-field',{directives:[{name:"card-number",rawName:"v-card-number"},{name:"bubble",rawName:"v-bubble:blur",value:(_vm.onBlur),expression:"onBlur",arg:"blur"},{name:"bubble",rawName:"v-bubble:focus",value:(function () { return _vm.focused = 'number'; }),expression:"() => focused = 'number'",arg:"focus"},{name:"validate",rawName:"v-validate:number",value:(_vm.validated.number),expression:"validated.number",arg:"number"}],ref:"number",attrs:{"disabled":_vm.activity,"errors":_vm.currentErrors,"custom":"","id":"number","name":"number","label":"Card Number","placeholder":"Credit Card Number"},on:{"validate":_vm.onValidate},nativeOn:{"card-types":function($event){return _vm.onCardTypeChange($event)},"valid":function($event){return (function () { return _vm.onValid('number', _vm.showName ? 'name' : 'month'); })($event)}},scopedSlots:_vm._u([{key:"activity",fn:function(){return [_c('animate-css',{attrs:{"name":"fade"}},[(_vm.activity)?_c('activity-indicator',{key:"activity",attrs:{"size":_vm.size}}):_c('div',{key:"icons",staticClass:"credit-card-icons"},[_c('animate-css',{attrs:{"mode":"out-in","name":"flip","y":""}},[(_vm.focused !== 'cvc')?_c('div',{key:"front",staticClass:"credit-card-field-icon-card"},[_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":[_vm.icon ? 'fab' : 'far', _vm.icon || 'credit-card'],"data-brand":_vm.type && _vm.type.niceType || 'unknown',"width":"20","height":"18"}})],1):_c('div',{key:"back",staticClass:"credit-card-field-icon-card"},[_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":['fas', 'credit-card'],"width":"23.33","height":"20"}})],1)])],1)],1)]},proxy:true}]),model:{value:(_vm.card.numberFormatted),callback:function ($$v) {_vm.$set(_vm.card, "numberFormatted", $$v)},expression:"card.numberFormatted"}})],1),_c('animate-css',{attrs:{"name":"fade"}},[(_vm.showSecurityFields && _vm.showName)?_c('div',{staticClass:"credit-card-field-row",class:{'has-error': _vm.currentErrors.name}},[_c('input-field',{directives:[{name:"bubble",rawName:"v-bubble:focus",value:(function () { return _vm.focused = 'name'; }),expression:"() => focused = 'name'",arg:"focus"}],ref:"name",staticClass:"credit-card-field-name",attrs:{"disabled":_vm.activity,"errors":_vm.currentErrors,"custom":"","id":"name","name":"name","label":"Name","placeholder":"Name on Card"},on:{"blur":function (e) { return e.target.value && (_vm.validated.name = !!e.target.value); }},model:{value:(_vm.card.name),callback:function ($$v) {_vm.$set(_vm.card, "name", $$v)},expression:"card.name"}})],1):_vm._e()]),_c('animate-css',{attrs:{"name":"fade"}},[(_vm.showSecurityFields)?_c('div',{staticClass:"credit-card-field-row d-flex",class:{'has-error': _vm.currentErrors.month || _vm.currentErrors.year || _vm.currentErrors.cvc || _vm.currentErrors.zip}},[_c('select-field',{directives:[{name:"bubble",rawName:"v-bubble"},{name:"bubble",rawName:"v-bubble:blur",value:(_vm.onBlur),expression:"onBlur",arg:"blur"},{name:"bubble",rawName:"v-bubble:focus",value:(function () { return _vm.focused = 'month'; }),expression:"() => focused = 'month'",arg:"focus"},{name:"validate",rawName:"v-validate:month",value:(_vm.validated.month),expression:"validated.month",arg:"month"}],ref:"month",staticClass:"credit-card-field-month",attrs:{"disabled":_vm.activity,"errors":_vm.currentErrors,"custom":"","id":"month","name":"month","label":"Month","placeholder":"Month"},nativeOn:{"valid":function($event){return (function () { return _vm.onValid('month', 'year'); })($event)}},model:{value:(_vm.card.expMonth),callback:function ($$v) {_vm.$set(_vm.card, "expMonth", $$v)},expression:"card.expMonth"}},_vm._l((12),function(i){return _c('option',{key:i},[_vm._v(_vm._s(_vm.padZero(i, 2)))])}),0),_c('select-field',{directives:[{name:"bubble",rawName:"v-bubble"},{name:"bubble",rawName:"v-bubble:blur",value:(_vm.onBlur),expression:"onBlur",arg:"blur"},{name:"bubble",rawName:"v-bubble:focus",value:(function () { return _vm.focused = 'year'; }),expression:"() => focused = 'year'",arg:"focus"},{name:"validate",rawName:"v-validate:year",value:(_vm.validated.year),expression:"validated.year",arg:"year"}],ref:"year",staticClass:"credit-card-field-year",attrs:{"disabled":_vm.activity,"errors":_vm.currentErrors,"custom":"","id":"year","name":"year","label":"Year","placeholder":"Year"},nativeOn:{"valid":function($event){return (function () { return _vm.onValid('year', 'cvc'); })($event)}},model:{value:(_vm.card.expYear),callback:function ($$v) {_vm.$set(_vm.card, "expYear", $$v)},expression:"card.expYear"}},_vm._l((_vm.years),function(i){return _c('option',{key:i},[_vm._v(_vm._s(i))])}),0),_c('input-field',{directives:[{name:"bubble",rawName:"v-bubble"},{name:"bubble",rawName:"v-bubble:blur",value:(_vm.onBlur),expression:"onBlur",arg:"blur"},{name:"bubble",rawName:"v-bubble:focus",value:(function () { return _vm.focused = 'cvc'; }),expression:"() => focused = 'cvc'",arg:"focus"},{name:"validate",rawName:"v-validate:cvc",value:(_vm.validated.cvc),expression:"validated.cvc",arg:"cvc"}],ref:"cvc",staticClass:"credit-card-field-cvc",attrs:{"disabled":_vm.activity,"errors":_vm.currentErrors,"maxlength":_vm.code && _vm.code.size,"label":_vm.code && _vm.code.name || 'CVC',"placeholder":_vm.code && _vm.code.name || 'CVC',"validator":function () { return _vm.type && _vm.type.code.size; },"custom":"","id":"cvc","name":"cvc"},nativeOn:{"valid":function($event){return (function () { return _vm.onValid('cvc', 'zip'); })($event)}},model:{value:(_vm.card.cvc),callback:function ($$v) {_vm.$set(_vm.card, "cvc", $$v)},expression:"card.cvc"}}),(_vm.showZip)?_c('input-field',{directives:[{name:"bubble",rawName:"v-bubble"},{name:"bubble",rawName:"v-bubble:blur",value:(_vm.onBlur),expression:"onBlur",arg:"blur"},{name:"bubble",rawName:"v-bubble:focus",value:(function () { return _vm.focused = 'zip'; }),expression:"() => focused = 'zip'",arg:"focus"},{name:"validate",rawName:"v-validate:zip",value:(_vm.validated.zip),expression:"validated.zip",arg:"zip"}],ref:"zip",staticClass:"credit-card-field-zip",attrs:{"disabled":_vm.activity,"errors":_vm.currentErrors,"validator":{minLength: 5},"custom":"","id":"zip","name":"zip","maxlength":"5","label":"Zip Code","placeholder":"Zip Code"},nativeOn:{"valid":function($event){return (function () { return _vm.onValid('zip'); })($event)}},model:{value:(_vm.card.zip),callback:function ($$v) {_vm.$set(_vm.card, "zip", $$v)},expression:"card.zip"}}):_vm._e()],1):_vm._e()])],1),_vm._t("default"),_vm._t("help",[(_vm.helpText)?_c('help-text',{domProps:{"innerHTML":_vm._s(_vm.helpText)}}):_vm._e()]),_vm._t("feedback",[(_vm.validFeedback)?_c('form-feedback',{attrs:{"valid":""},domProps:{"innerHTML":_vm._s(_vm.validFeedback)}}):_vm._e(),(_vm.invalidFeedback)?_c('form-feedback',{attrs:{"invalid":""},domProps:{"innerHTML":_vm._s(_vm.invalidFeedback)}}):_vm._e()])],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Components/CreditCardField.vue?vue&type=template&id=787b0bff&
+// CONCATENATED MODULE: ./src/Components/CreditCardField.vue?vue&type=template&id=e0211c18&
 
 // EXTERNAL MODULE: ./node_modules/@fortawesome/free-brands-svg-icons/faCcJcb.js
 var faCcJcb = __webpack_require__("ee4a");
@@ -5891,73 +5891,291 @@ function concatMap(fn) {
     };
 }
 
-// CONCATENATED MODULE: ./node_modules/vue-interface/src/Helpers/Functions/debounce.js
+// CONCATENATED MODULE: ./node_modules/vue-interface/src/Helpers/Functions/now.js
 /**
- * Returns a function, that, as long as it continues to be invoked, will not
- * be triggered. The function will be called after it stops being called for
- * N milliseconds. If `immediate` is passed, trigger the function on the
- * leading edge, instead of the trailing. The function also has a property 'clear' 
- * that is a function which will clear the timer to prevent previously scheduled executions. 
+ * Gets the timestamp of the number of milliseconds that have elapsed since
+ * the Unix epoch (1 January 1970 00:00:00 UTC).
  *
- * @source underscore.js
- * @see http://unscriptable.com/2009/03/20/debouncing-javascript-methods/
- * @param {Function} function to wrap
- * @param {Number} timeout in ms (`100`)
- * @param {Boolean} whether to execute at the beginning (`false`)
- * @api public
+ * @static
+ * @memberOf _
+ * @since 2.4.0
+ * @category Date
+ * @returns {number} Returns the timestamp.
+ * @example
+ *
+ * _.defer(function(stamp) {
+ *   console.log(_.now() - stamp);
+ * }, _.now());
+ * // => Logs the number of milliseconds it took for the deferred invocation.
  */
-function debounce(func, wait, immediate) {
-    let timeout, args, context, timestamp, result;
-    if(null == wait) wait = 100;
+var now = function () {
+    return Date.now();
+};
 
-    function later() {
-        let last = Date.now() - timestamp;
+/* harmony default export */ var Functions_now = (now);
+// CONCATENATED MODULE: ./node_modules/vue-interface/src/Helpers/Functions/isSymbol.js
+function isString(value) {
+    return typeof value === 'symbol';
+}
 
-        if(last < wait && last >= 0) {
-            timeout = setTimeout(later, wait - last);
+// CONCATENATED MODULE: ./node_modules/vue-interface/src/Helpers/Functions/toNumber.js
+
+
+
+/** Used as references for various `Number` constants. */
+var NAN = 0 / 0;
+
+/** Used to match leading and trailing whitespace. */
+var reTrim = /^\s+|\s+$/g;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */
+function toNumber(value) {
+    if(typeof value == 'number') {
+        return value;
+    }
+    if(isString(value)) {
+        return NAN;
+    }
+    if(isObject(value)) {
+        var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+        value = isObject(other) ? (other + '') : other;
+    }
+    if(typeof value != 'string') {
+        return value === 0 ? value : +value;
+    }
+    value = value.replace(reTrim, '');
+    var isBinary = reIsBinary.test(value);
+    return (isBinary || reIsOctal.test(value))
+        ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
+        : (reIsBadHex.test(value) ? NAN : +value);
+}
+
+/* harmony default export */ var Functions_toNumber = (toNumber);
+// CONCATENATED MODULE: ./node_modules/vue-interface/src/Helpers/Functions/debounce.js
+
+
+
+
+/** Error message constants. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeMax = Math.max,
+    nativeMin = Math.min;
+
+/**
+ * Creates a debounced function that delays invoking `func` until after `wait`
+ * milliseconds have elapsed since the last time the debounced function was
+ * invoked. The debounced function comes with a `cancel` method to cancel
+ * delayed `func` invocations and a `flush` method to immediately invoke them.
+ * Provide `options` to indicate whether `func` should be invoked on the
+ * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
+ * with the last arguments provided to the debounced function. Subsequent
+ * calls to the debounced function return the result of the last `func`
+ * invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ * invoked on the trailing edge of the timeout only if the debounced function
+ * is invoked more than once during the `wait` timeout.
+ *
+ * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ *
+ * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ * for details over the differences between `_.debounce` and `_.throttle`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to debounce.
+ * @param {number} [wait=0] The number of milliseconds to delay.
+ * @param {Object} [options={}] The options object.
+ * @param {boolean} [options.leading=false]
+ *  Specify invoking on the leading edge of the timeout.
+ * @param {number} [options.maxWait]
+ *  The maximum time `func` is allowed to be delayed before it's invoked.
+ * @param {boolean} [options.trailing=true]
+ *  Specify invoking on the trailing edge of the timeout.
+ * @returns {Function} Returns the new debounced function.
+ * @example
+ *
+ * // Avoid costly calculations while the window size is in flux.
+ * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
+ *
+ * // Invoke `sendMail` when clicked, debouncing subsequent calls.
+ * jQuery(element).on('click', _.debounce(sendMail, 300, {
+ *   'leading': true,
+ *   'trailing': false
+ * }));
+ *
+ * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
+ * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
+ * var source = new EventSource('/stream');
+ * jQuery(source).on('message', debounced);
+ *
+ * // Cancel the trailing debounced invocation.
+ * jQuery(window).on('popstate', debounced.cancel);
+ */
+function debounce(func, wait, options) {
+    var lastArgs,
+        lastThis,
+        maxWait,
+        result,
+        timerId,
+        lastCallTime,
+        lastInvokeTime = 0,
+        leading = false,
+        maxing = false,
+        trailing = true;
+
+    if(typeof func != 'function') {
+        throw new TypeError(FUNC_ERROR_TEXT);
+    }
+    wait = Functions_toNumber(wait) || 0;
+    if(isObject(options)) {
+        leading = !!options.leading;
+        maxing = 'maxWait' in options;
+        maxWait = maxing ? nativeMax(Functions_toNumber(options.maxWait) || 0, wait) : maxWait;
+        trailing = 'trailing' in options ? !!options.trailing : trailing;
+    }
+
+    function invokeFunc(time) {
+        var args = lastArgs,
+            thisArg = lastThis;
+
+        lastArgs = lastThis = undefined;
+        lastInvokeTime = time;
+        result = func.apply(thisArg, args);
+        return result;
+    }
+
+    function leadingEdge(time) {
+        // Reset any `maxWait` timer.
+        lastInvokeTime = time;
+        // Start the timer for the trailing edge.
+        timerId = setTimeout(timerExpired, wait);
+        // Invoke the leading edge.
+        return leading ? invokeFunc(time) : result;
+    }
+
+    function remainingWait(time) {
+        var timeSinceLastCall = time - lastCallTime,
+            timeSinceLastInvoke = time - lastInvokeTime,
+            timeWaiting = wait - timeSinceLastCall;
+
+        return maxing
+            ? nativeMin(timeWaiting, maxWait - timeSinceLastInvoke)
+            : timeWaiting;
+    }
+
+    function shouldInvoke(time) {
+        var timeSinceLastCall = time - lastCallTime,
+            timeSinceLastInvoke = time - lastInvokeTime;
+
+        // Either this is the first call, activity has stopped and we're at the
+        // trailing edge, the system time has gone backwards and we're treating
+        // it as the trailing edge, or we've hit the `maxWait` limit.
+        return (lastCallTime === undefined || (timeSinceLastCall >= wait) ||
+            (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
+    }
+
+    function timerExpired() {
+        var time = Functions_now();
+        if(shouldInvoke(time)) {
+            return trailingEdge(time);
         }
-        else {
-            timeout = null;
-            if(!immediate) {
-                result = func.apply(context, args);
-                context = args = null;
+        // Restart the timer.
+        timerId = setTimeout(timerExpired, remainingWait(time));
+    }
+
+    function trailingEdge(time) {
+        timerId = undefined;
+
+        // Only invoke if we have `lastArgs` which means `func` has been
+        // debounced at least once.
+        if(trailing && lastArgs) {
+            return invokeFunc(time);
+        }
+        lastArgs = lastThis = undefined;
+        return result;
+    }
+
+    function cancel() {
+        if(timerId !== undefined) {
+            clearTimeout(timerId);
+        }
+        lastInvokeTime = 0;
+        lastArgs = lastCallTime = lastThis = timerId = undefined;
+    }
+
+    function flush() {
+        return timerId === undefined ? result : trailingEdge(Functions_now());
+    }
+
+    function debounced() {
+        var time = Functions_now(),
+            isInvoking = shouldInvoke(time);
+
+        lastArgs = arguments;
+        lastThis = this;
+        lastCallTime = time;
+
+        if(isInvoking) {
+            if(timerId === undefined) {
+                return leadingEdge(lastCallTime);
+            }
+            if(maxing) {
+                // Handle invocations in a tight loop.
+                timerId = setTimeout(timerExpired, wait);
+                return invokeFunc(lastCallTime);
             }
         }
-    };
-
-    let debounced = function() {
-        context = this;
-        args = arguments;
-        timestamp = Date.now();
-        let callNow = immediate && !timeout;
-        if(!timeout) timeout = setTimeout(later, wait);
-        if(callNow) {
-            result = func.apply(context, args);
-            context = args = null;
+        if(timerId === undefined) {
+            timerId = setTimeout(timerExpired, wait);
         }
-
         return result;
-    };
-
-    debounced.clear = function() {
-        if(timeout) {
-            clearTimeout(timeout);
-            timeout = null;
-        }
-    };
-
-    debounced.flush = function() {
-        if(timeout) {
-            result = func.apply(context, args);
-            context = args = null;
-
-            clearTimeout(timeout);
-            timeout = null;
-        }
-    };
-
+    }
+    debounced.cancel = cancel;
+    debounced.flush = flush;
     return debounced;
-};
+}
+
+/* harmony default export */ var Functions_debounce = (debounce);
 // CONCATENATED MODULE: ./node_modules/vue-interface/src/Helpers/Functions/deepFlatten.js
 
 
@@ -6023,7 +6241,7 @@ function matches(properties) {
 }
 
 // CONCATENATED MODULE: ./node_modules/vue-interface/src/Helpers/Functions/isString.js
-function isString(value) {
+function isString_isString(value) {
     return typeof value === 'string';
 }
 
@@ -6032,7 +6250,7 @@ function isString(value) {
 
 
 function get_get(object, path) {
-    return (isString(path) ? path.split('.') : (!isArray(path) ? [path] : path)).reduce((a, b) => a[b], object);
+    return (isString_isString(path) ? path.split('.') : (!isArray(path) ? [path] : path)).reduce((a, b) => a[b], object);
 }
 
 // CONCATENATED MODULE: ./node_modules/vue-interface/src/Helpers/Functions/property.js
@@ -6235,6 +6453,76 @@ function remove(array, match) {
     });
 }
 
+// CONCATENATED MODULE: ./node_modules/vue-interface/src/Helpers/Functions/throttle.js
+
+
+
+/** Error message constants. */
+var throttle_FUNC_ERROR_TEXT = 'Expected a function';
+
+/**
+ * Creates a throttled function that only invokes `func` at most once per
+ * every `wait` milliseconds. The throttled function comes with a `cancel`
+ * method to cancel delayed `func` invocations and a `flush` method to
+ * immediately invoke them. Provide `options` to indicate whether `func`
+ * should be invoked on the leading and/or trailing edge of the `wait`
+ * timeout. The `func` is invoked with the last arguments provided to the
+ * throttled function. Subsequent calls to the throttled function return the
+ * result of the last `func` invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ * invoked on the trailing edge of the timeout only if the throttled function
+ * is invoked more than once during the `wait` timeout.
+ *
+ * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ *
+ * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ * for details over the differences between `_.throttle` and `_.debounce`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to throttle.
+ * @param {number} [wait=0] The number of milliseconds to throttle invocations to.
+ * @param {Object} [options={}] The options object.
+ * @param {boolean} [options.leading=true]
+ *  Specify invoking on the leading edge of the timeout.
+ * @param {boolean} [options.trailing=true]
+ *  Specify invoking on the trailing edge of the timeout.
+ * @returns {Function} Returns the new throttled function.
+ * @example
+ *
+ * // Avoid excessively updating the position while scrolling.
+ * jQuery(window).on('scroll', _.throttle(updatePosition, 100));
+ *
+ * // Invoke `renewToken` when the click event is fired, but not more than once every 5 minutes.
+ * var throttled = _.throttle(renewToken, 300000, { 'trailing': false });
+ * jQuery(element).on('click', throttled);
+ *
+ * // Cancel the trailing throttled invocation.
+ * jQuery(window).on('popstate', throttled.cancel);
+ */
+function throttle(func, wait, options) {
+    var leading = true,
+        trailing = true;
+
+    if(typeof func != 'function') {
+        throw new TypeError(throttle_FUNC_ERROR_TEXT);
+    }
+    if(isObject(options)) {
+        leading = 'leading' in options ? !!options.leading : leading;
+        trailing = 'trailing' in options ? !!options.trailing : trailing;
+    }
+    return Functions_debounce(func, wait, {
+        'leading': leading,
+        'maxWait': wait,
+        'trailing': trailing
+    });
+}
+
+/* harmony default export */ var Functions_throttle = (throttle);
 // CONCATENATED MODULE: ./node_modules/vue-interface/src/Helpers/Functions/wrap.js
 
 
@@ -6245,6 +6533,10 @@ function wrap(subject, fn) {
 };
 
 // CONCATENATED MODULE: ./node_modules/vue-interface/src/Helpers/Functions/index.js
+
+
+
+
 
 
 
@@ -6346,7 +6638,7 @@ function Prefix_prefix(subject, prefix, delimeter = '-') {
 
 /* harmony default export */ var Mixins_Variant = (Variant);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1b34c046-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-interface/src/Components/HelpText/HelpText.vue?vue&type=template&id=a1476532&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ddd4de70-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-interface/src/Components/HelpText/HelpText.vue?vue&type=template&id=a1476532&
 var HelpTextvue_type_template_id_a1476532_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('small',{staticClass:"form-text",class:_vm.classes},[_vm._t("default")],2)}
 var HelpTextvue_type_template_id_a1476532_staticRenderFns = []
 
@@ -6958,7 +7250,7 @@ function addEmptyClass(el, vnode) {
 
 /* harmony default export */ var Mixins_FormControl = (FormControl);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1b34c046-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-interface/src/Components/FormGroup/FormGroup.vue?vue&type=template&id=7253de15&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ddd4de70-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-interface/src/Components/FormGroup/FormGroup.vue?vue&type=template&id=7253de15&
 var FormGroupvue_type_template_id_7253de15_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:{'form-group': !!_vm.group}},[_vm._t("default")],2)}
 var FormGroupvue_type_template_id_7253de15_staticRenderFns = []
 
@@ -7018,14 +7310,14 @@ var FormGroup_component = normalizeComponent(
 
 /* harmony default export */ var Components_FormGroup = (FormGroup);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1b34c046-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-interface/src/Components/InputField/InputField.vue?vue&type=template&id=3b05516f&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ddd4de70-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-interface/src/Components/InputField/InputField.vue?vue&type=template&id=3b05516f&
 var InputFieldvue_type_template_id_3b05516f_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form-group',{class:_vm.formGroupClasses,attrs:{"group":_vm.group}},[_vm._t("label",[(_vm.label)?_c('form-label',{ref:"label",attrs:{"for":_vm.$attrs.id},domProps:{"innerHTML":_vm._s(_vm.label)}}):_vm._e()]),_c('div',{staticClass:"form-group-inner"},[_vm._t("control",[_c('input',_vm._b({directives:[{name:"bind-events",rawName:"v-bind-events"}],domProps:{"value":_vm.value},on:{"input":function($event){return _vm.$emit('input', $event.target.value)}}},'input',_vm.controlAttributes,false))]),_vm._t("activity",[_c('transition',{attrs:{"name":"slide-fade"}},[(_vm.activity)?_c('activity-indicator',{key:"test",ref:"activity",attrs:{"type":"dots","size":_vm.size}}):_vm._e()],1)])],2),_vm._t("feedback",[(_vm.validFeedback)?_c('form-feedback',{ref:"feedback",attrs:{"valid":""},domProps:{"innerHTML":_vm._s(_vm.validFeedback)}}):(_vm.invalidFeedback)?_c('form-feedback',{ref:"feedback",attrs:{"invalid":""},domProps:{"innerHTML":_vm._s(_vm.invalidFeedback)}}):_vm._e()]),_vm._t("help",[(_vm.helpText)?_c('help-text',{ref:"help",domProps:{"innerHTML":_vm._s(_vm.helpText)}}):_vm._e()])],2)}
 var InputFieldvue_type_template_id_3b05516f_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./node_modules/vue-interface/src/Components/InputField/InputField.vue?vue&type=template&id=3b05516f&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1b34c046-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-interface/src/Components/FormLabel/FormLabel.vue?vue&type=template&id=eee24d34&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ddd4de70-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-interface/src/Components/FormLabel/FormLabel.vue?vue&type=template&id=eee24d34&
 var FormLabelvue_type_template_id_eee24d34_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{class:_vm.classes},[_vm._t("default")],2)}
 var FormLabelvue_type_template_id_eee24d34_staticRenderFns = []
 
@@ -7087,7 +7379,7 @@ var FormLabel_component = normalizeComponent(
 
 /* harmony default export */ var Components_FormLabel = (FormLabel);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1b34c046-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-interface/src/Components/FormFeedback/FormFeedback.vue?vue&type=template&id=77352d9c&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ddd4de70-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-interface/src/Components/FormFeedback/FormFeedback.vue?vue&type=template&id=77352d9c&
 var FormFeedbackvue_type_template_id_77352d9c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:{'invalid-feedback': _vm.invalid, 'valid-feedback': _vm.valid && !_vm.invalid}},[_vm._t("default",[_vm._v(_vm._s(_vm.label))])],2)}
 var FormFeedbackvue_type_template_id_77352d9c_staticRenderFns = []
 
@@ -7165,14 +7457,14 @@ var FormFeedback_component = normalizeComponent(
 
 /* harmony default export */ var Components_FormFeedback = (FormFeedback);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1b34c046-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-interface/src/Components/ActivityIndicator/ActivityIndicator.vue?vue&type=template&id=9bdfd590&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ddd4de70-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-interface/src/Components/ActivityIndicator/ActivityIndicator.vue?vue&type=template&id=9bdfd590&
 var ActivityIndicatorvue_type_template_id_9bdfd590_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.center)?_c('div',{staticClass:"center-wrapper",class:{'position-relative': _vm.relative, 'position-fixed': _vm.fixed},style:(_vm.style)},[_c('div',{staticClass:"center-content d-flex flex-column align-items-center"},[_c(_vm.component,{tag:"component",attrs:{"size":_vm.size,"prefix":_vm.prefix}}),(_vm.label)?_c('div',{staticClass:"activity-indicator-label",domProps:{"innerHTML":_vm._s(_vm.label)}}):_vm._e()],1)]):_c('div',{staticClass:"d-flex flex-column justify-content-center align-items-center",style:(_vm.style)},[_c(_vm.component,{tag:"component",attrs:{"size":_vm.size,"prefix":_vm.prefix}}),(_vm.label)?_c('div',{staticClass:"activity-indicator-label",domProps:{"innerHTML":_vm._s(_vm.label)}}):_vm._e()],1)}
 var ActivityIndicatorvue_type_template_id_9bdfd590_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./node_modules/vue-interface/src/Components/ActivityIndicator/ActivityIndicator.vue?vue&type=template&id=9bdfd590&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1b34c046-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-interface/src/Components/ActivityIndicator/Types/BaseType.vue?vue&type=template&id=004e82ac&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ddd4de70-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-interface/src/Components/ActivityIndicator/Types/BaseType.vue?vue&type=template&id=004e82ac&
 var BaseTypevue_type_template_id_004e82ac_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"activity-indicator",class:_vm.classes},_vm._l((_vm.nodes),function(i){return _c('div',{key:i})}),0)}
 var BaseTypevue_type_template_id_004e82ac_staticRenderFns = []
 
@@ -7532,7 +7824,7 @@ var InputField_component = normalizeComponent(
 
 /* harmony default export */ var Components_InputField = (InputField);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1b34c046-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-interface/src/Components/AnimateCss/AnimateCss.vue?vue&type=template&id=1b6b5aa0&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ddd4de70-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-interface/src/Components/AnimateCss/AnimateCss.vue?vue&type=template&id=1b6b5aa0&
 var AnimateCssvue_type_template_id_1b6b5aa0_render = function () {
 var this$1 = this;
 var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"mode":_vm.mode,"duration":_vm.duration,"enter-class":_vm.enterClass,"enter-to-class":_vm.enterToClass,"enter-active-class":_vm.enterActiveClassName,"leave-class":_vm.leaveClass,"leave-to-class":_vm.leaveToClass,"leave-active-class":_vm.leaveActiveClassName},on:{"before-enter":function () {
@@ -7766,7 +8058,7 @@ var AnimateCss_component = normalizeComponent(
 
 /* harmony default export */ var Components_AnimateCss = (AnimateCss);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1b34c046-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-interface/src/Components/SelectField/SelectField.vue?vue&type=template&id=1afb7aa5&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ddd4de70-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-interface/src/Components/SelectField/SelectField.vue?vue&type=template&id=1afb7aa5&
 var SelectFieldvue_type_template_id_1afb7aa5_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form-group',{class:_vm.formGroupClasses,attrs:{"group":_vm.group}},[_vm._t("label",[(_vm.label)?_c('form-label',{attrs:{"for":_vm.$attrs.id},domProps:{"innerHTML":_vm._s(_vm.label)}}):_vm._e()]),_c('div',{staticClass:"form-group-inner"},[_vm._t("control",[_c('select',_vm._b({directives:[{name:"bind-events",rawName:"v-bind-events"}],domProps:{"value":_vm.value},on:{"input":function($event){return _vm.$emit('input', $event.target.value)}}},'select',_vm.controlAttributes,false),[_vm._t("default")],2)]),_vm._t("activity",[_c('transition',{attrs:{"name":"slide-fade"}},[(_vm.activity)?_c('activity-indicator',{key:"test",ref:"activity",attrs:{"type":"dots","size":_vm.size}}):_vm._e()],1)])],2),_vm._t("feedback",[(_vm.validFeedback)?_c('form-feedback',{attrs:{"valid":""},domProps:{"innerHTML":_vm._s(_vm.validFeedback)}}):_vm._e(),(_vm.invalidFeedback)?_c('form-feedback',{attrs:{"invalid":""},domProps:{"innerHTML":_vm._s(_vm.invalidFeedback)}}):_vm._e()]),_vm._t("help",[(_vm.helpText)?_c('help-text',{domProps:{"innerHTML":_vm._s(_vm.helpText)}}):_vm._e()])],2)}
 var SelectFieldvue_type_template_id_1afb7aa5_staticRenderFns = []
 
@@ -8048,7 +8340,6 @@ var vue_fontawesome_index_es = __webpack_require__("ad3d");
 //
 //
 //
-//
 
 
 
@@ -8171,12 +8462,10 @@ const ICONS = {
     },
 
     isValid(value) {
-      const e = {};
-
       if (value === true) {
-        this.$emit('valid', e);
+        this.dispatch('valid');
       } else if (value === false) {
-        this.$emit('invalid', e);
+        this.dispatch('invalid');
       }
     },
 
@@ -8223,14 +8512,13 @@ const ICONS = {
   },
   methods: {
     dispatch(event) {
-      const el = this.$el.querySelector(':focus');
       this.$emit(event, {
         card: this.card,
         type: this.type,
         isValid: this.isValid,
         isPotentiallyValid: this.isPotentiallyValid,
         input: {
-          el,
+          el: this.$el.querySelector(':focus'),
           isValid: null,
           isPotentiallyValid: null
         }
@@ -8341,7 +8629,7 @@ var CreditCardField_component = normalizeComponent(
 )
 
 /* harmony default export */ var CreditCardField = (CreditCardField_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1b34c046-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Components/InlineCreditCardField.vue?vue&type=template&id=28d63742&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ddd4de70-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Components/InlineCreditCardField.vue?vue&type=template&id=28d63742&
 var InlineCreditCardFieldvue_type_template_id_28d63742_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form-group',{staticClass:"credit-card-field-wrapper",on:{"click":_vm.onClick}},[_vm._t("control",[_c('div',{staticClass:"credit-card-field",class:_vm.mergeClasses(_vm.controlClasses, _vm.variantClass, _vm.classes)},[_c('div',{staticClass:"credit-card-field-icon-wrapper"},[_c('div',{staticClass:"credit-card-field-icon-card"},[_c('div',{staticClass:"credit-card-field-icon-front"},[_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":['fab', 'cc-jcb'],"data-brand":"jcb"}}),_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":['fab', 'cc-visa'],"data-brand":"visa"}}),_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":['fab', 'cc-amex'],"data-brand":"amex"}}),_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":['fab', 'cc-discover'],"data-brand":"discover"}}),_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":['fab', 'cc-mastercard'],"data-brand":"mastercard"}}),_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":['fab', 'cc-diners-club'],"data-brand":"dinersclub"}}),_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":['far', 'credit-card'],"data-brand":"unknown","width":"20","height":"18"}})],1),_c('div',{staticClass:"credit-card-field-icon-back"},[_c('icon',{staticClass:"credit-card-field-icon",attrs:{"icon":['fas', 'credit-card'],"width":"23.33","height":"20"}})],1)])]),_c('div',{staticClass:"credit-card-field-fields"},[_c('input',{directives:[{name:"focus",rawName:"v-focus.transform",modifiers:{"transform":true}},{name:"validate",rawName:"v-validate:number",value:(_vm.validateNumber),expression:"validateNumber",arg:"number"},{name:"model",rawName:"v-model",value:(_vm.card.number),expression:"card.number"}],staticClass:"credit-card-field-field credit-card-field-number",class:_vm.mergeClasses({'is-empty': !_vm.card.number, 'is-invalid': _vm.validated.number === false}),attrs:{"max":"19","type":"text","placeholder":"Card number"},domProps:{"value":(_vm.card.number)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.card, "number", $event.target.value)}}}),_c('div',{staticClass:"credit-card-field-security-fields"},[_c('input',{directives:[{name:"focus",rawName:"v-focus"},{name:"validate",rawName:"v-validate:expiration",value:(_vm.validateExpiration),expression:"validateExpiration",arg:"expiration"},{name:"model",rawName:"v-model",value:(_vm.card.expiration),expression:"card.expiration"}],staticClass:"credit-card-field-field credit-card-field-expiration",class:_vm.mergeClasses({'is-empty': !_vm.card.expiration, 'is-invalid': _vm.validated.expiration === false}),attrs:{"type":"text","placeholder":"MM / YY","maxlength":"7"},domProps:{"value":(_vm.card.expiration)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.card, "expiration", $event.target.value)}}}),_c('input',{directives:[{name:"focus",rawName:"v-focus",value:(_vm.validateCvc),expression:"validateCvc"},{name:"validate",rawName:"v-validate:cvc",value:(_vm.validateCvc),expression:"validateCvc",arg:"cvc"},{name:"model",rawName:"v-model",value:(_vm.card.cvc),expression:"card.cvc"}],staticClass:"credit-card-field-field credit-card-field-cvc",class:_vm.mergeClasses({'is-empty': !_vm.card.cvc, 'is-invalid': _vm.validated.cvc === false}),attrs:{"type":"text","placeholder":"CVC","autocomplete":"off"},domProps:{"value":(_vm.card.cvc)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.card, "cvc", $event.target.value)}}}),_c('input',{directives:[{name:"focus",rawName:"v-focus",value:(_vm.validatePostalCode),expression:"validatePostalCode"},{name:"validate",rawName:"v-validate:postalCode",value:(_vm.validatePostalCode),expression:"validatePostalCode",arg:"postalCode"},{name:"model",rawName:"v-model",value:(_vm.card.postalCode),expression:"card.postalCode"}],staticClass:"credit-card-field-field credit-card-field-postal",class:_vm.mergeClasses({'is-empty': !_vm.card.postalCode, 'is-invalid': _vm.validated.postalCode === false}),attrs:{"max":"5","type":"text","placeholder":"Zip","maxlength":"5"},domProps:{"value":(_vm.card.postalCode)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.card, "postalCode", $event.target.value)}}})]),_c('div',{staticClass:"credit-card-field-placeholder-mask"},[_vm._v("Number")]),_c('div',{staticClass:"credit-card-field-number-mask",domProps:{"innerHTML":_vm._s(_vm.card.number)}})])])]),_vm._t("activity-indicator",[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.activity),expression:"activity"}],staticClass:"credit-card-field-activity"},[_c('activity-indicator',{attrs:{"size":"sm","type":"dots","center":""}})],1)]),_vm._t("default"),_vm._t("help",[(_vm.helpText)?_c('help-text',{domProps:{"innerHTML":_vm._s(_vm.helpText)}}):_vm._e()]),_vm._t("feedback",[(_vm.validFeedback)?_c('form-feedback',{attrs:{"valid":""},domProps:{"innerHTML":_vm._s(_vm.validFeedback)}}):_vm._e(),(_vm.invalidFeedback)?_c('form-feedback',{attrs:{"invalid":""},domProps:{"innerHTML":_vm._s(_vm.invalidFeedback)}}):_vm._e()])],2)}
 var InlineCreditCardFieldvue_type_template_id_28d63742_staticRenderFns = []
 

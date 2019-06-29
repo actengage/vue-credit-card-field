@@ -49,8 +49,10 @@ export default {
             console.log('change', arguments);
         },
 
-        onValid() {
+        onValid(e) {
             this.activity = true;
+
+            console.log(e);
         },
 
         onInvalid() {
