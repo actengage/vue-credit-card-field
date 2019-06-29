@@ -16,7 +16,6 @@
                     ref="number"
                     name="number"
                     label="Card Number"
-                    autocomplete="off"
                     placeholder="Credit Card Number"
                     @validate="onValidate"
                     @card-types.native="onCardTypeChange"
@@ -302,15 +301,11 @@ export default {
         },
 
         isValid(value) {
-            const e = {
-                
-            };
-
             if(value === true) {
-                this.$emit('valid', e);
+                this.dispatch('valid');
             }
             else if(value === false) {
-                this.$emit('invalid', e);
+                this.dispatch('invalid');
             }
         },
 
