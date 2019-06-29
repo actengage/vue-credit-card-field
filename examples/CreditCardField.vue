@@ -15,13 +15,6 @@
         <form>
             <credit-card-field
                 v-model="card"
-                number="424242424242424"
-                exp-month="02"
-                exp-year="2020"
-                cvc="123"
-                show-name
-                show-zip
-                :activity="activity"
                 error="test"
                 @change="onChange"
                 @valid="onValid"

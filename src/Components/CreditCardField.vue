@@ -352,7 +352,7 @@ export default {
         },
 
         hasErrors() {
-            return this.error || !!Object.entries(this.currentErrors)
+            return !!this.error || !!Object.entries(this.currentErrors)
                 .filter(([key, value]) => !!value)
                 .length;
         },
