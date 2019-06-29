@@ -15,7 +15,14 @@
         <form>
             <credit-card-field
                 v-model="card"
+                number="424242424242424"
+                exp-month="02"
+                exp-year="2020"
+                cvc="123"
+                show-name
+                show-zip
                 :activity="activity"
+                :errors="{number: 'test', name: 'test', zip: 'test'}"
                 @change="onChange"
                 @valid="onValid"
                 @invalid="onInvalid"
@@ -46,17 +53,19 @@ export default {
     methods: {
 
         onChange() {
-            console.log('change', arguments);
+            // console.log('change', arguments);
         },
 
         onValid(e) {
             this.activity = true;
 
-            console.log(e);
+            setTimeout(() => {
+                this.activity = false;
+            }, 1000);
         },
 
         onInvalid() {
-            console.log('invalid', arguments)
+            // console.log('invalid', arguments)
         }
 
     },

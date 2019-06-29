@@ -9,6 +9,16 @@ const METHODS = {
     'month': 'expirationMonth'
 };
 
+validator.name = function name(value) {
+    const isValid = value && value.length;
+    const isPotentiallyValid = isValid || !value;
+
+    return {
+        isValid,
+        isPotentiallyValid
+    };
+};
+
 export default {
 
     bind(el, binding, vnode) {
@@ -22,8 +32,8 @@ export default {
 
         function get() {
             return binding.expression.split('.').reduce((carry, attr) => {
-                return vnode.context[attr] || carry[attr];
-            }, null);
+                return carry[attr];
+            }, vnode.context);
         }
 
         function set(value) {
@@ -40,10 +50,11 @@ export default {
         function validate(force = false) {
             return e => {
                 if( shouldFormat(e) && 
-                    e.target.value && 
+                    !!e.target.value && 
                     (e.target.value !== prevValue || force)) {
+                        
                     dispatch(e.target.value, force);
-
+                    
                     prevValue = e.target.value;
                 }            
             };
@@ -51,7 +62,7 @@ export default {
         
         function dispatch(str, force = false) {
             const response = method(str, value(vnode.data.attrs.validator));
-                        
+                  
             if(!response.isValid && (!response.isPotentiallyValid || force)) {
                 el.dispatchEvent(new Event('invalid'));
             }
@@ -69,20 +80,22 @@ export default {
 
         const inputEl = input(el);
 
-        inputEl.addEventListener('paste', e => {
-            const clipboardData = e.clipboardData || window.clipboardData;
-            const value = clipboardData.getData('text/plain');
-            
+        inputEl.addEventListener('paste', () => {
             setTimeout(() => {
-                dispatch(value);
+                dispatch(inputEl.value);
             });
         });
 
-        inputEl.addEventListener('blur', validate(true));
-        inputEl.addEventListener('keyup', validate());
-        inputEl.addEventListener('change', validate());
         inputEl.addEventListener('revalidate', dispatch);
+        inputEl.addEventListener('blur', validate(true));
+        inputEl.addEventListener('keyup',  validate());
 
+        inputEl.addEventListener('keydown', e => {
+            if(shouldFormat(e)) {
+                prevValue = e.target.value;
+            }
+        });
+        
         el.addEventListener('valid', e => set(true));
         el.addEventListener('invalid', e => set(false));
         el.addEventListener('potentially-valid', e =>  set(null));
@@ -92,7 +105,11 @@ export default {
         });
 
         if(inputEl.value) {
-            dispatch(inputEl.value);
+            if(get() !== false) {
+                set(null);
+
+                dispatch(inputEl.value);
+            }
         }
     }
 
