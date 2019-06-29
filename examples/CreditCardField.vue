@@ -22,7 +22,7 @@
                 show-name
                 show-zip
                 :activity="activity"
-                :errors="{number: 'test', name: 'test', zip: 'test'}"
+                error="test"
                 @change="onChange"
                 @valid="onValid"
                 @invalid="onInvalid"

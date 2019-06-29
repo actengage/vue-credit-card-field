@@ -12,6 +12,7 @@
                         v-bubble:focus="() => focused = 'number'"
                         v-validate:number="validated.number"
                         :disabled="activity"
+                        :error="error"
                         :errors="currentErrors"
                         custom
                         id="number"
@@ -260,8 +261,6 @@ export default {
                 const entries = Object.entries(value);
 
                 entries.forEach(([key, value]) => {
-                    // this.$set(this.currentErrors, key, value === false);
-
                     this.$set(this.currentErrors, key, value === false ? (this.currentErrors[key] || true) : false);
                 });
 
@@ -326,7 +325,7 @@ export default {
     computed: {
 
         invalidFeedback() {
-            return Object.entries(this.currentErrors)
+            return this.error || Object.entries(this.currentErrors)
                 .filter(([key, value]) => !!value && value.toString)
                 .map(([key, value]) => value.toString())
                 .join('<br>');
@@ -353,7 +352,7 @@ export default {
         },
 
         hasErrors() {
-            return !!Object.entries(this.currentErrors)
+            return this.error || !!Object.entries(this.currentErrors)
                 .filter(([key, value]) => !!value)
                 .length;
         },
@@ -488,7 +487,9 @@ export default {
             focused: null,
             isValid: null,
             showSecurityFields: !!card.number,
-            currentErrors: Object.assign({}, this.errors)
+            currentErrors: Object.assign({
+                number: this.error
+            }, this.errors)
         }
     }
 
