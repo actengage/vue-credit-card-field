@@ -88,7 +88,19 @@ export default {
 
         inputEl.addEventListener('revalidate', dispatch);
         inputEl.addEventListener('blur', validate(true));
-        inputEl.addEventListener('keyup',  validate());
+
+        if(inputEl.tagName === 'SELECT') {
+            inputEl.addEventListener('change', e => {
+                set(null);
+
+                setTimeout(() => {
+                    dispatch(inputEl.value);
+                });
+            });
+        }
+        else {
+            inputEl.addEventListener('keyup',  validate());
+        }
 
         inputEl.addEventListener('keydown', e => {
             if(shouldFormat(e)) {

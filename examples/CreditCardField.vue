@@ -15,7 +15,11 @@
         <form>
             <credit-card-field
                 v-model="card"
-                error="test"
+                number="4242424242424242"
+                exp-month="02"
+                exp-year="2020"
+                cvc="123"
+                :activity="activity"
                 @change="onChange"
                 @valid="onValid"
                 @invalid="onInvalid"
