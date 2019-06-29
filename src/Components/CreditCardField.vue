@@ -544,7 +544,7 @@ export default {
         }
 
         .invalid-feedback {
-            display: none;
+            display: none !import;
         }
     }
 
