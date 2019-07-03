@@ -621,7 +621,7 @@ export default {
     }
 
     .custom-select-field > label {
-        z-index: 2;
+        z-index: 1;
     }
 
     .credit-card-icons {
