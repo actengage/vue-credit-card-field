@@ -326,7 +326,7 @@ export default {
 
         invalidFeedback() {
             return this.error || Object.entries(this.currentErrors)
-                .filter(([key, value]) => !!value && value.toString)
+                .filter(([key, value]) => !!value && (typeof value === 'string'))
                 .map(([key, value]) => value.toString())
                 .join('<br>');
         },
@@ -509,8 +509,7 @@ export default {
         box-shadow: 0 0 .5em $gray-100;
         background: lighten($gray-100, 2%);
     }
-
-    &.has-errors > .form-group,
+    
     .credit-card-field-rows .form-group {
         margin-bottom: 0;
     }
