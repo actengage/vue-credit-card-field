@@ -16,9 +16,6 @@
             <credit-card-field
                 v-model="card"
                 number="4242424242424242"
-                exp-month="02"
-                exp-year="2020"
-                cvc="123"
                 :activity="activity"
                 @change="onChange"
                 @valid="onValid"

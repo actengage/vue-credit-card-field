@@ -419,10 +419,10 @@ export default {
 
         onValid(current, next) {
             if(this.$refs[current] && this.$refs[current].$el.querySelector(':focus')) {
-                if(this.$refs[next]) {
+                if(this.$refs[next] && this.$refs[next].$el.classList.contains('is-empty')) {
                     input(this.$refs[next].$el).focus();
                 }
-                else {
+                else if(!this.$refs[next]) {
                     input(this.$refs[current].$el).blur();
                 }
             }

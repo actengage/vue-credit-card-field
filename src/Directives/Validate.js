@@ -91,8 +91,6 @@ export default {
 
         if(inputEl.tagName === 'SELECT') {
             inputEl.addEventListener('change', e => {
-                return;
-                
                 set(null);
 
                 setTimeout(() => {
