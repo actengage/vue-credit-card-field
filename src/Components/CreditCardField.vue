@@ -504,16 +504,13 @@ export default {
 .credit-card-field {
 
     & > .form-group {
+        margin-bottom: 0;
         border-radius: .25em;
         border: 1px solid $gray-300;
         box-shadow: 0 0 .5em $gray-100;
         background: lighten($gray-100, 2%);
     }
     
-    .credit-card-field-rows .form-group {
-        margin-bottom: 0;
-    }
-
     &.has-errors {
         & > .form-group {
             border-color: $danger;
