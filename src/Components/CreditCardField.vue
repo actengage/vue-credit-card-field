@@ -511,6 +511,10 @@ export default {
         background: lighten($gray-100, 2%);
     }
     
+    .credit-card-field-rows .form-group {
+        margin-bottom: 0;
+    }
+
     &.has-errors {
         & > .form-group {
             border-color: $danger;
