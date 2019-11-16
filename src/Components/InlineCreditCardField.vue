@@ -71,7 +71,7 @@ import ActivityIndicator from 'vue-interface/src/Components/ActivityIndicator';
 
 export default {
 
-    name: 'credit-card-field',
+    name: 'InlineCreditCardField',
 
     mixins: [
         MergeClasses,
