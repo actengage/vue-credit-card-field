@@ -18,8 +18,8 @@
                         id="number"
                         ref="number"
                         name="number"
-                        label="Card Number"
-                        placeholder="Credit Card Number"
+                        :label="inputCardNumberLabel"
+                        :placeholder="inputCardNumberLabel"
                         @validate="onValidate"
                         @card-types.native="onCardTypeChange"
                         @valid.native="() => onValid('number', showName ? 'name' : 'expMonth')">
@@ -73,8 +73,8 @@
                             id="expMonth"
                             ref="expMonth"
                             name="expMonth"
-                            label="Month"
-                            placeholder="Month"
+                            :label="inputCardMonthLabel"
+                            :placeholder="inputCardMonthLabel"
                             class="credit-card-field-month"
                             @valid.native="() => onValid('expMonth', 'expYear')">
                             <option v-for="i in 12" :key="i">{{ padZero(i, 2) }}</option>
@@ -92,8 +92,8 @@
                             id="expYear"
                             ref="expYear"
                             name="expYear"
-                            label="Year"
-                            placeholder="Year"
+                            :label="inputCardYearLabel"
+                            :placeholder="inputCardYearLabel"
                             class="credit-card-field-year"
                             @valid.native="() => onValid('expYear', 'cvc')">
                             <option v-for="i in years" :key="i">{{i}}</option>
@@ -212,6 +212,11 @@ export default {
             default: false
         },
 
+        inputCardNumberLabel: String,
+        inputCardMonthLabel: String,
+        inputCardYearLabel: String,
+
+
         name: String,
 
         number: [Number, String],
@@ -326,7 +331,7 @@ export default {
 
         invalidFeedback() {
             return this.error || Object.entries(this.currentErrors)
-                .filter(([key, value]) => !!value && value.toString)
+                .filter(([key, value]) => !!value && (typeof value === 'string'))
                 .map(([key, value]) => value.toString())
                 .join('<br>');
         },
@@ -419,10 +424,10 @@ export default {
 
         onValid(current, next) {
             if(this.$refs[current] && this.$refs[current].$el.querySelector(':focus')) {
-                if(this.$refs[next]) {
+                if(this.$refs[next] && this.$refs[next].$el.classList.contains('is-empty')) {
                     input(this.$refs[next].$el).focus();
                 }
-                else {
+                else if(!this.$refs[next]) {
                     input(this.$refs[current].$el).blur();
                 }
             }
@@ -504,13 +509,13 @@ export default {
 .credit-card-field {
 
     & > .form-group {
+        margin-bottom: 0;
         border-radius: .25em;
         border: 1px solid $gray-300;
         box-shadow: 0 0 .5em $gray-100;
         background: lighten($gray-100, 2%);
     }
-
-    &.has-errors > .form-group,
+    
     .credit-card-field-rows .form-group {
         margin-bottom: 0;
     }
@@ -621,7 +626,7 @@ export default {
     }
 
     .custom-select-field > label {
-        z-index: 2;
+        z-index: 1;
     }
 
     .credit-card-icons {
