@@ -3,7 +3,7 @@
   "description": "A generic Bootstrap 4 capatible credit card field that mimics Stripe's behavior.",
   "version": "0.3.14",
   "module": "./src/index.js",
-  "main": "./dist/VueCreditCardField.umd.min.js",
+  "main": "./dist/CreditCardField.umd.min.js",
   "scripts": {
     "commit": "git add -A && git commit -m 'Pre-release commit';",
     "serve": "vue-cli-service serve",
