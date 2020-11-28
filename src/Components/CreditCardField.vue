@@ -18,8 +18,8 @@
                         id="number"
                         ref="number"
                         name="number"
-                        label="Card Number"
-                        placeholder="Credit Card Number"
+                        :label="inputCardNumberLabel"
+                        :placeholder="inputCardNumberLabel"
                         @validate="onValidate"
                         @card-types.native="onCardTypeChange"
                         @valid.native="() => onValid('number', showName ? 'name' : 'expMonth')">
@@ -73,8 +73,8 @@
                             id="expMonth"
                             ref="expMonth"
                             name="expMonth"
-                            label="Month"
-                            placeholder="Month"
+                            :label="inputCardMonthLabel"
+                            :placeholder="inputCardMonthLabel"
                             class="credit-card-field-month"
                             @valid.native="() => onValid('expMonth', 'expYear')">
                             <option v-for="i in 12" :key="i">{{ padZero(i, 2) }}</option>
@@ -92,8 +92,8 @@
                             id="expYear"
                             ref="expYear"
                             name="expYear"
-                            label="Year"
-                            placeholder="Year"
+                            :label="inputCardYearLabel"
+                            :placeholder="inputCardYearLabel"
                             class="credit-card-field-year"
                             @valid.native="() => onValid('expYear', 'cvc')">
                             <option v-for="i in years" :key="i">{{i}}</option>
@@ -211,6 +211,11 @@ export default {
             type: Boolean,
             default: false
         },
+
+        inputCardNumberLabel: String,
+        inputCardMonthLabel: String,
+        inputCardYearLabel: String,
+
 
         name: String,
 
