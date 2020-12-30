@@ -3,6 +3,6 @@ export default function shouldFormat(e) {
         !e.altKey &&
         !e.ctrlKey &&
         !e.metaKey && 
-        !e.shiftyKey
+        !e.shiftKey
     );
 };
